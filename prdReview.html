@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>商品評價管理</title>
+    <link rel="icon" href="/momoscm/assets/icon-DnKfFtDw.png" type="image/ico">
+    <link rel="stylesheet" type="text/css" href="https://scm.momoshop.com.tw/common/css/scm_w1220.css?t=20200102">
+    <script language="javascript" type="text/javascript" src="https://scm.momoshop.com.tw/common/js/jquery-1.7.2.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://scm.momoshop.com.tw/common/css/scmBase.css?t=20200421">
+    <script language="javascript" type="text/javascript" src="floatLayer.js"></script>
+    <script language="javascript" type="text/javascript" src="scmjq.js"></script>
+    <script language="javascript" type="text/javascript" src="imgSwiper.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="https://scm.momoshop.com.tw/common/css/scmWidget.css?t=20200116">
+    <!-- 輪播套件 -->
+    <script language="javascript" type="text/javascript" src="https://image.momoshop.com.tw/ecm/js/goods/swiper.min.js?env=O&t=20210319011"></script>
+    <link rel="stylesheet" type="text/css" href="https://image.momoshop.com.tw/ecm/css/goods/swiper.min.css?env=O&t=20210319011">
+  <link rel="stylesheet" crossorigin href="/momoscm/assets/prdReview-eOPLtbRe.css">
+  <link rel="stylesheet" crossorigin href="/momoscm/assets/scmbase-DSO4z_0v.css">
+  <link rel="stylesheet" crossorigin href="/momoscm/assets/headerWrap-B-d797h8.css">
+</head>
+<body class="w1220">
+    <script language="javascript" type="text/javascript" src="headerWrap.js"></script>
+    <!-- 路徑區塊 start -->
+    <div class="contentArea wide">
+        <table>
+          <tbody>
+            <tr>
+                <td width="50%">
+                    <dl class="nav">
+                        <dt><a href="javascript:goJump('home');">首頁</a></dt>
+                        <dd class="first">評價</dd>
+                        <dd class="last show">商品評價管理</dd>
+                    </dl>
+                </td>
+                <td width="50%" id="addAppArea" align="right">       
+                    <input type="checkbox" name="addApp" id="addApp" style="vertical-align: middle" checked="checked">加入常用程式集
+                </td>  
+            </tr>  
+            </tbody>
+        </table>   
+    </div>
+    <!-- 路徑區塊 end -->
+    <div class="contentArea">
+        <div class="styleArea prdReview">
+            <div class="tabArea">
+                <ul>
+                    <li class="selected" name="statement">明細</li>
+                    <li name="statistics">統計表</li>
+                </ul>
+            </div>
+            <div id="statementCon">
+                <div class="curvy">
+                    <em class="ctl"><b>•</b></em>
+                    <em class="ctr"><b>•</b></em>
+                    <em class="cbr"><b>•</b></em>
+                    <em class="cbl"><b>•</b></em>
+                    <div class="tipsA">
+                        <div class="curvy w870">
+                            <em class="cbr" style="display: inline;"><b>•</b></em>
+                            <em class="cbl" style="display: inline;"><b>•</b></em>
+                            <em class="cbr" style="display: inline;"><b>•</b></em>
+                            <em class="cbl" style="display: inline;"><b>•</b></em>
+                            <h2>
+                                <a class="open" style="display: none;"><b>+</b>展開查詢</a>
+                                <a class="close" style="display: block;"><b>-</b>關閉查詢</a>查詢
+                            </h2>
+                            <div class="innerArea" style="display: block;">
+                                <table width="100%" border="0" cellpadding="0" cellspacing="3">
+                                    <tr>
+                                        <th width="10%">
+                                            評價發送日期：
+                                        </th>
+                                        <td>
+                                            <input class="fixtable" type="text" name="fr_date" id="fr_date" readonly="readonly" maxlength="10" size="10" onclick="Calendar_D_New(this);">
+                                            ～
+                                            <input class="fixtable" type="text" name="to_date" id="to_date" readonly="readonly" maxlength="10" size="10" onclick="Calendar_D_New(this);">
+                                        </td>
+                                        <th width="10%">評價分數：</th>
+                                        <td>
+                                            <select>
+                                                <option>評價指標</option>
+                                                <option selected>評價總分</option>
+                                                <option>商品品質</option>
+                                                <option>商品符合度</option>
+                                                <option>出貨速度</option>
+                                            </select>
+                                            <div class="starBox">
+                                                <label><input type="checkbox" checked>5星</label>
+                                                <label><input type="checkbox" checked>4星</label>
+                                                <label><input type="checkbox" checked>3星</label>
+                                                <label><input type="checkbox" checked>2星</label>
+                                                <label><input type="checkbox" checked>1星</label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th width="10%">商品名稱：</th>
+                                        <td>
+                                            <input type="text" maxlength="8" placeholder="請輸入品號" size="8">
+                                            <input type="text" maxlength="18" placeholder="請輸入商品名稱">
+                                        </td>
+                                        <th width="10%">配送別：</th>
+                                        <td>
+                                            <label><input type="checkbox" checked>甲配</label>
+                                            <label><input type="checkbox" checked>乙配</label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th width="10%">查詢分類：</th>
+                                        <td>
+                                            <select>
+                                                <option>彩妝保養</option>
+                                            </select>
+                                            <select>
+                                                <option>彩妝</option>
+                                            </select>
+                                            <select>
+                                                <option>底妝</option>
+                                            </select>
+                                            <select>
+                                                <option>粉底液</option>
+                                            </select>
+                                        </td>
+                                        <td colspan="2"></td>
+                                    </tr>
+                                    <tr>
+                                        <th width="10%">評價回覆：</th>
+                                        <td>
+                                            <label><input type="checkbox" checked>已回覆</label>
+                                            <label><input type="checkbox" checked>未回覆</label>
+                                        </td>
+                                        <td colspan="2"></td>
+                                        <td width="12%" rowspan="3" align="right" valign="bottom" class="searchbtn">
+                                            <a class="newBtnStyle" id="queryButton">查詢</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="resultArea">
+                    <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                        <tbody>
+                            <tr>
+                                <th width="200">商品資訊</th>
+                                <th width="90">訂單編號</th>
+                                <th width="70">配送別</th>
+                                <th width="90">評價總分<span class="toolTip">?<span class="tipTxt">(商品品質+商品符合度+出貨速度)÷3</span></th>
+                                <th width="90">商品品質</th>
+                                <th width="90">商品符合度</th>
+                                <th width="90">出貨速度</th>
+                                <th width="180">商品評價</th>
+                                <th width="110">查看圖片/影片</th>
+                                <th width="180">廠商回覆</th>
+                            </tr>
+                            <tr>
+                                <td class="prdInfo">
+                                    <span>9511116</span>
+                                    <p>【NEW BALANCE】NB 復古運動鞋_男鞋/女鞋_藏青灰_ML725A-D楦(IU著用款)</p>
+                                    <i class="prdformat">規格：US4.5-22.5cm</i>
+                                </td>
+                                <td>202110058886666</td>
+                                <td>乙配</td>
+                                <td>5</td>
+                                <td>2</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td class="reviewArea">
+                                    <span class="date">2026/2/15</span>
+                                    <p>首先!出貨迅速隔天就到了，之前買的幾個都退了，品質沒有這個好，商品非常有質感，實在太可愛了，很滿意!</p>
+                                </td>
+                                <td>
+                                    <button id="checkImgBtn">查看圖片</button>
+                                    <button id="checkVideoBtn">查看影片</button>
+                                </td>
+                                <td class="reviewArea">
+                                    <span class="date">2026/2/17</span>
+                                    <p>鞋面材質是軟的，透氣性不錯，做工細節方便也比較注重，正好最近可以穿不腳臭，跑步也沒有</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="prdInfo">
+                                    <span>9260405</span>
+                                    <p>【淡果香】綜合果乾水x1盒(7.4gx10包/盒)</p>
+                                    <i class="prdformat">規格：無</i>
+                                </td>
+                                <td>202110058886666</td>
+                                <td>甲配</td>
+                                <td>5</td>
+                                <td>2</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td class="reviewArea">
+                                    <span class="date">2026/2/15</span>
+                                    <p>首先!出貨迅速隔天就到了，之前買的幾個都退了!</p>
+                                </td>
+                                <td>無圖片/影片</td>
+                                <td>
+                                    <button id="reviewBtn">回覆</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="prdInfo">
+                                    <span>9511116</span>
+                                    <p>【NEW BALANCE】NB 復古運動鞋_男鞋/女鞋_藏青灰_ML725A-D楦(IU著用款)</p>
+                                    <i class="prdformat">規格：US4.5-22.5cm</i>
+                                </td>
+                                <td>202110058886666</td>
+                                <td>乙配</td>
+                                <td>5</td>
+                                <td>2</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>無</td>
+                                <td>
+                                    <button id="checkImgBtn">查看圖片</button>
+                                    <button id="checkVideoBtn">查看影片</button>
+                                </td>
+                                <td>
+                                    <button id="reviewBtn">回覆</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="pagination">
+                        <span class="firstBtn"></span>
+                        <span class="preBtn"></span>
+                        <div class="pageBox">
+                            <input type="text" value="1"> / 5
+                        </div>
+                        <span class="nextBtn"></span>
+                        <span class="lastBtn"></span>
+                        <b>第 <i>1</i> - <i>10</i>筆, 共 <i>44</i>筆</b>
+                    </div>
+                </div>
+            </div>
+            <div id="statisticsCon" style="display: none;">
+                <div class="curvy">
+                    <em class="ctl"><b>•</b></em>
+                    <em class="ctr"><b>•</b></em>
+                    <em class="cbr"><b>•</b></em>
+                    <em class="cbl"><b>•</b></em>
+                    <div class="tipsA">
+                        <div class="curvy w870">
+                            <em class="cbr" style="display: inline;"><b>•</b></em>
+                            <em class="cbl" style="display: inline;"><b>•</b></em>
+                            <em class="cbr" style="display: inline;"><b>•</b></em>
+                            <em class="cbl" style="display: inline;"><b>•</b></em>
+                            <h2>
+                                <a class="open" style="display: none;"><b>+</b>展開查詢</a>
+                                <a class="close" style="display: block;"><b>-</b>關閉查詢</a>查詢
+                            </h2>
+                            <div class="innerArea" style="display: block;">
+                                <table width="100%" border="0" cellpadding="0" cellspacing="3">
+                                    <tr>
+                                        <th width="10%">
+                                            評價發送日期：
+                                        </th>
+                                        <td>
+                                            <input class="fixtable" type="text" name="fr_date" id="fr_date" readonly="readonly" maxlength="10" size="10" onclick="Calendar_D_New(this);">
+                                            ～
+                                            <input class="fixtable" type="text" name="to_date" id="to_date" readonly="readonly" maxlength="10" size="10" onclick="Calendar_D_New(this);">
+                                        </td>
+                                        <th width="10%">評價分數：</th>
+                                        <td>
+                                            <select>
+                                                <option>評價指標</option>
+                                                <option selected>評價總分</option>
+                                                <option>商品品質</option>
+                                                <option>商品符合度</option>
+                                                <option>出貨速度</option>
+                                            </select>
+                                            <div class="starBox">
+                                                <label><input type="checkbox" checked>5星</label>
+                                                <label><input type="checkbox" checked>4星</label>
+                                                <label><input type="checkbox" checked>3星</label>
+                                                <label><input type="checkbox" checked>2星</label>
+                                                <label><input type="checkbox" checked>1星</label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th width="10%">商品名稱：</th>
+                                        <td>
+                                            <input type="text" maxlength="8" placeholder="請輸入品號" size="8">
+                                            <input type="text" maxlength="18" placeholder="請輸入商品名稱">
+                                        </td>
+                                        <th width="10%">配送別：</th>
+                                        <td>
+                                            <label><input type="checkbox" checked>甲配</label>
+                                            <label><input type="checkbox" checked>乙配</label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th width="10%">查詢分類：</th>
+                                        <td>
+                                            <select>
+                                                <option>彩妝保養</option>
+                                            </select>
+                                            <select>
+                                                <option>彩妝</option>
+                                            </select>
+                                            <select>
+                                                <option>底妝</option>
+                                            </select>
+                                            <select>
+                                                <option>粉底液</option>
+                                            </select>
+                                        </td>
+                                        <td colspan="2"></td>
+                                        <td width="12%" rowspan="3" align="right" valign="bottom" class="searchbtn">
+                                            <a class="newBtnStyle" id="queryButton">查詢</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="resultArea">
+                    <div class="reviewScoreArea">
+                       <h4>評價總分<span>(最近7天之評分)</span></h4>
+                       <dl class="scoreBox">
+                           <dt>
+                                <p><b>4.5</b> / 5</p>
+                                <span>共有906個評價</span>
+                           </dt>
+                           <dd>
+                                <p>商品品質</p>
+                                <div class="scoreBar"><i></i></div>
+                                <b>4.5</b>
+                                <span>非常滿意</span>
+                           </dd>
+                           <dd>
+                                <p>商品符合度</p>
+                                <div class="scoreBar"><i></i></div>
+                                <b>3.0</b>
+                                <span>普通</span>
+                           </dd>
+                           <dd>
+                                <p>物流速度</p>
+                                <div class="scoreBar"><i></i></div>
+                                <b>1.5</b>
+                                <span>非常不滿意</span>
+                           </dd>
+                       </dl>
+                    </div>
+                    <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                        <tbody>
+                            <tr>
+                                <th width="250">商品資訊</th>
+                                <th width="70">配送別</th>
+                                <th width="70">待評價</th>
+                                <th width="70">已評價</th>
+                                <th width="90">評價總分<span class="toolTip">?<span class="tipTxt">(商品品質+商品符合度+出貨速度)÷3</span></th>
+                                <th width="90">商品品質</th>
+                                <th width="90">商品符合度</th>
+                                <th width="90">出貨速度</th>
+                            </tr>
+                            <tr>
+                                <td class="prdInfo">
+                                    <span>9511116</span>
+                                    <p>【NEW BALANCE】NB 復古運動鞋_男鞋/女鞋_藏青灰_ML725A-D楦(IU著用款)</p>
+                                </td>
+                                <td>乙配</td>
+                                <td>100</td>
+                                <td>200</td>
+                                <td>2</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>4.5</td>
+                            </tr>
+                            <tr>
+                                <td class="prdInfo">
+                                    <span>9260405</span>
+                                    <p>【淡果香】綜合果乾水x1盒(7.4gx10包/盒)</p>
+                                </td>
+                                <td>甲配</td>
+                                <td>254</td>
+                                <td>125</td>
+                                <td>2</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                            </tr>
+                            <tr>
+                                <td class="prdInfo">
+                                    <span>9511116</span>
+                                    <p>【NEW BALANCE】NB 復古運動鞋_男鞋/女鞋_藏青灰_ML725A-D楦(IU著用款)</p>
+                                </td>
+                                <td>乙配</td>
+                                <td>151</td>
+                                <td>50</td>
+                                <td>2</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>2.5</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="pagination">
+                        <span class="firstBtn"></span>
+                        <span class="preBtn"></span>
+                        <div class="pageBox">
+                            <input type="text" value="1"> / 5
+                        </div>
+                        <span class="nextBtn"></span>
+                        <span class="lastBtn"></span>
+                        <b>第 <i>1</i> - <i>10</i>筆, 共 <i>44</i>筆</b>
+                    </div>
+                </div>
+            </div>
+        </div>           
+    </div>
+    <!-- 查看圖片浮層 -->
+    <div class="reviewImgFloat" id="checkImg">
+        <div class="floatTitle">
+            <div class="prdImgPagination">
+                <span class="active"></span>/<span class="total"></span>
+            </div>
+            <a class="closeBtn"></a>
+        </div>
+        <div class="imgblock swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="https://i2.momoshop.com.tw/1628755590/goodsimg/0007/641/561/7641561_R.jpg" alt="" width="100%" height="auto">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i3.momoshop.com.tw/1628755590/goodsimg/0007/641/561/7641561_R1.jpg" alt="" width="100%" height="auto">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i4.momoshop.com.tw/1628755590/goodsimg/0007/641/561/7641561_R2.jpg" alt="" width="100%" height="auto">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i1.momoshop.com.tw/1628755590/goodsimg/0007/641/561/7641561_R3.jpg" alt="" width="100%" height="auto">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i2.momoshop.com.tw/1628755590/goodsimg/0007/641/561/7641561_R4.jpg" alt="" width="100%" height="auto">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i3.momoshop.com.tw/1642042608/goodsimg/0009/755/684/9755684_R.jpg" alt="" width="100%" height="auto">
+                </div>
+            </div>
+        </div>
+        <ul class="imgList swiper-pagination"></ul>
+    </div>
+    <!-- 查看影片浮層 -->
+    <div class="reviewImgFloat" id="checkVideo">
+        <div class="floatTitle">
+            <a class="closeBtn"></a>
+        </div>
+        <div class="videoBlock swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="videoMask"></div>
+                    <img src="https://i3.momoshop.com.tw/1642042608/goodsimg/0009/755/684/9755684_R.jpg" alt="" width="100%" height="auto">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="blackBG"></div>
+</body>
+</html>

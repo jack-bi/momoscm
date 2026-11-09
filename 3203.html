@@ -1,0 +1,787 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>[3203]品牌旗艦館管理</title>
+    <link rel="icon" href="/momoscm/assets/icon-DnKfFtDw.png" type="image/ico">
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> -->
+
+    <style>
+      /* 調整色css */
+      .figma-picker {
+        width: 240px;
+        border-radius: 14px;
+        color: #343a40;
+        background: #fff;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        font-family: sans-serif;
+        border: 1px solid #d2d5da;
+      }
+
+      /* Header */
+      .picker-header {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 12px;
+        border-bottom: 1px solid #eee;
+        font-size: 12px;
+        height: 40px;
+        line-height: 3.5;
+      }
+
+      .controls-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .eyedropper {
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        left: 1.4rem;
+        margin-top: 1rem;
+      }
+
+      /* 右邊 slider 區 */
+      .sliders {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+
+      .close-btn {
+        cursor: pointer;
+      }
+
+      /* 色盤 */
+      .color-area {
+        position: relative;
+        height: 180px;
+        cursor: crosshair;
+      }
+
+      .white-gradient {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to right, #fff, transparent);
+      }
+
+      .black-gradient {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, #000, transparent);
+      }
+
+      .picker-dot {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        border: 2px solid #fff;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .hue-thumb {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        background: #fff;
+        border: 2px solid #000;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      /* opacity */
+      .opacity {
+        height: 12px;
+        margin: 12px;
+        border-radius: 999px;
+        background: linear-gradient(to right, transparent, black), repeating-conic-gradient(#ccc 0% 25%, #fff 0% 50%) 50% / 10px 10px;
+        position: relative;
+      }
+
+      /* inputs */
+      .inputs {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 15px;
+        font-size: 11px;
+      }
+
+      .input-group {
+        border: 1px solid #d2d5da;
+        border-radius: 4px;
+        height: 32px;
+      }
+
+      .input-group.color-input::after {
+        content: '';
+        width: 1px;
+        height: 30px;
+        background-color: #d2d5da;
+        position: absolute;
+        bottom: 0;
+        margin-left: 108px;
+      }
+
+      .hex-input {
+        border: none;
+        outline: none;
+        padding: 0 8px;
+        width: 110px;
+        text-align: left;
+      }
+
+      .alpha-input {
+        border: none;
+        outline: none;
+        padding: 0 8px;
+        width: 58px;
+        text-align: left;
+      }
+
+      .hue {
+        height: 12px;
+        border-radius: 999px;
+        margin: 20px 15px 6px;
+        position: relative;
+        background: linear-gradient(to right, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
+        border: 1px solid #ccc;
+      }
+
+      .slider {
+        width: 168px;
+        margin-left: auto;
+      }
+
+      /* thumb */
+      .slider-thumb {
+        position: absolute;
+        top: 50%;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        border: 2px solid #fff;
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3);
+        z-index: 1;
+      }
+
+      .opacity {
+        height: 12px;
+        margin: 6px 15px 2px auto;
+        border-radius: 999px;
+        position: relative;
+        /* overflow: hidden; */
+      }
+
+      /* 棋盤 */
+      .opacity::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 999px;
+        background: repeating-conic-gradient(#ccc 0% 25%, #fff 0% 50%) 50% / 10px 10px;
+      }
+
+      /* 顏色漸層（JS會覆蓋） */
+      .opacity::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 999px;
+        background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+      }
+    </style>
+    <script type="module" crossorigin src="/momoscm/assets/3203-2AV5J8dM.js"></script>
+    <link rel="modulepreload" crossorigin href="/momoscm/assets/modulepreload-polyfill-B5Qt9EMX.js">
+    <link rel="stylesheet" crossorigin href="/momoscm/assets/3203-DP71kjKv.css">
+    <link rel="stylesheet" crossorigin href="/momoscm/assets/bootstrap-DedGxb-O.css">
+    <link rel="stylesheet" crossorigin href="/momoscm/assets/notify-DCRyhBfs.css">
+    <link rel="stylesheet" crossorigin href="/momoscm/assets/utilities-DnkMqMQv.css">
+    <link rel="stylesheet" crossorigin href="/momoscm/assets/headerWrap-B-d797h8.css">
+  </head>
+
+  <body>
+    <script src="headerWrap.js"></script>
+    <div class="contentArea wide" style="width: 1175px">
+      <table class="full">
+        <tbody>
+          <tr>
+            <td class="nowrap">
+              <dl class="nav">
+                <dt><a href="javascript:goJump('home')">首頁</a></dt>
+                <dd class="first">活動</dd>
+                <dd class="next show">網路管理</dd>
+                <dd class="last show">[3203]品牌旗艦館管理</dd>
+              </dl>
+            </td>
+            <td>
+              <div class="videoPic show" style="vertical-align: middle; display: inline-block"></div>
+              <div class="media" style="vertical-align: middle; display: inline-block">
+                <audio id="audio" src="https://scmentp.momoshop.com.tw/scmItemVideo/getScmItemVideo.scm?path=videoupload/_MP3" controls="" style="height: 30px; display: none" controlslist="nodownload" oncontextmenu="return false"></audio>
+              </div>
+            </td>
+            <td id="addAppArea" class="text-end"><input type="checkbox" name="addApp" id="addApp" style="vertical-align: middle" checked="checked" />加入常用程式集</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="contentArea wide container-1440">
+      <div class="category-setting">
+        <div class="setting-tabs mt-3 mb-3">
+          <button class="tab active">館分類設定</button>
+          <button class="tab">區塊設定</button>
+        </div>
+        <div id="categoryTableWrapper">
+          <div class="d-flex">
+            <!-- 左側 -->
+            <div class="col-left">
+              <div class="card panel left-panel">
+                <div class="panel-section">
+                  <h6 class="panel-title">LOGO圖設定</h6>
+
+                  <div class="logo-upload">
+                    <div class="logo-row">
+                      <img src="/momoscm/assets/logo-vqkZlm9Q.svg" />
+
+                      <div class="logo-actions">
+                        <div class="logo-btns">
+                          <button id="chooseLogoBtn" class="btn btn-outline-primary btn-outline-primary-custom btn-sm">選擇檔案</button>
+                          <input type="file" id="logoFileInput" accept="image/*" style="display: none" />
+                          <span class="file-name">未選擇檔案</span>
+                          <button id="uploadLogoBtn" class="btn btn-primary btn-primary-custom btn-sm">上傳圖檔</button>
+                        </div>
+
+                        <div class="logo-note">尺寸：160*160 px｜限5KB</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="panel-section">
+                  <h6 class="panel-title">第一層分類預覽</h6>
+                  <!-- <div class="preview-box">請先新增分類並置入商品</div> -->
+                  <div class="preview-box">
+                    <div class="category-preview">
+                      <button class="preview-item active">女性服飾</button>
+                      <button class="preview-item">全館商品</button>
+                      <button class="preview-item">沐浴/洗手乳</button>
+                      <button class="preview-item">頭皮護理</button>
+                      <button class="preview-item">手工皂/香皂</button>
+                      <button class="preview-item">身體保養</button>
+                      <button class="preview-item">染髮造型</button>
+                      <button class="preview-item">嬰幼洗沐保養</button>
+                      <button class="preview-item">私密保養</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="panel-section">
+                  <h6 class="panel-title">第二層分類預覽</h6>
+                  <div class="preview-box">請先新增分類並置入商品</div>
+                  <div class="category-preview d-none">
+                    <button class="preview-item">女性背心</button>
+                    <button class="preview-item">其他商品</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 右側 -->
+            <div class="col-right">
+              <div class="card panel right-panel">
+                <div id="categoryPanel">
+                  <div class="panel-header">
+                    <div class="title">品牌旗艦館 <span> ｜ adidas 愛迪達 </span></div>
+                    <div class="alert alert-box alert-box-info py-1 px-2 mb-0 ms-md-auto d-none"><img class="img" src="data:image/svg+xml,%3csvg%20width='12'%20height='12'%20viewBox='0%200%2012%2012'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M6%201C8.76142%201%2011%203.23858%2011%206C11%208.76142%208.76142%2011%206%2011C3.23858%2011%201%208.76142%201%206C1%203.23858%203.23858%201%206%201ZM6%205.75C5.58579%205.75%205.25%206.08579%205.25%206.5V8.25C5.25%208.66421%205.58579%209%206%209C6.41421%209%206.75%208.66421%206.75%208.25V6.5C6.75%206.08579%206.41421%205.75%206%205.75ZM6%203C5.51675%203%205.125%203.39175%205.125%203.875C5.125%204.35825%205.51675%204.75%206%204.75C6.48325%204.75%206.875%204.35825%206.875%203.875C6.875%203.39175%206.48325%203%206%203Z'%20fill='%23FFC107'/%3e%3c/svg%3e" style="margin-top: -2px" />活動型分類在前台的選單排序會預設在最後面</div>
+                    <div id="categoryActions" class="d-none">
+                      <button class="btn btn-outline-primary btn-outline-primary-custom btn-sm btn-log">異動紀錄</button>
+                      <button id="toggleSortMode" class="btn btn-outline-primary btn-outline-primary-custom btn-sm">調整分類排序</button>
+                    </div>
+                  </div>
+
+                  <div class="table-wrapper">
+                    <table class="table table-bordered align-middle category-table">
+                      <thead>
+                        <tr>
+                          <th>館分類名稱</th>
+                          <th>商品數</th>
+                          <th>顯示</th>
+                          <th>最後異動資訊</th>
+                          <th>操作</th>
+                        </tr>
+                      </thead>
+
+                      <tbody id="categoryTable"></tbody>
+                    </table>
+                  </div>
+
+                  <div class="table-footer position-relative">
+                    <button class="btn btn-primary-custom add-root-category">
+                      ＋ 新增商品型分類
+                      <span class="svg-icon question-icon"></span>
+                    </button>
+                    <button class="btn btn-primary-custom add-root-promo">
+                      ＋ 新增活動促銷型分類
+                      <span class="svg-icon question-icon"></span>
+                    </button>
+                  </div>
+
+                  <div class="sort-save bg-white position-absolute bottom-0 start-0 w-100 px-3 py-3 d-flex d-none" style="box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05)">
+                    <button class="btn btn-gray ms-auto btn-cancel">取消</button>
+                    <button class="btn btn-primary-custom btn-sort-save">排序存檔</button>
+                  </div>
+                </div>
+
+                <div id="productPanel" class="d-none"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="blockSettingsWrapper-text d-none">品牌旗艦館 > adidas 愛迪達</div>
+
+        <div id="blockSettingsWrapper" class="d-none">
+          <div class="d-flex">
+            <!-- ===== 左：區塊選單 ===== -->
+            <aside class="left-panel">
+              <div class="panel-header panel-header-left">區塊選單</div>
+              <div class="panel-body"></div>
+            </aside>
+
+            <!-- ===== 中：畫布 ===== -->
+            <main class="center-panel">
+              <div class="center-header">
+                <div class="panel-header">商店區塊</div>
+
+                <div class="center-actions">
+                  <button class="btn btn-outline-primary btn-outline-primary-custom me-2 btn-block-log">異動紀錄</button>
+                  <button class="btn btn-outline-primary btn-outline-primary-custom btn-online-preview">預覽線上畫面</button>
+                </div>
+              </div>
+
+              <!-- 手機畫布 -->
+              <div id="canvas" class="canvas empty">
+                <div class="empty-state"></div>
+              </div>
+            </main>
+
+            <!-- ===== 右：設定 ===== -->
+            <aside class="right-panel">
+              <!-- 空狀態 -->
+              <div id="settings-empty" class="text-center">
+                <img src="data:image/svg+xml,%3csvg%20width='132'%20height='155'%20viewBox='0%200%20132%20155'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M66.9324%20119.113L85.5505%2051.4693L117.172%2079.4101L98.9814%20145.499L66.9324%20119.113Z'%20fill='url(%23paint0_linear_3211_9091)'/%3e%3cpath%20d='M66.7151%20119.887L85.5472%2051.4659L26.4348%2044.3964L7.6027%20112.817L66.7151%20119.887Z'%20fill='url(%23paint1_linear_3211_9091)'/%3e%3cpath%20d='M36.5441%20138.348L55.1622%2070.7046L23.6482%2042.375L4.92309%20110.407L36.5441%20138.348Z'%20fill='url(%23paint2_linear_3211_9091)'/%3e%3cpath%20d='M36.5451%20138.347L54.9492%2071.4808L117.172%2079.4062L98.7675%20146.272L36.5451%20138.347Z'%20fill='url(%23paint3_linear_3211_9091)'/%3e%3cpath%20d='M82.7376%2013.0549L75.74%2011.1289L107.361%2039.0697L114.359%2040.9958L82.7376%2013.0549Z'%20fill='%23BEC5C5'/%3e%3cg%20filter='url(%23filter0_i_3211_9091)'%3e%3cpath%20d='M75.6166%2011.0939L23.5403%2042.7632L55.1613%2070.704L107.362%2039.0689L75.6166%2011.0939Z'%20fill='%23D2D6D6'/%3e%3c/g%3e%3cdefs%3e%3cfilter%20id='filter0_i_3211_9091'%20x='23.5408'%20y='11.0938'%20width='83.8203'%20height='59.6094'%20filterUnits='userSpaceOnUse'%20color-interpolation-filters='sRGB'%3e%3cfeFlood%20flood-opacity='0'%20result='BackgroundImageFix'/%3e%3cfeBlend%20mode='normal'%20in='SourceGraphic'%20in2='BackgroundImageFix'%20result='shape'/%3e%3cfeColorMatrix%20in='SourceAlpha'%20type='matrix'%20values='0%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%20127%200'%20result='hardAlpha'/%3e%3cfeOffset%20dx='-0.585789'/%3e%3cfeComposite%20in2='hardAlpha'%20operator='arithmetic'%20k2='-1'%20k3='1'/%3e%3cfeColorMatrix%20type='matrix'%20values='0%200%200%200%201%200%200%200%200%201%200%200%200%200%201%200%200%200%200.3%200'/%3e%3cfeBlend%20mode='normal'%20in2='shape'%20result='effect1_innerShadow_3211_9091'/%3e%3c/filter%3e%3clinearGradient%20id='paint0_linear_3211_9091'%20x1='107.589'%20y1='33.6972'%20x2='92.7439'%20y2='90.6696'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20stop-color='%23F3F3F3'/%3e%3cstop%20offset='1'%20stop-color='%23737A7A'/%3e%3c/linearGradient%3e%3clinearGradient%20id='paint1_linear_3211_9091'%20x1='57.168'%20y1='43.6548'%20x2='42.7907'%20y2='97.4101'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20stop-color='%23D6D6D6'/%3e%3cstop%20offset='1'%20stop-color='%236B7474'/%3e%3c/linearGradient%3e%3clinearGradient%20id='paint2_linear_3211_9091'%20x1='47.4612'%20y1='10.3877'%20x2='20.2664'%20y2='127.595'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20stop-color='%23D2D6D6'/%3e%3cstop%20offset='1'%20stop-color='%23B3BABA'/%3e%3c/linearGradient%3e%3clinearGradient%20id='paint3_linear_3211_9091'%20x1='87.2375'%20y1='71.1672'%20x2='66.4793'%20y2='146.586'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20stop-color='%23D2D6D6'/%3e%3cstop%20offset='1'%20stop-color='%23D2D6D6'/%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e" />
+                <span class="right-panel-text d-block">區塊內容編輯區</span>
+              </div>
+
+              <!-- 動態設定（JS 會塞） -->
+              <div id="settingsPanel" class="position-relative" style="display: none">
+                <script type="text/template" id="tpl-block-setting">
+                  <div class="setting-wrapper">
+                    <h5 class="mb-3">編輯區塊內容</h5>
+
+                    <!-- 區塊設定 -->
+                    <div class="mb-4">
+                      <div class="fw-bold mb-2">區塊設定</div>
+
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="publish" checked />
+                        <label class="form-check-label">發佈時段</label>
+                      </div>
+
+                      <input class="form-control mt-2" placeholder="區塊背景" />
+                    </div>
+
+                    <!-- 標題設定 -->
+                    <div class="mb-4">
+                      <div class="fw-bold mb-2">標題設定</div>
+
+                      <div class="form-check form-switch mb-2">
+                        <input class="form-check-input" type="checkbox" checked />
+                        <label class="form-check-label">顯示標題</label>
+                      </div>
+
+                      <input class="form-content gap-3 d-flex ms-5 ps-5" placeholder="標題文字" />
+                      <input class="form-control mb-2" placeholder="背景色碼" />
+                      <input class="form-control" placeholder="文字色碼" />
+                    </div>
+
+                    <!-- 區塊內容 -->
+                    <div class="mb-4">
+                      <div class="fw-bold mb-2">區塊內容設定</div>
+
+                      <button class="btn btn-outline-primary btn-sm">選擇檔案</button>
+                      <input class="form-control mt-2" placeholder="看板連結" />
+
+                      <div class="mt-3">
+                        <button class="btn btn-outline-primary btn-sm">編輯商品</button>
+                        <span class="text-muted ms-2">至少需 3 個</span>
+                      </div>
+                    </div>
+
+                    <!-- footer -->
+                    <div class="d-flex justify-content-end gap-2">
+                      <button class="btn btn-gray">關閉</button>
+                      <button class="btn btn-primary btn-primary-custom">發佈區塊內容</button>
+                    </div>
+                  </div>
+                </script>
+              </div>
+            </aside>
+          </div>
+
+          <div class="block-footer position-absolute bottom-0 start-0 end-0 d-none">
+            <button class="btn btn-gray btn-block-sort-close">關閉</button>
+            <button class="btn btn-primary btn-primary-custom btn-block-sort-save">排序存檔</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 新增商品 Modal -->
+    <div class="modal fade right-half" id="productModal" tabindex="-1">
+      <div class="modal-dialog modal-xl modal-dialog-scrollable">
+        <div class="modal-content">
+          <!-- header -->
+          <div class="modal-header">
+            <h5 class="modal-title">新增商品</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+
+          <!-- 置品方式 -->
+          <div class="mt-3 d-flex align-items-center lh-lg">
+            <span class="ms-4">
+              <span class="text-danger">*</span>
+              置品方式
+            </span>
+
+            <div class="form-check ms-3">
+              <input class="form-check-input" type="radio" name="placementType" value="system" checked />
+              <label class="form-check-label">系統置品</label>
+            </div>
+
+            <div class="form-check ms-3">
+              <input class="form-check-input" type="radio" name="placementType" value="manual" />
+              <label class="form-check-label">人工置品</label>
+            </div>
+          </div>
+
+          <div class="d-flex align-items-center ms-3 manual-text">※ 設定方式僅能擇一，活動將以最後存檔的設定方式置入商品</div>
+
+          <!-- 設定商品 -->
+          <div class="mt-3 d-flex align-items-center lh-lg d-none" id="productSetting">
+            <span class="ms-4">
+              <span class="text-danger">*</span>
+              設定商品
+            </span>
+
+            <div class="form-check ms-3">
+              <input class="form-check-input" type="radio" name="productSettingType" value="manualSelect" checked />
+              <label class="form-check-label">手動挑選</label>
+            </div>
+
+            <div class="form-check ms-3">
+              <input class="form-check-input" type="radio" name="productSettingType" value="batchImport" />
+              <label class="form-check-label">批次匯入</label>
+            </div>
+          </div>
+          <div class="mt-3 d-flex align-items-center lh-lg">
+            <div class="batchImportText d-none">
+              <button type="button" class="btn btn-primary-custom btn-import-file">選擇檔案</button>
+              <input type="file" id="xlsFileInput" accept=".xls" class="d-none" />
+              <div class="d-flex mt-1 batch-text">※ 匯入檔案格式為.xls，A欄填入主商品品號即可。<span id="downloadExample">(下載匯入範例)</span></div>
+              <!-- <span class="ms-2">下載匯入範例</span>
+              <span class="text-muted">（匯入檔案格式為.xls）</span> -->
+            </div>
+          </div>
+
+          <!-- body -->
+          <div class="modal-body overflow-y-hidden">
+            <div id="productSearchArea">
+              <div class="product-search-box">
+                <!-- 搜尋區 -->
+                <div class="mt-3 d-flex align-items-center lh-lg" id="sort-rule">
+                  <span class="sort-title">前台展示排序規則</span>
+
+                  <div class="form-check ms-3">
+                    <input class="form-check-input" type="radio" name="sortRule" value="sales" checked />
+                    <label class="form-check-label"> 按最高銷售量 </label>
+                  </div>
+
+                  <div class="form-check ms-3">
+                    <input class="form-check-input" type="radio" name="sortRule" value="newest" />
+                    <label class="form-check-label"> 按最新上架 </label>
+                  </div>
+                </div>
+
+                <div class="mt-3 text-start d-none child-btn">
+                  <button class="btn btn-primary btn-primary-custom search-btn">查看符合商品</button>
+                </div>
+
+                <div class="mt-3 text-end d-none parent-btn">
+                  <button class="btn btn-outline-primary btn-outline-primary-custom btn-clear-all">
+                    <span class="svg-icon refresh-icon"></span>
+                    清空
+                  </button>
+                  <button class="btn btn-primary btn-primary-custom search-btn ms-2">
+                    <span class="svg-icon search-icon"></span>
+                    搜尋
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 請先設定條件 -->
+            <div class="search-first text-center mt-5 mb-5">
+              <img class="" src="/momoscm/assets/search-first-BDFE6Izs.svg" />
+              <span class="d-block mt-2">請先設定條件</span>
+            </div>
+
+            <!-- 搜尋無資料 -->
+            <div class="no-data text-center mt-5 mb-5 d-none">
+              <img class="" src="data:image/svg+xml,%3csvg%20width='132'%20height='155'%20viewBox='0%200%20132%20155'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M66.9324%20119.113L85.5505%2051.4693L117.172%2079.4101L98.9814%20145.499L66.9324%20119.113Z'%20fill='url(%23paint0_linear_3211_9091)'/%3e%3cpath%20d='M66.7151%20119.887L85.5472%2051.4659L26.4348%2044.3964L7.6027%20112.817L66.7151%20119.887Z'%20fill='url(%23paint1_linear_3211_9091)'/%3e%3cpath%20d='M36.5441%20138.348L55.1622%2070.7046L23.6482%2042.375L4.92309%20110.407L36.5441%20138.348Z'%20fill='url(%23paint2_linear_3211_9091)'/%3e%3cpath%20d='M36.5451%20138.347L54.9492%2071.4808L117.172%2079.4062L98.7675%20146.272L36.5451%20138.347Z'%20fill='url(%23paint3_linear_3211_9091)'/%3e%3cpath%20d='M82.7376%2013.0549L75.74%2011.1289L107.361%2039.0697L114.359%2040.9958L82.7376%2013.0549Z'%20fill='%23BEC5C5'/%3e%3cg%20filter='url(%23filter0_i_3211_9091)'%3e%3cpath%20d='M75.6166%2011.0939L23.5403%2042.7632L55.1613%2070.704L107.362%2039.0689L75.6166%2011.0939Z'%20fill='%23D2D6D6'/%3e%3c/g%3e%3cdefs%3e%3cfilter%20id='filter0_i_3211_9091'%20x='23.5408'%20y='11.0938'%20width='83.8203'%20height='59.6094'%20filterUnits='userSpaceOnUse'%20color-interpolation-filters='sRGB'%3e%3cfeFlood%20flood-opacity='0'%20result='BackgroundImageFix'/%3e%3cfeBlend%20mode='normal'%20in='SourceGraphic'%20in2='BackgroundImageFix'%20result='shape'/%3e%3cfeColorMatrix%20in='SourceAlpha'%20type='matrix'%20values='0%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%20127%200'%20result='hardAlpha'/%3e%3cfeOffset%20dx='-0.585789'/%3e%3cfeComposite%20in2='hardAlpha'%20operator='arithmetic'%20k2='-1'%20k3='1'/%3e%3cfeColorMatrix%20type='matrix'%20values='0%200%200%200%201%200%200%200%200%201%200%200%200%200%201%200%200%200%200.3%200'/%3e%3cfeBlend%20mode='normal'%20in2='shape'%20result='effect1_innerShadow_3211_9091'/%3e%3c/filter%3e%3clinearGradient%20id='paint0_linear_3211_9091'%20x1='107.589'%20y1='33.6972'%20x2='92.7439'%20y2='90.6696'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20stop-color='%23F3F3F3'/%3e%3cstop%20offset='1'%20stop-color='%23737A7A'/%3e%3c/linearGradient%3e%3clinearGradient%20id='paint1_linear_3211_9091'%20x1='57.168'%20y1='43.6548'%20x2='42.7907'%20y2='97.4101'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20stop-color='%23D6D6D6'/%3e%3cstop%20offset='1'%20stop-color='%236B7474'/%3e%3c/linearGradient%3e%3clinearGradient%20id='paint2_linear_3211_9091'%20x1='47.4612'%20y1='10.3877'%20x2='20.2664'%20y2='127.595'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20stop-color='%23D2D6D6'/%3e%3cstop%20offset='1'%20stop-color='%23B3BABA'/%3e%3c/linearGradient%3e%3clinearGradient%20id='paint3_linear_3211_9091'%20x1='87.2375'%20y1='71.1672'%20x2='66.4793'%20y2='146.586'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20stop-color='%23D2D6D6'/%3e%3cstop%20offset='1'%20stop-color='%23D2D6D6'/%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e" />
+              <span class="d-block mt-5">無符合商品，請重新設定範圍</span>
+            </div>
+
+            <!-- 搜尋結果 -->
+            <div class="had-data d-none">
+              <div class="d-flex pt-4 pb-3 px-0 manual-text">※ 套用條件後更新結果，置品數量上限 2000 品，需按暫存或送出才會保存更新結果。</div>
+              <div class="product-search-box d-flex">
+                「手機 >智慧型手機>Android」、「手機 >智慧型手機>Android」、 「手機 >智慧型手機>Android」、<br />
+                「手機 >智慧型手機>Android」中的商品， <br />
+                且商品名稱包含「XXX」， <br />且價格包含100~200， <br />且品牌系列包含「NIKE」、「愛迪達」， <br />
+                且屬性包含「款式>電捲棒>0~5公分」、「款式>傢俱>0~5公分」 <br /><br />
+                目前共 5 件符合設定條件
+                <button class="btn btn-outline-primary btn-outline-primary-custom btn-custom-sm download-btn ms-auto">下載商品列表</button>
+              </div>
+            </div>
+
+            <!-- 批次匯入結果 -->
+            <div class="batchImportResult d-none">
+              <div class="batch-content d-flex">
+                <h6>匯入結果</h6>
+                <div>共計 <span class="text-primary">5</span> 個商品匯入成功</div>
+                <div>共計 <span class="text-danger">11</span> 個商品匯入失敗</div>
+                <button class="btn btn-outline-primary btn-outline-primary-custom ms-auto">下載失敗結果檔</button>
+              </div>
+            </div>
+
+            <!-- 商品結果 -->
+            <div id="productResult" class="d-none">
+              <div class="d-flex py-3 px-0 mt-3 manual-text">※ 套用條件後更新結果，置品數量上限 2000 品，需按暫存或送出才會保存更新結果。</div>
+              <div class="product-result">
+                <!-- 系統更新提示 -->
+                <div class="alert alert-box py-2 px-3 mt-3">
+                  <img class="img" src="data:image/svg+xml,%3csvg%20width='12'%20height='12'%20viewBox='0%200%2012%2012'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M6%201C8.76142%201%2011%203.23858%2011%206C11%208.76142%208.76142%2011%206%2011C3.23858%2011%201%208.76142%201%206C1%203.23858%203.23858%201%206%201ZM6%205.75C5.58579%205.75%205.25%206.08579%205.25%206.5V8.25C5.25%208.66421%205.58579%209%206%209C6.41421%209%206.75%208.66421%206.75%208.25V6.5C6.75%206.08579%206.41421%205.75%206%205.75ZM6%203C5.51675%203%205.125%203.39175%205.125%203.875C5.125%204.35825%205.51675%204.75%206%204.75C6.48325%204.75%206.875%204.35825%206.875%203.875C6.875%203.39175%206.48325%203%206%203Z'%20fill='%23FFC107'/%3e%3c/svg%3e" style="margin-top: -2px" />
+                  每天08:00/10:00/12:00/14:00/16:00/18:00/20:00/22:00/00:30 系統會更新置入的商品
+                </div>
+                <div id="productModalTable" class="product-table-wrapper mb-4">
+                  <table class="table align-middle product-table">
+                    <thead>
+                      <tr>
+                        <th class="text-center checkbox-col" width="60">
+                          <input type="checkbox" id="modal-product-check-all" class="mb-2" />
+                        </th>
+                        <th class="text-center" width="120">商品編號</th>
+                        <th class="text-center">商品名稱</th>
+                        <th class="text-center" width="120">銷售狀況</th>
+                        <th class="text-center" width="120">進價</th>
+                        <th class="text-center" width="120">售價</th>
+                      </tr>
+                    </thead>
+                    <tbody id="productTableBody"></tbody>
+                  </table>
+                </div>
+                <div class="d-flex align-items-center gap-3 ms-auto page-text">
+                  <!-- 左 -->
+                  <div>
+                    <button class="btn btn-select-all btn-select-all-toggle">全選</button>
+                  </div>
+                  <div class="ms-auto">已選 <span id="selectedCount" class="text-danger">0</span> 個商品</div>
+
+                  <!-- 右 -->
+                  <div class="d-flex align-items-center page-text">
+                    <!-- 商品數量 -->
+                    <div class="text-nowrap" style="color: #343a40; font-size: 14px">
+                      共 <span class="totalCount">0</span> 筆
+                    </div>
+                    <!-- 分頁 -->
+                    <ul class="pagination pagination-sm mb-0 result-pagination"></ul>
+
+                    <!-- 每頁筆數 -->
+                    <select class="form-select form-select-sm text-center pageSize" style="-webkit-appearance: none; -moz-appearance: none; appearance: none; background: transparent; padding-right: 0.5rem; background-color: #f3f4f6">
+                      <option value="10">10筆/頁</option>
+                      <option value="20">20筆/頁</option>
+                      <option value="50">50筆/頁</option>
+                      <option value="100" selected="">100筆/頁</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- footer -->
+          <div class="modal-footer">
+            <!-- 系統更新提示 -->
+            <div class="alert alert-box py-2 px-3 me-md-auto">
+              <img class="img" src="data:image/svg+xml,%3csvg%20width='12'%20height='12'%20viewBox='0%200%2012%2012'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M6%201C8.76142%201%2011%203.23858%2011%206C11%208.76142%208.76142%2011%206%2011C3.23858%2011%201%208.76142%201%206C1%203.23858%203.23858%201%206%201ZM6%205.75C5.58579%205.75%205.25%206.08579%205.25%206.5V8.25C5.25%208.66421%205.58579%209%206%209C6.41421%209%206.75%208.66421%206.75%208.25V6.5C6.75%206.08579%206.41421%205.75%206%205.75ZM6%203C5.51675%203%205.125%203.39175%205.125%203.875C5.125%204.35825%205.51675%204.75%206%204.75C6.48325%204.75%206.875%204.35825%206.875%203.875C6.875%203.39175%206.48325%203%206%203Z'%20fill='%23FFC107'/%3e%3c/svg%3e" style="margin-top: -2px" />
+              每天08:00/10:00/12:00/14:00/16:00/18:00/20:00/22:00/00:30 系統會更新置入的商品
+            </div>
+            <!-- <div class="ms-auto">共<span id="selectedCount" class="text-danger">0</span> 項商品符合條件</div> -->
+            <button class="btn btn-gray" data-bs-dismiss="modal">取消</button>
+            <button id="applyProductBtn" class="btn btn-primary btn-primary-custom" disabled>套用商品</button>
+            <button id="importProductBtn" class="btn btn-primary btn-primary-custom d-none">確認置入</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 館分類異動紀錄 Modal -->
+    <div class="modal fade" id="logModal" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content log-modal">
+          <!-- header -->
+          <div class="modal-header border-0">
+            <div class="modal-title fw-bold">館分類異動紀錄</div>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+
+          <!-- body -->
+          <div class="modal-body pt-0">
+            <div class="table-responsive" style="height: 40rem">
+              <table class="table align-middle log-table">
+                <thead>
+                  <tr>
+                    <th class="text-center fw-bold">項目</th>
+                    <th class="text-center fw-bold">分類名稱</th>
+                    <th class="text-center fw-bold">操作</th>
+                    <th class="text-center fw-bold">異動時間</th>
+                    <th class="text-center fw-bold">異動人員</th>
+                  </tr>
+                </thead>
+                <tbody id="logTableBody"></tbody>
+              </table>
+            </div>
+
+            <!-- pagination -->
+            <div class="d-flex justify-content-between align-items-center mt-3 px-2 pt-5">
+              <div class="d-flex align-items-center page-text position-absolute">
+                <!-- 商品數量 -->
+                <div class="text-nowrap" style="color: #343a40; font-size: 14px">
+                  共 <span class="log-total-count">0</span> 筆
+                </div>
+
+                <!-- 分頁 -->
+                <ul class="pagination pagination-sm mb-0 log-pagination"></ul>
+
+                <!-- 每頁筆數 -->
+                <select class="log-page-size-select form-select form-select-sm text-center" style="-webkit-appearance: none; -moz-appearance: none; appearance: none; background: transparent; padding-right: 0.5rem; background-color: #f3f4f6">
+                  <option value="10">10筆/頁</option>
+                  <option value="20">20筆/頁</option>
+                  <option value="50">50筆/頁</option>
+                  <option value="100" selected="">100筆/頁</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 區塊異動紀錄 Modal -->
+    <div class="modal fade" id="blockLogModal" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content block-logo-modal">
+          <!-- header -->
+          <div class="modal-header">
+            <div class="modal-title fw-bold">館分類異動紀錄</div>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+
+          <!-- body -->
+          <div class="modal-body pt-0">
+            <div class="table-responsive">
+              <table class="table align-middle block-log-table">
+                <thead>
+                  <tr>
+                    <th class="text-center fw-bold">區塊名稱</th>
+                    <th class="text-center fw-bold">操作</th>
+                    <th class="text-center fw-bold">異動時間</th>
+                    <th class="text-center fw-bold">異動人員</th>
+                  </tr>
+                </thead>
+                <tbody id="blockLogTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Alert Modal -->
+    <div class="modal fade" id="confirmModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <!-- Header -->
+          <div class="modal-header border-bottom">
+            <h5 class="modal-title">注意</h5>
+          </div>
+
+          <!-- Body -->
+          <div class="modal-body text-secondary">
+            <p id="confirmText" class="mb-0"></p>
+          </div>
+
+          <!-- Footer -->
+          <div class="modal-footer border-0">
+            <button type="button" class="btn btn-gray btn-light-custom btn-cancel" data-bs-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-primary btn-primary-custom" id="confirmOkBtn">刪除</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Alert Message -->
+    <!-- <div id="custom-alert" class="position-fixed top-0 start-50 translate-middle-x bg-white rounded-3 shadow px-3 py-2 d-none align-items-center gap-2 text-secondary z-3" style="margin-top: 20vh; border: 0.5px solid #d2d5da">
+      <div class="bg-danger text-white rounded-circle d-flex justify-content-center align-items-center fw-bold" style="width: 17px; height: 17px; font-size: 14px">×</div>
+      <span id="custom-alert-text" style="font-size: 14px"></span>
+    </div> -->
+
+    <div id="custom-alert" class="position-fixed top-0 start-50 translate-middle-x bg-white rounded-3 shadow px-3 py-2 d-none align-items-center gap-2 text-secondary z-3 lh-1" style="margin-top: 20vh; border: 0.5px solid #d2d5da">
+      <div id="alert-icon" class="rounded-circle d-flex justify-content-center align-items-center fw-bold" style="width: 17px; height: 17px; font-size: 12px"></div>
+      <span id="custom-alert-text" style="font-size: 14px"></span>
+    </div>
+
+    <!-- 遮罩 -->
+    <div id="toastBackdrop" class="position-fixed top-0 start-0 w-100 h-100 bg-dark opacity-50 d-none z-2"></div>
+
+    <script src="./3203_files/js/category-selector.js"></script>
+
+    <script>
+      fetch('category-selector.html')
+        .then((response) => response.text())
+        .then((data) => {
+          const elements = document.querySelectorAll('.categorySelector')
+          elements.forEach((el) => {
+            el.innerHTML = data
+
+            // 每一個都要初始化
+            initMenu(el)
+          })
+        })
+        .catch((error) => {
+          console.error('載入分類選擇器時發生錯誤:', error)
+        })
+    </script>
+  </body>
+</html>

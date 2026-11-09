@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>商品表現</title>
+    <link rel="icon" href="/momoscm/assets/icon-DnKfFtDw.png" type="image/ico">
+    <link rel="stylesheet" type="text/css" href="https://scm.momoshop.com.tw/common/css/scmBase2.css?t=20200225">
+    <link rel="stylesheet" type="text/css" href="https://scm.momoshop.com.tw/common/css/scm_w1220.css?t=20200102">
+    <script language="javascript" type="text/javascript" src="https://scm.momoshop.com.tw/common/js/jquery-1.7.2.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://scm.momoshop.com.tw/common/css/scmBase.css?t=20200421">
+    <link rel="stylesheet" type="text/css" media="screen" href="https://scm.momoshop.com.tw/common/css/scmWidget.css?t=20200116">
+    <script language="javascript" type="text/javascript" src="scmjq.js"></script>
+  <link rel="stylesheet" crossorigin href="/momoscm/assets/scmbase-DSO4z_0v.css">
+  <link rel="stylesheet" crossorigin href="/momoscm/assets/styleS-D-bLELjy.css">
+  <link rel="stylesheet" crossorigin href="/momoscm/assets/headerWrap-B-d797h8.css">
+</head>
+<body class="w1220">
+    <script language="javascript" type="text/javascript" src="headerWrap.js"></script>
+    <!-- 路徑區塊 start -->
+    <div class="contentArea wide">
+        <table>
+          <tbody>
+            <tr>
+                <td width="50%">
+                    <dl class="nav">
+                        <dt><a href="javascript:goJump('home');">首頁</a></dt>
+                        <dd class="first">銷售分析</dd>
+                        <dd class="next show">網路商品分析</dd>
+                        <dd class="last show">[S1201]商品表現</dd>
+                        <dd class="video" style="display:none" id="theVideo"><a>影音教學</a></dd>
+                    </dl>
+                </td><td>
+                </td><td id="marqueeArea" style="display: none;">
+                    <div id="abgne_marquee" style="">
+                    </div>
+                </td>  
+                <td width="50%" id="addAppArea" align="right">       
+                    <input type="checkbox" name="addApp" id="addApp" style="vertical-align: middle" checked="checked">加入常用程式集
+                </td>  
+            </tr>  
+            </tbody>
+        </table>   
+    </div>
+    <!-- 路徑區塊 end -->
+   
+    <!-- 20210504_SCM_S1201_商品表現 -->
+    <div class="contentArea">
+        <div class="styleArea styleS1201">
+            <dl class="queryBox">
+                <dt>商品表現<span class="toolTip">?<span class="tipTxt">查詢指定區間內商品訂購、加入追蹤、消退的狀況，以及瀏覽量、流量成長、成交率的排名。</span></span>
+                    <div class="exportBtn dropMenu">
+                        <span class="dropBtn">匯出報表</span>
+                        <ul class="dropList drop_R">
+                            <li>匯出 xls.</li>
+                            <li>匯出 xlsx.</li>
+                        </ul>
+                    </div>
+                </dt>
+                <dd>
+                    <table width="100%" ellspacing="0" cellpadding="0" border="0">
+                        <tr>
+                            <td>
+                                <p>品牌</p>
+                                <div class="selectArea">
+                                    <span>全部</span>
+                                    <div class="selectList" style="display: none;">
+                                        <label class="active">全部<input type="radio" name="selectgp"></label>
+                                        <label>廠商名稱1<input type="radio" name="selectgp"></label>
+                                        <label>廠商名稱2<input type="radio" name="selectgp"></label>
+                                        <label>廠商名稱3<input type="radio" name="selectgp"></label>
+                                        <label>廠商名稱4廠商名稱商4<input type="radio" name="selectgp"></label>
+                                        <label>廠商名稱5<input type="radio" name="selectgp"></label>
+                                        <label>廠商名稱廠商名稱廠商廠商名稱廠商名稱廠商<input type="radio" name="selectgp"></label>
+                                        <label>廠商名稱6<input type="radio" name="selectgp"></label>
+                                        <label>廠商名稱7<input type="radio" name="selectgp"></label>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <p>供應商</p>
+                                <div class="selectArea">
+                                    <span>全部</span>
+                                    <div class="selectList" style="display: none;">
+                                        <label class="active">全部<input type="radio" name="selectgp"></label>
+                                        <label>廠商名稱1<input type="radio" name="selectgp"></label>
+                                        <label>廠商名稱2<input type="radio" name="selectgp"></label>
+                                        <label>廠商名稱3<input type="radio" name="selectgp"></label>
+                                        <label>廠商名稱4廠商名稱商4<input type="radio" name="selectgp"></label>
+                                        <label>廠商名稱5<input type="radio" name="selectgp"></label>
+                                        <label>廠商名稱廠商名稱廠商廠商名稱廠商名稱廠商<input type="radio" name="selectgp"></label>
+                                        <label>廠商名稱6<input type="radio" name="selectgp"></label>
+                                        <label>廠商名稱7<input type="radio" name="selectgp"></label>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>時間</p>
+                                <div class="dateArea">
+                                    <b>今日此刻：</b>
+                                    <span>今日 00:00 - 11:50</span>
+                                    <input type="text">
+                                </div>
+                            </td>
+                            <td class="select_s">
+                                <p>可接單量</p>
+                                <div class="selectArea">
+                                    <span>全部</span>
+                                    <div class="selectList" style="display: none;">
+                                        <label class="active">全部<input type="radio" name="selectgp"></label>
+                                        <label> &gt; <input type="radio" name="selectgp"></label>
+                                        <label> = <input type="radio" name="selectgp"></label>
+                                        <label> &lt; <input type="radio" name="selectgp"></label>
+                                    </div>
+                                </div>
+                                <input type="text">
+                            </td>
+                        </tr>
+                    </table>
+                    <button>查詢</button>
+                </dd>
+            </dl>
+            <div class="keypointDetail">
+                <div class="title">各指標明細</div>
+                 <!-- 頁籤 -->
+                 <div class="tabArea">
+                     <ul>
+                         <li class="selected" name="sales">銷售表現 <span class="toolTip">?<span class="tipTxt">查詢條件下有銷售紀錄商品的關注、興趣、購買表現。</span></span></li>
+                         <li name="traffic">流量表現 <span class="toolTip">?<span class="tipTxt">查詢條件下瀏覽量、流量成長率、商品成交率前 50 名商品的關注、興趣、購買表現。</span></span></li>
+                     </ul>
+                 </div>
+                <div id="salesBlock">
+                    <div class="topCont">
+                        <div class="selectArea">
+                            <span>全部分類</span>
+                            <div class="selectList" style="display: none;">
+                                <label class="">全部分類<input type="radio" name="selectgp"></label>
+                                <label>分類名稱1<input type="radio" name="selectgp"></label>
+                                <label>分類名稱2<input type="radio" name="selectgp"></label>
+                                <label class="active">分類名稱3<input type="radio" name="selectgp"></label>
+                                <label>分類名稱分類名稱分類名稱分類名稱分類名稱分類名稱<input type="radio" name="selectgp"></label>
+                            </div>
+                        </div>
+                        <div class="selectArea">
+                            <span>全部第三層分類</span>
+                            <div class="selectList" style="display: none;">
+                                <label class="">全部第三層分類<input type="radio" name="selectgp"></label>
+                                <label>分類名稱1<input type="radio" name="selectgp"></label>
+                                <label>分類名稱2<input type="radio" name="selectgp"></label>
+                                <label class="active">分類名稱3<input type="radio" name="selectgp"></label>
+                                <label>分類名稱分類名稱分類名稱分類名稱分類名稱分類名稱<input type="radio" name="selectgp"></label>
+                            </div>
+                        </div>
+                        <div class="selectArea">
+                            <span>全部第四層分類</span>
+                            <div class="selectList" style="display: none;">
+                                <label class="">全部第四層分類<input type="radio" name="selectgp"></label>
+                                <label>分類名稱1<input type="radio" name="selectgp"></label>
+                                <label>分類名稱2<input type="radio" name="selectgp"></label>
+                                <label class="active">分類名稱3<input type="radio" name="selectgp"></label>
+                                <label>分類名稱分類名稱分類名稱分類名稱分類名稱分類名稱<input type="radio" name="selectgp"></label>
+                            </div>
+                        </div>
+                        <button>篩選</button>
+                        <div class="fliterBtn">
+                            <p><i>4</i> / 5</p>
+                            <button>選擇指標</button>
+                        </div>
+                        <table class="filterArea" width="100%" ellspacing="0" cellpadding="0" border="0">
+                            <tr>
+                                <th>關注：</th>
+                                <td>
+                                    <label>
+                                        <input type="checkbox">
+                                        不重複訪客數
+                                        <span class="toolTip">?<span class="tipTxt">查詢區間內造訪商品的顧客總數。</span></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="checkbox">
+                                        瀏覽量
+                                        <span class="toolTip">?<span class="tipTxt">查詢區間內顧客進入商品頁的總次數。</span></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="checkbox">
+                                        前期瀏覽量
+                                        <span class="toolTip">?<span class="tipTxt">查詢區間前期顧客進入商品頁的總次數。<br> e.g. 查詢區間為 11/11~11/14，前期則為 11/07~11/10。</span></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="checkbox">
+                                        流量成長率
+                                        <span class="toolTip">?<span class="tipTxt">前期到查詢區間的流量變化比率。<br>[ (瀏覽量－前期瀏覽量)／前期瀏覽量 ] × 100%</span></span>
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>興趣：</th>
+                                <td>
+                                    <label>
+                                        <input type="checkbox">
+                                        加入追蹤數
+                                        <span class="toolTip">?<span class="tipTxt">查詢區間內顧客將商品加入追蹤的次數。</span></span>
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>購買：</th>
+                                <td>
+                                    <label>
+                                        <input type="checkbox" checked>
+                                        淨訂購數
+                                        <span class="toolTip">?<span class="tipTxt">查詢區間內顧客扣除消退後的商品訂購總數。</span></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="checkbox" checked>
+                                        淨訂購金額
+                                        <span class="toolTip">?<span class="tipTxt">查詢區間內顧客扣除消退後的消費總金額。</span></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="checkbox">
+                                        商品成交率
+                                        <span class="toolTip">?<span class="tipTxt">查詢區間內顧客平均每次瀏覽的商品訂購件數比率。<br> (訂購數／瀏覽量) × 100%</span></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="checkbox" checked>
+                                        取消數
+                                        <span class="toolTip">?<span class="tipTxt">查詢區間內顧客取消訂購的總商品數。</span></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="checkbox" checked>
+                                        退貨數
+                                        <span class="toolTip">?<span class="tipTxt">查詢區間內顧客退貨的總商品數。 </span></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="checkbox">
+                                        未結帳數
+                                        <span class="toolTip">?<span class="tipTxt">查詢區間內顧客成立訂單後未完成付款的總商品數。</span></span>
+                                    </label>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="keypointTable">
+                        <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tbody>
+                                <tr>
+                                    <th width="40">#</th>
+                                    <th width="70%">商品名稱</th>
+                                    <th width="100">目前售價</th>
+                                    <th width="100">可接單量<span class="toolTip">?<span class="tipTxt">商品於前台的可販售數量。</span></span></th>
+                                    <th width="135">淨訂購數<span class="toolTip">?<span class="tipTxt">查詢區間內顧客扣除消退後的商品訂購總數。</span></span></th>
+                                    <th width="135">淨訂購金額<span class="toolTip">?<span class="tipTxt">查詢區間內顧客扣除消退後的消費總金額。</span></span></th>
+                                    <th width="135">取消數<span class="toolTip">?<span class="tipTxt">查詢區間內顧客取消訂購的總商品數。</span></span></th>
+                                    <th width="135">退貨數<span class="toolTip">?<span class="tipTxt">查詢區間內顧客退貨的總商品數。</span></span></th>
+                                </tr>
+                                <tr>
+                                    <td class="num">1</td>
+                                    <td><p title="xxxxxx_這是商品名稱這是商品名稱這是商品名稱這是商品名">xxxxxx_這是商品名稱這是商品名稱這是商品名稱這是商品名稱這是商品名</p></td>
+                                    <td><a>1000</a></td>
+                                    <td><a>50</a></td>
+                                    <td>10</td>
+                                    <td>10,000</td>
+                                    <td>10</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td class="num">2</td>
+                                    <td><p title="xxxxxx_這是商品名稱這是商品名稱這是商品名稱這是商品名">xxxxxx_這是商品名稱這是商品名稱這是商品名稱這是商品名</p></td>
+                                    <td><a>2000</a></td>
+                                    <td><a>4</a></td>
+                                    <td>50</td>
+                                    <td>1,000</td>
+                                    <td>3</td>
+                                    <td>3</td>
+                                </tr>
+                                <tr>
+                                    <td class="num">3</td>
+                                    <td><p title="xxxxxx_這是商品名稱這是商品名稱這是商品名稱這是商品名">xxxxxx_這是商品名稱這是商品名稱這是商品名稱這是商品名</p></td>
+                                    <td><a>1000</a></td>
+                                    <td><a>0</a></td>
+                                    <td>10</td>
+                                    <td>10,000</td>
+                                    <td>10</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td class="num">4</td>
+                                    <td><p title="xxxxxx_這是商品名稱這是商品名稱這是商品名稱這是商品名">xxxxxx_這是商品名稱這是商品名稱這是商品名稱這是商品名</p></td>
+                                    <td><a>2000</a></td>
+                                    <td><a>10</a></td>
+                                    <td>50</td>
+                                    <td>1,000</td>
+                                    <td>3</td>
+                                    <td>3</td>
+                                </tr>
+                                <tr>
+                                    <td class="num">5</td>
+                                    <td><p title="xxxxxx_這是商品名稱這是商品名稱這是商品名稱這是商品名">xxxxxx_這是商品名稱這是商品名稱這是商品名稱這是商品名</p></td>
+                                    <td><a>1000</a></td>
+                                    <td><a>30</a></td>
+                                    <td>10</td>
+                                    <td>10,000</td>
+                                    <td>10</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td class="num">6</td>
+                                    <td><p title="xxxxxx_這是商品名稱這是商品名稱這是商品名稱這是商品名">xxxxxx_這是商品名稱這是商品名稱這是商品名稱這是商品名</p></td>
+                                    <td><a>2000</a></td>
+                                    <td><a>43</a></td>
+                                    <td>50</td>
+                                    <td>1,000</td>
+                                    <td>3</td>
+                                    <td>3</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="pagination">
+                            <span class="firstBtn"></span>
+                            <span class="preBtn"></span>
+                            <div class="pageBox">
+                                <input type="text" value="1"> / 5
+                            </div>
+                            <span class="nextBtn"></span>
+                            <span class="lastBtn"></span>
+                            <b>第<i>1</i>-<i>10</i>筆 , 共<i>44</i>筆</b>
+                        </div>
+                    </div>
+                </div>
+                <div id="trafficBlock" style="display: none;">
+                    <div class="topCont">
+                        <dl class="top50Area">
+                            <dd class="active">瀏覽量Top50</dd>
+                            <dd>流量成長Top50</dd>
+                            <dd>成交率Top50</dd>
+                        </dl>
+                        <div class="selectArea">
+                            <span>全部分類</span>
+                            <div class="selectList" style="display: none;">
+                                <label class="">全部分類<input type="radio" name="selectgp"></label>
+                                <label>分類名稱1<input type="radio" name="selectgp"></label>
+                                <label>分類名稱2<input type="radio" name="selectgp"></label>
+                                <label class="active">分類名稱3<input type="radio" name="selectgp"></label>
+                                <label>分類名稱分類名稱分類名稱分類名稱分類名稱分類名稱<input type="radio" name="selectgp"></label>
+                            </div>
+                        </div>
+                        <div class="selectArea">
+                            <span>全部第三層分類</span>
+                            <div class="selectList" style="display: none;">
+                                <label class="">全部第三層分類<input type="radio" name="selectgp"></label>
+                                <label>分類名稱1<input type="radio" name="selectgp"></label>
+                                <label>分類名稱2<input type="radio" name="selectgp"></label>
+                                <label class="active">分類名稱3<input type="radio" name="selectgp"></label>
+                                <label>分類名稱分類名稱分類名稱分類名稱分類名稱分類名稱<input type="radio" name="selectgp"></label>
+                            </div>
+                        </div>
+                        <div class="selectArea">
+                            <span>全部第四層分類</span>
+                            <div class="selectList" style="display: none;">
+                                <label class="">全部第四層分類<input type="radio" name="selectgp"></label>
+                                <label>分類名稱1<input type="radio" name="selectgp"></label>
+                                <label>分類名稱2<input type="radio" name="selectgp"></label>
+                                <label class="active">分類名稱3<input type="radio" name="selectgp"></label>
+                                <label>分類名稱分類名稱分類名稱分類名稱分類名稱分類名稱<input type="radio" name="selectgp"></label>
+                            </div>
+                        </div>
+                        <button>篩選</button>
+                        <div class="fliterBtn">
+                            <p><i>5</i> / 5</p>
+                            <button>選擇指標</button>
+                        </div>
+                        <table class="filterArea" width="100%" ellspacing="0" cellpadding="0" border="0">
+                            <tr>
+                                <th>關注：</th>
+                                <td>
+                                    <label>
+                                        <input type="checkbox" checked>
+                                        不重複訪客數
+                                        <span class="toolTip">?<span class="tipTxt">查詢區間內造訪商品的顧客總數。</span></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="checkbox" checked>
+                                        瀏覽量
+                                        <span class="toolTip">?<span class="tipTxt">查詢區間內顧客進入商品頁的總次數。</span></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="checkbox">
+                                        前期瀏覽量
+                                        <span class="toolTip">?<span class="tipTxt">查詢區間前期顧客進入商品頁的總次數。<br> e.g. 查詢區間為 11/11~11/14，前期則為 11/07~11/10。</span></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="checkbox" checked>
+                                        流量成長率
+                                        <span class="toolTip">?<span class="tipTxt">前期到查詢區間的流量變化比率。<br>[ (瀏覽量－前期瀏覽量)／前期瀏覽量 ] × 100%</span></span>
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>興趣：</th>
+                                <td>
+                                    <label>
+                                        <input type="checkbox">
+                                        加入追蹤數
+                                        <span class="toolTip">?<span class="tipTxt">查詢區間內顧客將商品加入追蹤的次數。</span></span>
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>購買：</th>
+                                <td>
+                                    <label>
+                                        <input type="checkbox">
+                                        淨訂購數
+                                        <span class="toolTip">?<span class="tipTxt">查詢區間內顧客扣除消退後的商品訂購總數。</span></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="checkbox">
+                                        淨訂購金額
+                                        <span class="toolTip">?<span class="tipTxt">查詢區間內顧客扣除消退後的消費總金額。</span></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="checkbox" checked>
+                                        商品成交率
+                                        <span class="toolTip">?<span class="tipTxt">查詢區間內顧客平均每次瀏覽的商品訂購件數比率。<br> (訂購數／瀏覽量) × 100%</span></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="checkbox">
+                                        取消數
+                                        <span class="toolTip">?<span class="tipTxt">查詢區間內顧客取消訂購的總商品數。</span></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="checkbox" checked>
+                                        退貨數
+                                        <span class="toolTip">?<span class="tipTxt">查詢區間內顧客退貨的總商品數。 </span></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="checkbox">
+                                        未結帳數
+                                        <span class="toolTip">?<span class="tipTxt">查詢區間內顧客成立訂單後未完成付款的總商品數。</span></span>
+                                    </label>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="keypointTable">
+                        <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tbody>
+                                <tr>
+                                    <th width="40">#</th>
+                                    <th width="70%">商品名稱</th>
+                                    <th width="100">目前售價</th>
+                                    <th width="100">可接單量<span class="toolTip">?<span class="tipTxt">商品於前台的可販售數量。</span></span></th>
+                                    <th width="135">不重複訪客數<span class="toolTip">?<span class="tipTxt">查詢區間內造訪商品的顧客總數。</span></span></th>
+                                    <th width="135">瀏覽量<span class="toolTip">?<span class="tipTxt">查詢區間內顧客進入商品頁的總次數。</span></span></th>
+                                    <th width="135">流量成長率<span class="toolTip">?<span class="tipTxt">前期到查詢區間的流量變化比率。<br>[ (瀏覽量－前期瀏覽量)／前期瀏覽量 ] × 100%</span></span></th>
+                                    <th width="135">商品成交率<span class="toolTip">?<span class="tipTxt">查詢區間內顧客平均每次瀏覽的商品訂購件數比率。<br>(訂購數／瀏覽量) × 100%</span></span></th>
+                                    <th width="135">退貨數<span class="toolTip">?<span class="tipTxt">查詢區間內顧客退貨的總商品數。</span></span></th>
+                                </tr>
+                                <tr>
+                                    <td class="num">1</td>
+                                    <td><p title="xxxxxx_這是商品名稱這是商品名稱這是商品名稱這是商品名">xxxxxx_這是商品名稱這是商品名稱這是商品名稱這是商品名稱這是商品名</p></td>
+                                    <td><a>1000</a></td>
+                                    <td><a>50</a></td>
+                                    <td>10</td>
+                                    <td>10,000</td>
+                                    <td>10.33%</td>
+                                    <td>0.56%</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td class="num">2</td>
+                                    <td><p title="xxxxxx_這是商品名稱這是商品名稱這是商品名稱這是商品名">xxxxxx_這是商品名稱這是商品名稱這是商品名稱這是商品名</p></td>
+                                    <td><a>2000</a></td>
+                                    <td><a>4</a></td>
+                                    <td>50</td>
+                                    <td>1,000</td>
+                                    <td>-5.33%</td>
+                                    <td>0.56%</td>
+                                    <td>3</td>
+                                </tr>
+                                <tr>
+                                    <td class="num">3</td>
+                                    <td><p title="xxxxxx_這是商品名稱這是商品名稱這是商品名稱這是商品名">xxxxxx_這是商品名稱這是商品名稱這是商品名稱這是商品名</p></td>
+                                    <td><a>1000</a></td>
+                                    <td><a>0</a></td>
+                                    <td>10</td>
+                                    <td>10,000</td>
+                                    <td>10.33%</td>
+                                    <td>0.56%</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td class="num">4</td>
+                                    <td><p title="xxxxxx_這是商品名稱這是商品名稱這是商品名稱這是商品名">xxxxxx_這是商品名稱這是商品名稱這是商品名稱這是商品名</p></td>
+                                    <td><a>2000</a></td>
+                                    <td><a>10</a></td>
+                                    <td>50</td>
+                                    <td>1,000</td>
+                                    <td>10.33%</td>
+                                    <td>0.56%</td>
+                                    <td>3</td>
+                                </tr>
+                                <tr>
+                                    <td class="num">5</td>
+                                    <td><p title="xxxxxx_這是商品名稱這是商品名稱這是商品名稱這是商品名">xxxxxx_這是商品名稱這是商品名稱這是商品名稱這是商品名</p></td>
+                                    <td><a>1000</a></td>
+                                    <td><a>30</a></td>
+                                    <td>10</td>
+                                    <td>10,000</td>
+                                    <td>10.33%</td>
+                                    <td>0.56%</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td class="num">6</td>
+                                    <td><p title="xxxxxx_這是商品名稱這是商品名稱這是商品名稱這是商品名">xxxxxx_這是商品名稱這是商品名稱這是商品名稱這是商品名</p></td>
+                                    <td><a>2000</a></td>
+                                    <td><a>43</a></td>
+                                    <td>50</td>
+                                    <td>1,000</td>
+                                    <td>-5.33%</td>
+                                    <td>0.56%</td>
+                                    <td>3</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="pagination">
+                            <span class="firstBtn"></span>
+                            <span class="preBtn"></span>
+                            <div class="pageBox">
+                                <input type="text" value="1"> / 5
+                            </div>
+                            <span class="nextBtn"></span>
+                            <span class="lastBtn"></span>
+                            <b>第<i>1</i>-<i>10</i>筆 , 共<i>44</i>筆</b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>            
+    </div>
+</body>
+</html>

@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>網路數據總覽</title>
+    <link rel="icon" href="/momoscm/assets/icon-DnKfFtDw.png" type="image/ico">
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="./js/accessibility.js"></script>
+    <script type="text/javascript" src="./js/export-data.js"></script>
+    <script type="text/javascript" src="./js/exporting.js"></script>
+    <script type="text/javascript" src="./js/highcharts.js"></script>
+    <script type="text/javascript" src="./js/series-label.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://scm.momoshop.com.tw/common/css/scmBase.css?t=20200421">
+    <link rel="stylesheet" type="text/css" href="https://scm.momoshop.com.tw/common/css/scmBase2.css?t=20200225">
+    <link rel="stylesheet" type="text/css" href="https://scm.momoshop.com.tw/common/css/scm_w1220.css?t=20200102">
+    <script language="javascript" type="text/javascript"
+        src="https://scm.momoshop.com.tw/common/js/jquery-1.7.2.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://scm.momoshop.com.tw/common/css/scmBase.css?t=20200421">    
+    <script language="javascript" type="text/javascript" src="scmjq.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen"
+        href="https://scm.momoshop.com.tw/common/css/scmWidget.css?t=20200116">
+
+  <link rel="stylesheet" crossorigin href="/momoscm/assets/S1701-DoIFXjBx.css">
+  <link rel="stylesheet" crossorigin href="/momoscm/assets/bootstrap-DedGxb-O.css">
+  <link rel="stylesheet" crossorigin href="/momoscm/assets/scmbase-DSO4z_0v.css">
+  <link rel="stylesheet" crossorigin href="/momoscm/assets/styleS-D-bLELjy.css">
+  <link rel="stylesheet" crossorigin href="/momoscm/assets/headerWrap-B-d797h8.css">
+</head>
+
+<body class="w1220">
+    <script language="javascript" type="text/javascript" src="headerWrap.js"></script>
+    <!-- 路徑區塊 start -->
+    <div class="contentArea wide">
+        <table>
+            <tbody>
+                <tr>
+                    <td width="50%">
+                        <dl class="nav">
+                            <dt><a href="javascript:goJump('home');">首頁</a></dt>
+                            <dd class="first">銷售分析</dd>
+                            <dd class="last show">網路數據首頁</dd>
+                            <dd class="video" style="display:none" id="theVideo"><a>影音教學</a></dd>
+                        </dl>
+                    </td>
+                    <td>
+                    </td>
+                    <td id="marqueeArea" style="display: none;">
+                        <div id="abgne_marquee" style="">
+                        </div>
+                    </td>
+                    <td width="50%" id="addAppArea" align="right">
+                        <input type="checkbox" name="addApp" id="addApp" style="vertical-align: middle"
+                            checked="checked">加入常用程式集
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- 路徑區塊 end -->
+
+    <!-- 20230726 SCM S1701 網路數據總覽 -->
+    <div class="styleS1701 container-fluid">
+
+        <!-- 即時銷售 Card  -->
+        <div class="card card-area border-0 shadow-sm mb-3">
+            <div class="card-body">
+                <div class="row mb-0 align-items-center">
+                    <div class="col-6">
+                        <h5 class="mb-0">即時銷售</h5>
+                    </div>
+                    <div class="col-6">
+                        <div class="dropdown d-flex justify-content-end">
+                            <a class="btn btn-outline-secondary btn-more-option dropdown-toggle" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                更多數據
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end shadow">
+                                <li>
+                                    <h6 class="dropdown-header text-black">關於銷售</h6>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item mb-2 py-2" href="#">
+                                        <h6 class="link-blue mb-1">想了解詳細的業績數據(S1101)</h6>
+                                        <small class="text-light-muted mb-1">前往查詢不同品牌、分類的訂購狀況</small>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item mb-2 py-2" href="#">
+                                        <h6 class="link-blue mb-1">想了解在各供應商間的業績排行 (S1106)</h6>
+                                        <small class="text-light-muted mb-1">前往查詢不同品牌、分類在 momo 的訂購金額排行</small>
+                                    </a>
+                                </li>
+                                <li>
+                                    <h6 class="dropdown-header border-top text-black">關於退貨</h6>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item mb-2 py-2" href="#">
+                                        <h6 class="link-blue mb-1">想了解詳細的退貨狀況(S1105)</h6>
+                                        <small class="text-light-muted mb-1">前往查詢退貨數量、金額與退貨商品明細</small>
+                                    </a>
+                                </li>
+                                <li>
+                                    <h6 class="dropdown-header border-top text-black">關於商品</h6>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item mb-2 py-2" href="#">
+                                        <h6 class="link-blue mb-1">想了解所有商品的銷售數據(S1201)</h6>
+                                        <small class="text-light-muted mb-1">前往查詢商品訂購、點擊、取消、退貨數據與可接單量</small>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <hr class="border-0 border-bottom border-secondary">
+                <div class="row gx-3 mb-3">
+                    <div class="col-12 col-sm-6 col-lg-3 mb-lg-0 mb-2">
+                        <div class="card shadow-sm border-0">
+                            <div class="card-body px-2">
+                                <h6 class="mb-1 fw-normal text-light-muted">淨訂購金額
+                                    <small><span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true"
+                                            data-bs-title='<span class="text-nowrap">查詢條件下顧客消費的總金額(已扣除消退)</span>'
+                                            class="badge rounded-pill text-bg-light ms-2 border border-secondary fw-normal">?</span></small>
+                                </h6>
+                                
+                                <div class="row">
+                                    <div class="col-xl mb-xl-0 mb-2">
+                                        <p class="mb-0 fw-bold fs-4">21,501,000</p>
+                                        <p class="mb-0 text-light-gray">00:00 - 17:00</p>
+                                    </div>
+                                    <div class="col-xl mb-xl-0 mb-2">
+                                        <p class="mb-0 d-flex justify-content-between"><span
+                                                class="text-light-gray">昨日</span><span class="text-green">-73.2%</span>
+                                        </p>
+                                        <p class="mb-0 d-flex justify-content-between"><span
+                                                class="text-light-gray">前7日</span><span class="text-green">-73.2%</span>
+                                        </p>
+                                        <p class="mb-0 d-flex justify-content-between"><span
+                                                class="text-light-gray">前30日</span><span class="text-red">+235.0%</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3 mb-lg-0 mb-2">
+                        <div class="card shadow-sm border-0">
+                            <div class="card-body px-2">
+                                <h6 class="mb-1 fw-normal text-light-muted">
+                                    淨訂單數
+                                    <small><span data-bs-toggle="tooltip" data-bs-placement="top"
+                                            data-bs-title="查詢條件下顧客成立的訂單數(己扣除消退)"
+                                            class="badge rounded-pill text-bg-light ms-2 border border-secondary fw-normal">?</span></small>
+                                </h6>
+                                <div class="row">
+                                    <div class="col-xl mb-xl-0 mb-2">
+                                        <p class="mb-0 fw-bold fs-4">21,501,000</p>
+                                        <p class="mb-0 text-light-gray">00:00 - 17:00</p>
+                                    </div>
+                                    <div class="col-xl mb-xl-0 mb-2">
+                                        <p class="mb-0 d-flex justify-content-between"><span
+                                                class="text-light-gray">昨日</span><span class="text-green">-73.2%</span>
+                                        </p>
+                                        <p class="mb-0 d-flex justify-content-between"><span
+                                                class="text-light-gray">前7日</span><span class="text-green">-73.2%</span>
+                                        </p>
+                                        <p class="mb-0 d-flex justify-content-between"><span
+                                                class="text-light-gray">前30日</span><span class="text-red">+235.0%</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3 mb-lg-0 mb-2">
+                        <div class="card shadow-sm border-0">
+                            <div class="card-body px-2">
+                                <h6 class="mb-1 fw-normal text-light-muted">淨訂購數
+                                    <small><span data-bs-toggle="tooltip" data-bs-placement="top"
+                                            data-bs-title="查詢條件下顧客訂購的商品總數(己扣除消退)"
+                                            class="badge rounded-pill text-bg-light ms-2 border border-secondary fw-normal">?</span></small>
+                                </h6>
+                                <div class="row">
+                                    <div class="col-xl mb-xl-0 mb-2">
+                                        <p class="mb-0 fw-bold fs-4">21,501,000</p>
+                                        <p class="mb-0 text-light-gray">00:00 - 17:00</p>
+                                    </div>
+                                    <div class="col-xl mb-xl-0 mb-2">
+                                        <p class="mb-0 d-flex justify-content-between"><span
+                                                class="text-light-gray">昨日</span><span class="text-green">-73.2%</span>
+                                        </p>
+                                        <p class="mb-0 d-flex justify-content-between"><span
+                                                class="text-light-gray">前7日</span><span class="text-green">-73.2%</span>
+                                        </p>
+                                        <p class="mb-0 d-flex justify-content-between"><span
+                                                class="text-light-gray">前30日</span><span class="text-red">+235.0%</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3 mb-lg-0 mb-2">
+                        <div class="card shadow-sm border-0">
+                            <div class="card-body px-2">
+                                <h6 class="mb-1 fw-normal text-light-muted">淨訂單均價
+                                    <small><span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true"
+                                            data-bs-title='<span class="text-nowrap">查詢條件下顧客平均每成立一筆訂單消費的金額。（已扣除消退) <br> (淨訂購金額/淨訂單數 ）× 100%</span>'
+                                            class="badge rounded-pill text-bg-light ms-2 border border-secondary fw-normal">?</span></small>
+                                </h6>
+                                <div class="row">
+                                    <div class="col-xl mb-xl-0 mb-2">
+                                        <p class="mb-0 fw-bold fs-4">21,501,000</p>
+                                        <p class="mb-0 text-light-gray">00:00 - 17:00</p>
+                                    </div>
+                                    <div class="col-xl mb-xl-0 mb-2">
+                                        <p class="mb-0 d-flex justify-content-between"><span
+                                                class="text-light-gray">昨日</span><span class="text-green">-73.2%</span>
+                                        </p>
+                                        <p class="mb-0 d-flex justify-content-between"><span
+                                                class="text-light-gray">前7日</span><span class="text-green">-73.2%</span>
+                                        </p>
+                                        <p class="mb-0 d-flex justify-content-between"><span
+                                                class="text-light-gray">前30日</span><span class="text-red">+235.0%</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row gx-3">
+                    <div class="col-12 col-lg-9 mb-lg-0 mb-3">
+                        <div class="card shadow-sm border-0">
+                            <div class="card-body">
+                                <h6 class="text-center">淨頂購金額趨勢(累積)</h6>
+                                <p class="mb-0 text-end"><small class="badge text-bg-type1">今日預估</small> <span class="fw-bold">150,522,856</span></p>
+                                <figure class="highcharts-figure">
+                                    <div id="chart-amount"></div>
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-3">
+                        <div id="carousel-ranking" class="carousel carousel-dark slide carousel-ranking shadow-sm" data-bs-ride="carousel" data-bs-interval="10000">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <div class="card border-0">
+                                        <div class="card-header text-center bg-white border-light-gray">
+                                            <h6 class="mb-0">分類熱銷排名</h6>
+                                            <p class="mb-0 text-black-50">00:00 - 17:00</p>
+                                        </div>
+                                        <div class="card-body py-1">
+                                            <div class="py-2 border-dividers-light-gray">
+                                                <p class="mb-1 d-flex justify-content-between"><span
+                                                        class="badge rounded-pill text-bg-type1">TOP 1</span><span
+                                                        class="text-black-50">銷量占比</span></p>
+                                                <p class="mb-0 d-flex justify-content-between">
+                                                    <span class="carousel-ranking-title" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="智慧型手機 > Android(EDI)">智慧型手機 >
+                                                        Android(EDI)</span><span>52.2%</span></p>
+                                            </div>
+                                            <div class="py-2 border-dividers-light-gray">
+                                                <p class="mb-1 d-flex justify-content-between"><span
+                                                        class="badge rounded-pill text-bg-type2">TOP 2</span></p>
+                                                <p class="mb-0 d-flex justify-content-between">
+                                                    <span class="carousel-ranking-title" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="智慧型手機 > Android(EDI)">智慧型手機 >
+                                                        Android(EDI)</span><span>52.2%</span></p>
+                                            </div>
+                                            <div class="py-2">
+                                                <p class="mb-1 d-flex justify-content-between"><span
+                                                        class="badge rounded-pill text-bg-type3">TOP 3</span></p>
+                                                <p class="mb-0 d-flex justify-content-between">
+                                                    <span class="carousel-ranking-title" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="智慧型手機 > Android(EDI)">智慧型手機 >
+                                                        Android(EDI)</span><span>52.2%</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="card border-0">
+                                        <div class="card-header text-center bg-white border-light-gray">
+                                            <h6 class="mb-0">商品訂購成交排名</h6>
+                                            <p class="mb-0 text-black-50">00:00 - 17:00</p>
+                                        </div>
+                                        <div class="card-body py-1">
+                                            <div class="py-2 border-dividers-light-gray">
+                                                <p class="mb-1 d-flex justify-content-between"><span
+                                                        class="badge rounded-pill text-bg-type1">TOP 1</span><span
+                                                        class="text-black-50">成交率</span></p>
+                                                <p class="mb-0 d-flex justify-content-between">
+                                                    <span class="carousel-ranking-title" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="956226 商品名稱 Product Name">956226 商品名稱 Product Name</span><span>52.2%</span></p>
+                                            </div>
+                                            <div class="py-2 border-dividers-light-gray">
+                                                <p class="mb-1 d-flex justify-content-between"><span
+                                                        class="badge rounded-pill text-bg-type2">TOP 2</span></p>
+                                                <p class="mb-0 d-flex justify-content-between">
+                                                    <span class="carousel-ranking-title" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="956226 商品名稱 Product Name">956226 商品名稱 Product Name</span><span>52.2%</span></p>
+                                            </div>
+                                            <div class="py-2">
+                                                <p class="mb-1 d-flex justify-content-between"><span
+                                                        class="badge rounded-pill text-bg-type3">TOP 3</span></p>
+                                                <p class="mb-0 d-flex justify-content-between">
+                                                    <span class="carousel-ranking-title" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="956226 商品名稱 Product Name">956226 商品名稱 Product Name</span><span>52.2%</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="card border-0">
+                                        <div class="card-header text-center bg-white border-light-gray">
+                                            <h6 class="mb-0">商品退貨排名</h6>
+                                            <p class="mb-0 text-black-50">00:00 - 17:00</p>
+                                        </div>
+                                        <div class="card-body py-1">
+                                            <div class="py-2 border-dividers-light-gray">
+                                                <p class="mb-1 d-flex justify-content-between"><span
+                                                        class="badge rounded-pill text-bg-type1">TOP 1</span><span
+                                                        class="text-black-50">退貨率</span></p>
+                                                <p class="mb-0 d-flex justify-content-between">
+                                                    <span class="carousel-ranking-title" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="956226 商品名稱 Product Name">56226 商品名稱 Product Name</span><span>52.2%</span></p>
+                                            </div>
+                                            <div class="py-2 border-dividers-light-gray">
+                                                <p class="mb-1 d-flex justify-content-between"><span
+                                                        class="badge rounded-pill text-bg-type2">TOP 2</span></p>
+                                                <p class="mb-0 d-flex justify-content-between">
+                                                    <span class="carousel-ranking-title" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="956226 商品名稱 Product Name">56226 商品名稱 Product Name</span><span>52.2%</span></p>
+                                            </div>
+                                            <div class="py-2">
+                                                <p class="mb-1 d-flex justify-content-between"><span
+                                                        class="badge rounded-pill text-bg-type3">TOP 3</span></p>
+                                                <p class="mb-0 d-flex justify-content-between">
+                                                    <span class="carousel-ranking-title" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="956226 商品名稱 Product Name">56226 商品名稱 Product Name</span><span>52.2%</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev align-items-start" type="button"
+                                data-bs-target="#carousel-ranking" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon rounded-circle" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next align-items-start" type="button"
+                                data-bs-target="#carousel-ranking" data-bs-slide="next">
+                                <span class="carousel-control-next-icon rounded-circle" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 即時流量 Card  -->
+        <div class="card card-area border-0 shadow-sm mb-3">
+            <div class="card-body">
+                <div class="row mb-0 align-items-center">
+                    <div class="col-6">
+                        <h5 class="mb-0">即時流量</h5>
+                    </div>
+                    <div class="col-6">
+                        <div class="dropdown d-flex justify-content-end">
+                            <a class="btn btn-outline-secondary btn-more-option dropdown-toggle" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                更多數據
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end shadow">
+                                <li>
+                                    <h6 class="dropdown-header text-black">關於客群</h6>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item mb-2 py-2" href="#">
+                                        <h6 class="link-blue mb-1">想了解進行消費的客戶 (S1302)</h6>
+                                        <small class="text-light-muted mb-1">前往查詢各年齡層客戶的偏好品牌、常用關鍵字等行為數據</small>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item mb-2 py-2" href="#">
+                                        <h6 class="link-blue mb-1">想了解瀏覽商品的訪客 (S1502)</h6>
+                                        <small class="text-light-muted mb-1">前往查詢訪客的地區、性別、年齡、新舊客分佈</small>
+                                    </a>
+                                </li>
+                                <li>
+                                    <h6 class="dropdown-header border-top text-black">關於流量</h6>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item mb-2 py-2" href="#">
+                                        <h6 class="link-blue mb-1">想了解詳細的流量數據 (S1501)</h6>
+                                        <small class="text-light-muted mb-1">前往查詢流量趨勢、訂單成交率與各裝置流量來源</small>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <hr class="border-0 border-bottom border-secondary">
+                <div class="row gx-3 mb-3">
+                    <div class="col-12 col-sm-6 col-lg-3 mb-lg-0 mb-2">
+                        <div class="card shadow-sm border-0">
+                            <div class="card-body px-2">
+                                <h6 class="mb-1 fw-normal text-light-muted">瀏覽量
+                                    <small><span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true"
+                                            data-bs-title='<span class="text-nowrap">查詢條件下訪客進入商品頁的次數</span>'
+                                            class="badge rounded-pill text-bg-light ms-2 border border-secondary fw-normal">?</span></small>
+                                </h6>
+                                
+                                <div class="row">
+                                    <div class="col-xl mb-xl-0 mb-2">
+                                        <p class="mb-0 fw-bold fs-4">21,501,000</p>
+                                        <p class="mb-0 text-light-gray">00:00 - 17:00</p>
+                                    </div>
+                                    <div class="col-xl mb-xl-0 mb-2">
+                                        <p class="mb-0 d-flex justify-content-between"><span
+                                                class="text-light-gray">昨日</span><span class="text-green">-73.2%</span>
+                                        </p>
+                                        <p class="mb-0 d-flex justify-content-between"><span
+                                                class="text-light-gray">前7日</span><span class="text-green">-73.2%</span>
+                                        </p>
+                                        <p class="mb-0 d-flex justify-content-between"><span
+                                                class="text-light-gray">前30日</span><span class="text-red">+235.0%</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3 mb-lg-0 mb-2">
+                        <div class="card shadow-sm border-0">
+                            <div class="card-body px-2">
+                                <h6 class="mb-1 fw-normal text-light-muted">造訪數
+                                    <small><span data-bs-toggle="tooltip" data-bs-placement="top"
+                                            data-bs-title="查詢條件下不重複顧客造訪所有商品頁的次數加總。若造訪的商品不同，或者顧客於站內閒置、離站超過 30 分鐘後再次進入站內，將視為新的造訪。"
+                                            class="badge rounded-pill text-bg-light ms-2 border border-secondary fw-normal">?</span></small>
+                                </h6>
+                                <div class="row">
+                                    <div class="col-xl mb-xl-0 mb-2">
+                                        <p class="mb-0 fw-bold fs-4">21,501,000</p>
+                                        <p class="mb-0 text-light-gray">00:00 - 17:00</p>
+                                    </div>
+                                    <div class="col-xl mb-xl-0 mb-2">
+                                        <p class="mb-0 d-flex justify-content-between"><span
+                                                class="text-light-gray">昨日</span><span class="text-green">-73.2%</span>
+                                        </p>
+                                        <p class="mb-0 d-flex justify-content-between"><span
+                                                class="text-light-gray">前7日</span><span class="text-green">-73.2%</span>
+                                        </p>
+                                        <p class="mb-0 d-flex justify-content-between"><span
+                                                class="text-light-gray">前30日</span><span class="text-red">+235.0%</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3 mb-lg-0 mb-2">
+                        <div class="card shadow-sm border-0">
+                            <div class="card-body px-2">
+                                <h6 class="mb-1 fw-normal text-light-muted">有購人數
+                                    <small><span data-bs-toggle="tooltip" data-bs-placement="top"
+                                            data-bs-title="查詢條件下訪客中有建立訂單的不重複人數"
+                                            class="badge rounded-pill text-bg-light ms-2 border border-secondary fw-normal">?</span></small>
+                                </h6>
+                                <div class="row">
+                                    <div class="col-xl mb-xl-0 mb-2">
+                                        <p class="mb-0 fw-bold fs-4">21,501,000</p>
+                                        <p class="mb-0 text-light-gray">00:00 - 17:00</p>
+                                    </div>
+                                    <div class="col-xl mb-xl-0 mb-2">
+                                        <p class="mb-0 d-flex justify-content-between"><span
+                                                class="text-light-gray">昨日</span><span class="text-green">-73.2%</span>
+                                        </p>
+                                        <p class="mb-0 d-flex justify-content-between"><span
+                                                class="text-light-gray">前7日</span><span class="text-green">-73.2%</span>
+                                        </p>
+                                        <p class="mb-0 d-flex justify-content-between"><span
+                                                class="text-light-gray">前30日</span><span class="text-red">+235.0%</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3 mb-lg-0 mb-2">
+                        <div class="card shadow-sm border-0">
+                            <div class="card-body px-2">
+                                <h6 class="mb-1 fw-normal text-light-muted">造訪成交率
+                                    <small><span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true"
+                                            data-bs-title='<span class="text-nowrap">查詢條件下平均每次造訪成立訂單的數量。<br> ( 訂單數/造訪數 ) x 100%</span>'
+                                            class="badge rounded-pill text-bg-light ms-2 border border-secondary fw-normal">?</span></small>
+                                </h6>
+                                <div class="row">
+                                    <div class="col-xl mb-xl-0 mb-2">
+                                        <p class="mb-0 fw-bold fs-4">21,501,000</p>
+                                        <p class="mb-0 text-light-gray">00:00 - 17:00</p>
+                                    </div>
+                                    <div class="col-xl mb-xl-0 mb-2">
+                                        <p class="mb-0 d-flex justify-content-between"><span
+                                                class="text-light-gray">昨日</span><span class="text-green">-73.2%</span>
+                                        </p>
+                                        <p class="mb-0 d-flex justify-content-between"><span
+                                                class="text-light-gray">前7日</span><span class="text-green">-73.2%</span>
+                                        </p>
+                                        <p class="mb-0 d-flex justify-content-between"><span
+                                                class="text-light-gray">前30日</span><span class="text-red">+235.0%</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row gx-3">
+                    <div class="col-12 col-lg-9 mb-lg-0 mb-3">
+                        <div class="card shadow-sm border-0">
+                            <div class="card-body">
+                                <h6 class="text-center">有購人數趨勢(累積)</h6>
+                                <p class="mb-0 text-end"><small class="badge text-bg-type1">今日預估</small> <span class="fw-bold">150,522,856</span></p>
+                                <figure class="highcharts-figure">
+                                    <div id="chart-people"></div>
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-3">
+                        <div id="carousel-ranking2" class="carousel carousel-dark slide carousel-ranking shadow-sm" data-bs-ride="carousel" data-bs-interval="10000">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <div class="card border-0">
+                                        <div class="card-header text-center bg-white border-light-gray">
+                                            <h6 class="mb-0">瀏覽來源TOP3</h6>
+                                            <p class="mb-0 text-black-50">00:00 - 17:00 以全部裝置計算</p>
+                                        </div>
+                                        <div class="card-body py-1">
+                                            <figure class="highcharts-figure">
+                                                <div id="ranking-barChart"></div>
+                                            </figure>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="card border-0">
+                                        <div class="card-header text-center bg-white border-light-gray">
+                                            <h6 class="mb-0">常用關鍵字排名</h6>
+                                            <p class="mb-0 text-black-50">00:00 - 17:00</p>
+                                        </div>
+                                        <div class="card-body py-1">
+                                            <div class="py-2 border-dividers-light-gray">
+                                                <p class="mb-1 d-flex justify-content-between"><span
+                                                        class="badge rounded-pill text-bg-type1">TOP 1</span><span
+                                                        class="text-black-50">成交率</span></p>
+                                                <p class="mb-0 d-flex justify-content-between"><span class="carousel-ranking-title">956226 商品名稱 Product
+                                                        Name</span><span>52.2%</span></p>
+                                            </div>
+                                            <div class="py-2 border-dividers-light-gray">
+                                                <p class="mb-1 d-flex justify-content-between"><span
+                                                        class="badge rounded-pill text-bg-type2">TOP 2</span></p>
+                                                <p class="mb-0 d-flex justify-content-between"><span class="carousel-ranking-title">956226 商品名稱 Product
+                                                        Name</span><span>52.2%</span></p>
+                                            </div>
+                                            <div class="py-2">
+                                                <p class="mb-1 d-flex justify-content-between"><span
+                                                        class="badge rounded-pill text-bg-type3">TOP 3</span></p>
+                                                <p class="mb-0 d-flex justify-content-between"><span class="carousel-ranking-title">956226 商品名稱 Product
+                                                        Name</span><span>52.2%</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="card border-0">
+                                        <div class="card-header text-center bg-white border-light-gray">
+                                            <h6 class="mb-0">訪客占比/轉換</h6>
+                                            <p class="mb-0 text-black-50">00:00 - 17:00</p>
+                                        </div>
+                                        <div class="card-body py-1">
+                                            <figure class="highcharts-figure">
+                                                <div id="ranking-barChart2"></div>
+                                            </figure>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev align-items-start" type="button"
+                                data-bs-target="#carousel-ranking2" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon rounded-circle" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next align-items-start" type="button"
+                                data-bs-target="#carousel-ranking2" data-bs-slide="next">
+                                <span class="carousel-control-next-icon rounded-circle" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        // 淨訂購金額趨勢(累積)
+        // 主要圖表區
+        Highcharts.chart("chart-amount", {
+            title: {
+                text: "",
+                align: "center",
+            },
+
+            yAxis: {
+                title: {
+                    text: "訂購金額達標佔比(%)",
+                },
+            },
+
+            xAxis: {
+                type: "string",
+                accessibility: {
+                    rangeDescription: "Range 00H to 23H",
+                },
+                labels: {
+                    overflow: "justify",
+                },
+            },
+            series: [
+                {
+                    type: "line",
+                    name: "有購人數達標占比",
+                    data: [0, 35, 45, 55, 65, 75, 85, 85, 85, 85, 85, 87, 88, 90, null, null, null, null, null, null, null, null, null, null],
+                },
+            ],
+        });
+
+        // 有購人數趨勢(累積)
+        // 主要圖表區
+        Highcharts.chart("chart-people", {
+            title: {
+                text: "",
+                align: "center",
+            },
+
+            yAxis: {
+                title: {
+                    text: "訂購金額達標佔比(%)",
+                },
+            },
+
+            xAxis: {
+                type: "string",
+                accessibility: {
+                    rangeDescription: "Range 00H to 23H",
+                },
+                labels: {
+                    overflow: "justify",
+                },
+            },
+            series: [
+                {
+                    type: "line",
+                    name: "訂單金額達標佔比",
+                    data: [0, 35, 45, 55, 65, 75, 85, 85, 85, 85, 85, 87, 88, 90, null, null, null, null, null, null, null, null, null, null],
+                },
+            ],
+        });
+
+        // 瀏覽來源TOP3
+        // 排行圖表區
+        Highcharts.chart("ranking-barChart", {
+            colors: ["#f59a23", "#d9d9d9", "#00bfbf"],
+            legend: {
+                align: "right",
+                verticalAlign: "top",
+            },
+            chart: {
+                type: "column",
+            },
+
+            title: {
+                text: "",
+                align: "left",
+            },
+            xAxis: {
+                categories: ["首頁", "搜尋結果頁", "站內"],
+            },
+
+            yAxis: {
+                allowDecimals: false,
+                min: 0,
+                title: {
+                    text: "",
+                },
+            },
+
+            tooltip: {
+                format: "<b>{key}</b><br/>{series.name}: {y}<br/>" + "Total: {point.stackTotal}",
+            },
+
+            plotOptions: {
+                column: {
+                    stacking: "normal",
+                },
+            },
+
+            series: [
+                {
+                    name: "APP",
+                    data: [45, 35, 8],
+                },
+                {
+                    name: "mobile",
+                    data: [20, 5, 2],
+                },
+                {
+                    name: "web",
+                    data: [10, 2, 1],
+                },
+            ],
+        });
+
+        // 訪客占比/轉換
+        // 排行圖表區
+        Highcharts.chart("ranking-barChart2", {
+            colors: ["#f59a23", "#00bfbf"],
+            legend: {
+                align: "right",
+                verticalAlign: "top",
+            },
+            chart: {
+                type: 'column'
+            },
+
+            title: {
+                text: '',
+                align: 'left'
+            },
+            xAxis: {
+                categories: ['舊訪客', '新訪客']
+            },
+
+            yAxis: {
+                allowDecimals: false,
+                min: 0,
+                title: {
+                    text: ''
+                }
+            },
+
+            tooltip: {
+                format: '<b>{key}</b><br/>{series.name}: {y}'
+            },
+
+            plotOptions: {
+                column: {
+                    stacking: 'normal'
+                }
+            },
+
+            series: [{
+                name: '訪客佔比',
+                data: [82, 18],
+                stack: '舊訪客'
+            }, {
+                name: '訪客轉換率',
+                data: [59, 90],
+                stack: '新訪客'
+            }]
+        });
+    </script>
+    <script>
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    </script>
+</body>
+
+</html>

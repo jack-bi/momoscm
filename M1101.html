@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>[M1101]購買mo點</title>
+    <link rel="icon" href="/momoscm/assets/icon-DnKfFtDw.png" type="image/ico">
+    <!-- <link rel="stylesheet" type="text/css" href="./sass/pages/styleD.css" /> -->
+    <script src="https://scm.momoshop.com.tw/common/js/jquery-1.7.2.min.js"></script>
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./D1101_files/calendar.js"></script>
+    <script src="./floatLayer.js"></script>
+    <script type="module" crossorigin src="/momoscm/assets/M1101-CFqjQhFr.js"></script>
+    <link rel="modulepreload" crossorigin href="/momoscm/assets/modulepreload-polyfill-B5Qt9EMX.js">
+    <link rel="stylesheet" crossorigin href="/momoscm/assets/M1101-Cm75NJUO.css">
+    <link rel="stylesheet" crossorigin href="/momoscm/assets/bootstrap-DedGxb-O.css">
+    <link rel="stylesheet" crossorigin href="/momoscm/assets/notify-DCRyhBfs.css">
+    <link rel="stylesheet" crossorigin href="/momoscm/assets/utilities-DnkMqMQv.css">
+    <link rel="stylesheet" crossorigin href="/momoscm/assets/cert-UMqHIega.css">
+    <link rel="stylesheet" crossorigin href="/momoscm/assets/headerWrap-B-d797h8.css">
+  </head>
+  <body class="w1220">
+    <script language="javascript" type="text/javascript" src="headerWrap.js"></script>
+    <!-- 路徑區塊 start -->
+    <div class="contentArea wide">
+      <table>
+        <tbody>
+          <tr>
+            <td width="50%">
+              <dl class="nav">
+                <dt><a href="javascript:goJump('home');">首頁</a></dt>
+                <dd class="first">活動</dd>
+                <dd class="next show">mo點購買</dd>
+                <dd class="last show d-inline">[M1101]購買mo點</dd>
+                <dd class="record-page show d-none">贈送紀錄</dd>
+              </dl>
+            </td>
+            <td></td>
+            <td width="50%" id="addAppArea" align="right"><input type="checkbox" name="addApp" id="addApp" style="vertical-align: middle" checked="checked" />加入常用程式集</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- 路徑區塊 end -->
+    <div class="contentArea">
+      <div class="mainArea">
+        <div class="styleArea styleM1101">
+          <!-- 購買mo點區塊 -->
+          <div class="innerArea" id="buyMoPoint">
+            <div class="curvy-border overflow-hidden mb-3">
+              <div class="curvy-title px-4 py-2 fw-bold fs-6">購買mo點</div>
+              <div class="px-4 py-2 bg-white">
+                <!-- 目前 mo 點 -->
+                <div class="d-flex align-items-center gap-4 mb-4">
+                  <div class="fs-6">目前mo點金額</div>
+                  <div class="fs-5">$600</div>
+                </div>
+
+                <!-- 購買區 -->
+                <div class="row g-3 align-items-center mb-3">
+                  <div class="col-auto">
+                    <div class="d-flex align-items-center gap-2">
+                      <label class="label fs-6 fw-bold">申請mo點金額：</label>
+                      <input type="text" id="moAmount" placeholder="請輸入mo點金額" style="width: 280px" />
+                    </div>
+                  </div>
+                  <div class="col-auto">
+                    <div class="d-flex align-items-center gap-2">
+                      <span class="text-balance"> 可用貸款餘額：$2,560 </span>
+
+                      <span class="custom-tooltip-target">
+                        <i class="bi bi-info-circle"></i>
+                        <span class="custom-tooltip">可用貸款 = (當月貨款 - 前期欠款) * 20% - 已扣貨款的mo點</span>
+                      </span>
+
+                      <!-- <i class="bi bi-info-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="可用貸款 = (當月貨款 - 前期欠款) * 20% - 已扣貨款的mo點"></i> -->
+                    </div>
+                  </div>
+                  <div class="col-auto">
+                    <button class="btn btn-primary-sm btn-sm fs-6 lh-1">購買</button>
+                  </div>
+                </div>
+
+                <!-- 提示 -->
+                <div class="text-tip">請注意：購買mo點後，無法申請退貨</div>
+              </div>
+            </div>
+
+            <!-- 查詢區 -->
+            <div class="curvy-border overflow-hidden mb-3 search-panel">
+              <div class="curvy-title px-4 py-2"></div>
+
+              <div class="px-4 py-2 bg-white pt-2">
+                <ul class="nav nav-pills gap-1 fs-6 fw-bold d-flex">
+                  <li class="nav-item">
+                    <button class="nav-link active">全部</button>
+                  </li>
+
+                  <li class="nav-item">
+                    <button class="nav-link">已獲得</button>
+                  </li>
+
+                  <li class="nav-item">
+                    <button class="nav-link">已使用</button>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="bg-white px-4 pb-3">
+                <div class="row g-3 align-items-center">
+                  <!-- 左側 -->
+                  <div class="col-lg-6">
+                    <div class="d-flex align-items-center gap-2 mb-2">
+                      <label class="label text-label fs-6 fw-bold text-end">異動時間：</label>
+                      <div class="d-flex align-items-center gap-2 flex-grow-1">
+                        <input type="text" value="2025/04/01" class="input-date" />
+                        <span>~</span>
+                        <input type="text" value="2025/07/01" class="input-date" />
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                      <label class="label text-label fs-6 fw-bold text-end">客人編號：</label>
+                      <input type="text" placeholder="請輸入客人編號" class="input-number" />
+                    </div>
+                  </div>
+
+                  <!-- 右側 -->
+                  <div class="col-lg-6">
+                    <div class="d-flex align-items-center gap-2">
+                      <label class="label text-label fs-6 fw-bold text-end">活動名稱：</label>
+                      <input type="text" placeholder="請輸入活動名稱" />
+                    </div>
+                    <div class="d-flex align-items-center mt-2">
+                      <button class="btn btn-primary-sm btn-sm fs-6 flex-shrink-0 lh-1 ms-auto">查詢</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 異動明細 -->
+            <div class="curvy-border overflow-hidden px-2 py-3">
+              <div class="section-header px-4 py-2 d-flex justify-content-between align-items-center">
+                <span>異動明細</span>
+                <span>已顯示12筆，共12筆</span>
+              </div>
+              <div class="px-3 bg-white">
+                <div class="table-wrap overflow-hidden">
+                  <table class="table align-middle mo-detail-table m-0">
+                    <thead>
+                      <tr>
+                        <th width="120" class="text-start">異動時間</th>
+                        <th width="160" class="text-start">異動方式</th>
+                        <th width="520" class="text-start">異動原因</th>
+                        <th width="180" class="text-start">活動/客人名稱</th>
+                        <th class="text-start">mo 點</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <tr>
+                        <td>
+                          2024/10/05<br />
+                          00:00:00
+                        </td>
+                        <td>行銷活動 餘額歸還</td>
+                        <td>行銷活動結束歸還（活動期間 2024/02/31~2024/04/20）</td>
+                        <td>
+                          我是廠商我要大撒幣<br />
+                          20250930174442584
+                        </td>
+                        <td class="text-green">
+                          +660
+                          <div class="mt-1">
+                            <button class="btn btn-sm btn-outline-primary btn-outline-primary-custom" data-type="hasData">贈送紀錄</button>
+                          </div>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>
+                          2024/10/05<br />
+                          00:00:00
+                        </td>
+                        <td>行銷活動 餘額歸還</td>
+                        <td>行銷活動結束歸還（活動期間 2024/02/31~2024/04/20）</td>
+                        <td>
+                          我是廠商我要大撒幣<br />
+                          20250930174442584
+                        </td>
+                        <td class="text-green">
+                          +660
+                          <div class="mt-1">
+                            <button class="btn btn-sm btn-outline-primary btn-outline-primary-custom" data-type="empty">贈送紀錄</button>
+                          </div>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>
+                          2024/10/05<br />
+                          00:00:00
+                        </td>
+                        <td>行銷活動 發佈預扣</td>
+                        <td>行銷活動發佈預扣（活動期間 2024/02/31~2024/04/20）</td>
+                        <td>
+                          我是廠商我要大撒幣<br />
+                          20250930174442584
+                        </td>
+                        <td class="text-red">-2000</td>
+                      </tr>
+
+                      <tr>
+                        <td>
+                          2024/10/05<br />
+                          00:00:00
+                        </td>
+                        <td>購買 mo 點</td>
+                        <td>於發票號碼 20250213001 獲得mo點</td>
+                        <td>-</td>
+                        <td class="text-green">+660</td>
+                      </tr>
+
+                      <tr>
+                        <td>
+                          2024/10/05<br />
+                          00:00:00
+                        </td>
+                        <td>評價加碼 餘額歸還</td>
+                        <td>評價加碼活動結束歸還（活動期間 2024/02/31~2024/04/20）</td>
+                        <td>
+                          母親節感恩回饋<br />
+                          666666
+                        </td>
+                        <td class="text-green">+120</td>
+                      </tr>
+
+                      <tr>
+                        <td>
+                          2024/10/05<br />
+                          00:00:00
+                        </td>
+                        <td>評價加碼 發佈預扣</td>
+                        <td>評價加碼活動發佈預扣（活動期間 2024/02/31~2024/04/20）</td>
+                        <td>
+                          母親節感恩回饋<br />
+                          666666
+                        </td>
+                        <td class="text-red">-5500</td>
+                      </tr>
+
+                      <tr>
+                        <td>
+                          2024/10/05<br />
+                          00:00:00
+                        </td>
+                        <td>問問聊天室</td>
+                        <td>因延誤出貨時間，贈送mo點補償。</td>
+                        <td>
+                          黃*白<br />
+                          123209150
+                        </td>
+                        <td class="text-green">+120</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- mo點紀錄區塊 -->
+          <div class="innerArea d-none" id="moPointRecord">
+            <div class="curvy-border overflow-hidden mb-3">
+              <div class="curvy-title px-4 py-2 fw-bold fs-6 d-flex">
+                活動內容
+                <a class="ms-auto lh-lg" id="backToBuy">回上頁面</a>
+              </div>
+              <div class="px-4 py-2 bg-white">
+                <!-- 購買區 -->
+                <div class="row g-3 align-items-center mb-3">
+                  <div class="col-lg-6">
+                    <div class="d-flex align-items-center gap-2">
+                      <label class="label text-label fs-6 fw-bold text-end">活動名稱：</label>
+                      <div>我是廠商我要大撒幣</div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="d-flex align-items-center gap-2">
+                      <label class="label text-label fs-6 fw-bold text-end">已贈送/總份數：</label>
+                      <div>372/500</div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="d-flex align-items-center gap-2">
+                      <label class="label text-label fs-6 fw-bold text-end">活動編號：</label>
+                      <div>20250930174442584</div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="d-flex align-items-center gap-2">
+                      <label class="label text-label fs-6 fw-bold text-end">歸還餘額：</label>
+                      <div>660</div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="d-flex align-items-center gap-2">
+                      <label class="label text-label fs-6 fw-bold text-end">活動區間：</label>
+                      <div>2024/02/31 ~ 2024/04/20</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 異動明細 -->
+            <div class="curvy-border overflow-hidden px-2 py-3">
+              <div class="section-header px-4 py-2 d-flex justify-content-between align-items-center">
+                <span>異動明細</span>
+                <span id="giftRecordCount">已顯示0筆，共0筆</span>
+              </div>
+              <div class="px-3 bg-white">
+                <div class="table-wrap overflow-hidden">
+                  <table class="table align-middle mo-detail-table m-0">
+                    <thead>
+                      <tr>
+                        <th width="240" class="text-start">贈送時間</th>
+                        <th width="240" class="text-start">客人名稱/編號</th>
+                        <th width="200" class="text-start">訂單編號</th>
+                        <th width="200" class="text-start">商品編號</th>
+                        <th class="text-start">贈送 mo 點</th>
+                      </tr>
+                    </thead>
+                    <tbody id="giftRecordTbody"></tbody>
+                  </table>
+                </div>
+                <div id="recordEndText" class="m-atuo py-2 text-center d-none">- 已經到底了 -</div>
+
+                <div id="emptyState" class="text-center pt-4 pb-1">
+                  <img class="" src="data:image/svg+xml,%3csvg%20width='132'%20height='155'%20viewBox='0%200%20132%20155'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M66.9324%20119.113L85.5505%2051.4693L117.172%2079.4101L98.9814%20145.499L66.9324%20119.113Z'%20fill='url(%23paint0_linear_3211_9091)'/%3e%3cpath%20d='M66.7151%20119.887L85.5472%2051.4659L26.4348%2044.3964L7.6027%20112.817L66.7151%20119.887Z'%20fill='url(%23paint1_linear_3211_9091)'/%3e%3cpath%20d='M36.5441%20138.348L55.1622%2070.7046L23.6482%2042.375L4.92309%20110.407L36.5441%20138.348Z'%20fill='url(%23paint2_linear_3211_9091)'/%3e%3cpath%20d='M36.5451%20138.347L54.9492%2071.4808L117.172%2079.4062L98.7675%20146.272L36.5451%20138.347Z'%20fill='url(%23paint3_linear_3211_9091)'/%3e%3cpath%20d='M82.7376%2013.0549L75.74%2011.1289L107.361%2039.0697L114.359%2040.9958L82.7376%2013.0549Z'%20fill='%23BEC5C5'/%3e%3cg%20filter='url(%23filter0_i_3211_9091)'%3e%3cpath%20d='M75.6166%2011.0939L23.5403%2042.7632L55.1613%2070.704L107.362%2039.0689L75.6166%2011.0939Z'%20fill='%23D2D6D6'/%3e%3c/g%3e%3cdefs%3e%3cfilter%20id='filter0_i_3211_9091'%20x='23.5408'%20y='11.0938'%20width='83.8203'%20height='59.6094'%20filterUnits='userSpaceOnUse'%20color-interpolation-filters='sRGB'%3e%3cfeFlood%20flood-opacity='0'%20result='BackgroundImageFix'/%3e%3cfeBlend%20mode='normal'%20in='SourceGraphic'%20in2='BackgroundImageFix'%20result='shape'/%3e%3cfeColorMatrix%20in='SourceAlpha'%20type='matrix'%20values='0%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%20127%200'%20result='hardAlpha'/%3e%3cfeOffset%20dx='-0.585789'/%3e%3cfeComposite%20in2='hardAlpha'%20operator='arithmetic'%20k2='-1'%20k3='1'/%3e%3cfeColorMatrix%20type='matrix'%20values='0%200%200%200%201%200%200%200%200%201%200%200%200%200%201%200%200%200%200.3%200'/%3e%3cfeBlend%20mode='normal'%20in2='shape'%20result='effect1_innerShadow_3211_9091'/%3e%3c/filter%3e%3clinearGradient%20id='paint0_linear_3211_9091'%20x1='107.589'%20y1='33.6972'%20x2='92.7439'%20y2='90.6696'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20stop-color='%23F3F3F3'/%3e%3cstop%20offset='1'%20stop-color='%23737A7A'/%3e%3c/linearGradient%3e%3clinearGradient%20id='paint1_linear_3211_9091'%20x1='57.168'%20y1='43.6548'%20x2='42.7907'%20y2='97.4101'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20stop-color='%23D6D6D6'/%3e%3cstop%20offset='1'%20stop-color='%236B7474'/%3e%3c/linearGradient%3e%3clinearGradient%20id='paint2_linear_3211_9091'%20x1='47.4612'%20y1='10.3877'%20x2='20.2664'%20y2='127.595'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20stop-color='%23D2D6D6'/%3e%3cstop%20offset='1'%20stop-color='%23B3BABA'/%3e%3c/linearGradient%3e%3clinearGradient%20id='paint3_linear_3211_9091'%20x1='87.2375'%20y1='71.1672'%20x2='66.4793'%20y2='146.586'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20stop-color='%23D2D6D6'/%3e%3cstop%20offset='1'%20stop-color='%23D2D6D6'/%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e" />
+                  <span class="d-block pt-5">無使用明細</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

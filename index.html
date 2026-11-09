@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script>
+        // 面試展示時由根目錄進入作品導覽；加上 ?dashboard=1 可查看原 SCM 首頁。
+        if (!new URLSearchParams(window.location.search).has('dashboard')) {
+            window.location.replace('./showcase.html');
+        }
+    </script>
+    <title>【SCM CENTER】</title>    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="icon" href="/momoscm/assets/icon-DnKfFtDw.png" type="image/ico">
+    <!-- 輪播套件 -->
+    <script language="javascript" type="text/javascript" src="https://image.momoshop.com.tw/ecm/js/goods/swiper.min.js?env=O&t=20210319011"></script>
+    <link rel="stylesheet" type="text/css" href="https://image.momoshop.com.tw/ecm/css/goods/swiper.min.css?env=O&t=20210319011">
+    <script language="javascript" type="text/javascript" src="index.js"></script>
+    <script language="javascript" type="text/javascript" src="floatLayer.js"></script>
+  <link rel="stylesheet" crossorigin href="/momoscm/assets/index-x04pWAok.css">
+  <link rel="stylesheet" crossorigin href="/momoscm/assets/notify-DCRyhBfs.css">
+  <link rel="stylesheet" crossorigin href="/momoscm/assets/utilities-DnkMqMQv.css">
+  <link rel="stylesheet" crossorigin href="/momoscm/assets/headerWrap-B-d797h8.css">
+</head>
+
+<body class="w1220 indexStyle">
+    <script language="javascript" type="text/javascript" src="headerWrap.js"></script>
+   <div class="mainWarp">
+       <!-- 公告 -->
+        <div class="bulletinArea">
+            <div class="bulletinList swiper-container">
+                <ul class="swiper-wrapper">
+                    <li class="swiper-slide">
+                        <div class="dateBox">
+                            <i>2026</i>
+                            <i>十二月</i>
+                            <i class="day">22</i>
+                        </div>
+                        <div class="bulletinCont">
+                            <p>商品重／容量規格標準提醒：所有商品皆須通過完整的檢驗與檢查。</p>
+                        </div>
+                    </li>
+                    <li class="swiper-slide marquee">
+                        <div class="dateBox">
+                            <i class="year">2026</i>
+                            <i class="month">十二月</i>
+                            <i class="day">22</i>
+                        </div>
+                        <div class="bulletinCont">
+                            <p>商品規格資料更新提醒：請確認商品重量、容量與包裝標示皆正確。</p>
+                        </div>
+                    </li>
+                    <li class="swiper-slide unread">
+                        <div class="dateBox">
+                            <i class="year">2026</i>
+                            <i class="month">十二月</i>
+                            <i class="day">22</i>
+                        </div>
+                        <div class="bulletinCont">
+                            <p>商品安全檢驗提醒：上架前請確認相關檢驗文件均已備妥。</p>
+                        </div>
+                    </li>
+                    <li class="swiper-slide marquee unread">
+                        <div class="dateBox">
+                            <i>2026</i>
+                            <i>十二月</i>
+                            <i class="day">22</i>
+                        </div>
+                        <div class="bulletinCont">
+                            <p>商品資料維護通知：若規格異動，請同步更新商品資訊。</p>
+                        </div>
+                    </li>
+                    <li class="swiper-slide marquee">
+                        <div class="dateBox">
+                            <i class="year">2026</i>
+                            <i class="month">十二月</i>
+                            <i class="day">22</i>
+                        </div>
+                        <div class="bulletinCont">
+                            <p>包裝標示提醒：商品淨重、容量與成分資訊須清楚完整。</p>
+                        </div>
+                    </li>
+                    <li class="swiper-slide unread">
+                        <div class="dateBox">
+                            <i class="year">2026</i>
+                            <i class="month">十二月</i>
+                            <i class="day">22</i>
+                        </div>
+                        <div class="bulletinCont">
+                            <p>商品檢驗文件提醒：請定期確認證明文件仍在有效期限內。</p>
+                        </div>
+                    </li>
+                </ul>
+                <div class="swiperBtn">
+                    <button class="prevBtn"></button>
+                    <button class="nextBtn"></button>
+                    <span class="unreadTxt"><b>14</b>筆未讀</span>
+                </div>
+            </div>
+        </div>
+        <ul class="itemList">
+            <li class="itemCard dlNum-3">
+                <h4>出貨訂單</h4>
+                <dl>
+                    <dt>廠配</dt>
+                    <dd><span>未延遲：</span><b><a>9624</a></b></dd>
+                    <dd><span>已延遲：</span><b><a>9624</a></b></dd>
+                    <dd><span>更換地址：</span><b><a>9624</a></b></dd>
+                    <dd><span>客辦退：</span><b><a>9624</a></b></dd>
+                    <dd><span>貴重精品：</span><b><a>9624</a></b></dd>
+                </dl>
+                <dl>
+                    <dt>超取</dt>
+                    <dd><span>未延遲：</span><b><a id="openDetailFL">9624</a></b></dd>
+                    <dd><span>已延遲：</span><b><a>9624</a></b></dd>
+                    <dd><span>驗退：</span><b><a>9624</a></b></dd>
+                </dl>
+                <dl>
+                    <dt>第三方</dt>
+                    <dd><span>未延遲：</span><b><a>9624</a></b></dd>
+                    <dd><span>已延遲：</span><b><a>9624</a></b></dd>
+                    <dd><span>更換地址：</span><b>0</b></dd>
+                </dl>
+            </li>
+            <li class="itemCard dlNum-4 nomargin">
+                <h4>回收訂單</h4>
+                <dl>
+                    <dt>廠配</dt>
+                    <dd><span>未延遲：</span><b><a>9624</a></b></dd>
+                    <dd><span>已延遲：</span><b><a>9624</a></b></dd>
+                </dl>
+                <dl>
+                    <dt>超取</dt>
+                    <dd><span>客未取：</span><b><a>9624</a></b></dd>
+                </dl>
+                <dl>
+                    <dt>第三方</dt>
+                    <dd><span>回收中：</span><b><a>9624</a></b></dd>
+                    <dd><span>已送達：</span><b><a>9624</a></b></dd>
+                </dl>
+                <dl>
+                    <dt>寄倉</dt>
+                    <dd><span>回收中：</span><a>9624</a></dd>
+                    <dd><span>已送達：</span><a>9624</a></dd>
+                </dl>
+            </li>
+            <li class="itemCard dlNum-3">
+                <h4>顧客問貨/客訴</h4>
+                <dl>
+                    <dt>問貨</dt>
+                    <dd><span>電視商品：</span><b><a>9624</a></b></dd>
+                    <dd><span>網路商品：</span><b><a>9624</a></b></dd>
+                </dl>
+                <dl>
+                    <dt>客訴</dt>
+                    <dd><span>未處理：</span><b><a>9624</a></b></dd>
+                    <dd><span>重大客訴：</span><b><a>9624</a></b></dd>
+                </dl>
+                <dl>
+                    <dt>其他</dt>
+                    <dd><span>賣貴通報：</span><b><a>9624</a></b></dd>
+                </dl>
+            </li>
+            <li class="itemCard dlNum-3 nomargin">
+                <h4>商品異動</h4>
+                <dl>
+                    <dt>網路商品</dt>
+                    <dd><span>資料修正：</span><b><a>9624</a></b></dd>
+                </dl>
+                <dl>
+                    <dt>客訴</dt>
+                    <dd><span>資料修正：</span><b><a>9624</a></b></dd>
+                    <dd><span>提報：</span><b><a>9624</a></b></dd>
+                    <dd><span>異動未確認：</span><b><a>9624</a></b></dd>
+                </dl>
+                <dl>
+                    <dt>其他</dt>
+                    <dd><span>MD申請變價：</span><b><a>9624</a></b></dd>
+                    <dd><span>價降賣更多：</span><b><a>9624</a></b></dd>
+                </dl>
+            </li>
+            <li class="itemCard dlNum-2">
+                <h4>倉庫通知</h4>
+                <dl>
+                    <dt>入倉</dt>
+                    <dd><span>入庫通知未到貨：</span><b><a>9624</a></b></dd>
+                    <dd><span>有效期低於1/3：</span><b><a>9624</a></b></dd>
+                    <dd><span>寄倉90日以上：</span><b><a>9624</a></b></dd>
+                    <dd><span>進貨異常未回覆：</span><b><a>9624</a></b></dd>
+                </dl>
+                <dl>
+                    <dt>退倉</dt>
+                    <dd><span>退倉單未領回：</span><b><a>9624</a></b></dd>
+                </dl>
+            </li>
+            <li class="itemCard dlNum-2">
+                <h4>可接單量</h4>
+                <dl>
+                    <dt>廠配</dt>
+                    <dd><span>無庫存：</span><b><a>9624</a></b></dd>
+                    <dd><span>低於安全庫存：</span><b><a>9624</a></b></dd>
+                </dl>
+                <dl>
+                    <dt>寄倉</dt>
+                    <dd><span>無庫存：</span><b><a>9624</a></b></dd>
+                    <dd><span>低於安全庫存：</span><b><a>9624</a></b></dd>
+                </dl>
+            </li>
+            <li class="itemCard dlNum-2 nomargin">
+                <h4>其他</h4>
+                <dl>
+                    <dt>同意書</dt>
+                    <dd><span>線上同意書：</span><b><a>9624</a></b></dd>
+                    <dd><span>包底同意書：</span><b><a>9624</a></b></dd>
+                </dl>
+                <dl>
+                    <dt>訪廠延遲</dt>
+                    <dd><span>D+3未確認：</span><b><a>9624</a></b></dd>
+                </dl>
+            </li>
+        </ul>
+
+   </div>
+    <div class="footerArea">
+        富邦媒體公司由SCM系統上收到之任何回覆，均視為供應商之回覆，<br>故供應商除應妥善保管所核發之momo OTP帳密，<br>並應依據本【H1102】使用人管理功能妥善設定使用人及其使用權限。<br>
+        本系統內之所有資料均為營業資料，富邦媒體科技與合作廠商應共同負起保護義務。
+        <p>廠商服務專線 <span class="enterpriseServicePhone">(02)6600-7600</span></p>
+        <p>廠商服務信箱 <a href="mailto:momoservice@fmt.com.tw">momoservice@fmt.com.tw</a></p> 
+    </div>
+    <div class="blackBG"></div>
+</body>
+</html>

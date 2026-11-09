@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>品類分析</title>
+    <link rel="icon" href="/momoscm/assets/icon-DnKfFtDw.png" type="image/ico">
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <!-- Date Range Picker CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <!-- jQuery (Date Range Picker 依賴) -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <!-- Moment.js (Date Range Picker 依賴) -->
+    <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <!-- Date Range Picker JS -->
+    <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://scm.momoshop.com.tw/common/css/scmBase.css?t=20200421" />
+    <link rel="stylesheet" crossorigin href="/momoscm/assets/S1107-BATa_03p.css">
+    <link rel="stylesheet" crossorigin href="/momoscm/assets/bootstrap-DedGxb-O.css">
+    <link rel="stylesheet" crossorigin href="/momoscm/assets/notify-DCRyhBfs.css">
+    <link rel="stylesheet" crossorigin href="/momoscm/assets/headerWrap-B-d797h8.css">
+  </head>
+
+  <body class="w1220">
+    <script language="javascript" type="text/javascript" src="headerWrap.js"></script>
+    <!-- 路徑區塊 start -->
+    <div class="contentArea wide">
+      <table>
+        <tbody>
+          <tr>
+            <td width="50%">
+              <dl class="nav">
+                <dt><a href="javascript:goJump('home');">首頁</a></dt>
+                <dd class="first">銷售分析</dd>
+                <dd class="next show">網路銷售分析</dd>
+                <dd class="last show">[S1107]品類分析</dd>
+                <dd class="video d-none" id="theVideo"><a>影音教學</a></dd>
+              </dl>
+            </td>
+            <td></td>
+            <td id="marqueeArea d-none">
+              <div id="abgne_marquee" style=""></div>
+            </td>
+            <td class="w-50 text-end"><input type="checkbox" name="addApp" id="addApp" style="vertical-align: middle" checked="checked" />加入常用程式集</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- 路徑區塊 end -->
+
+    <!-- SCM_S1107 品類分析 category-analysis -->
+    <div class="contentArea">
+      <div class="styleArea styleS1107">
+        <!-- report-filter 查詢條件區 -->
+        <div class="report-filter card shadow border-0 mb-3">
+          <div class="report-filter-header card-header bg-white border-0">
+            <p class="mb-0 fw-bold">品類分析</p>
+          </div>
+          <hr class="mx-3 my-0 p-0 border-dark-subtle" />
+          <div class="report-filter-body card-body">
+            <form>
+              <!-- 日期 -->
+              <div class="row align-items-center mb-3">
+                <div class="col-1">
+                  <label class="form-label mb-0">日期</label>
+                  <img class="img" src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M9.58333%2017.9167C14.1857%2017.9167%2017.9167%2014.1857%2017.9167%209.58333C17.9167%204.98096%2014.1857%201.25%209.58333%201.25C4.98096%201.25%201.25%204.98096%201.25%209.58333C1.25%2014.1857%204.98096%2017.9167%209.58333%2017.9167Z'%20fill='black'/%3e%3cpath%20d='M9.58333%2012.9167V9.58333M9.58333%206.25H9.59167M17.9167%209.58333C17.9167%2014.1857%2014.1857%2017.9167%209.58333%2017.9167C4.98096%2017.9167%201.25%2014.1857%201.25%209.58333C1.25%204.98096%204.98096%201.25%209.58333%201.25C14.1857%201.25%2017.9167%204.98096%2017.9167%209.58333Z'%20stroke='white'%20stroke-width='2.5'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" data-bs-toggle="tooltip" data-placement="top" title="可查詢近2年資料" />
+                </div>
+                <div class="col-auto">
+                  <div class="input-group input-group-sm">
+                    <select id="date-select" class="form-select w-auto">
+                      <option value="">請選擇</option>
+                      <option value="today">今日此刻</option>
+                      <option value="yesterday">昨天</option>
+                      <option value="7days">過去7天</option>
+                      <option value="30days">過去30天</option>
+                      <option value="day">按日</option>
+                      <option value="week">按週</option>
+                      <option value="month">按月</option>
+                    </select>
+                    <input type="text" id="date-range" class="form-control" style="width: 250px" />
+                  </div>
+                </div>
+              </div>
+
+              <!-- 供應商 / 商品編號 -->
+              <div class="row align-items-center mb-3">
+                <div class="col-1">
+                  <label class="form-label mb-0">供應商</label>
+                </div>
+                <div class="col-3">
+                  <select name="supplier" class="form-select form-select-sm" style="width: 250px">
+                    <option value="我是供應商名稱">我是供應商名稱</option>
+                    <option value="供應商名稱一">供應商名稱一</option>
+                    <option value="供應商名稱二">供應商名稱二</option>
+                  </select>
+                </div>
+                <div class="col-1"></div>
+                <div class="col-auto">
+                  <label class="form-label mb-0">品牌</label>
+                </div>
+                <div class="col-3">
+                  <select name="brand" class="form-select form-select-sm" style="width: 250px">
+                    <option value="全部">全部</option>
+                    <option value="品牌一">品牌一</option>
+                    <option value="品牌二">品牌二</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row align-items-center mb-3">
+                <div class="col-1">
+                  <label class="form-label mb-0">比較區間</label>
+                </div>
+                <div class="col-3">
+                  <span class="radio-text"><input type="radio" name="releaseType" value="1" />去年同期 </span>
+                  <span class="radio-text"><input type="radio" name="releaseType" value="2" />前期 </span>
+                </div>
+              </div>
+              <!-- 說明 -->
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <div class="fs-8 fw-normal text-black">※ ① D-1資料更新時間: 每日14:00完成 (更新期間暫不支援「昨日」、「過去7天」與「過去30天」的資料，建議改查詢D-2或更早的日期區間)；②此功能為免費試用版，暫不適用擴充功能(月訂閱制)</div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="report-filter-footer card-footer bg-white border-0 pb-3">
+            <button type="button" class="btn btn-primary me-2">查詢</button>
+            <button type="button" class="btn btn-outline-secondary"><img class="img" src="data:image/svg+xml,%3csvg%20width='10'%20height='10'%20viewBox='0%200%2010%2010'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M4.66667%207L1.75%204.08333L2.56667%203.2375L4.08333%204.75417V0H5.25V4.75417L6.76667%203.2375L7.58333%204.08333L4.66667%207ZM1.16667%209.33333C0.845833%209.33333%200.571181%209.2191%200.342708%208.99063C0.114236%208.76215%200%208.4875%200%208.16667V6.41667H1.16667V8.16667H8.16667V6.41667H9.33333V8.16667C9.33333%208.4875%209.2191%208.76215%208.99063%208.99063C8.76215%209.2191%208.4875%209.33333%208.16667%209.33333H1.16667Z'%20fill='%23B3B3B3'/%3e%3c/svg%3e" /> 匯出報表</button>
+          </div>
+        </div>
+        <!-- report-overview 報表總覽區 -->
+        <div class="report-overview card shadow border-0 mb-3 d-none">
+          <div class="report-overview-header card-header bg-white border-0 d-flex justify-content-between p-3 pb-0">
+            <div class="report-header-title fs-6 fw-bold text-black">總覽</div>
+            <div class="btn-group">
+              <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">選擇指標</button>
+              <div class="dropdown-menu dropdown-menu-end p-0" style="width: 684px">
+                <div class="card border-0">
+                  <div class="card-body">
+                    <div class="row row-cols-5 g-4 text-secondary small" style="color: #7f7f7f">
+                      <!-- 訪問 -->
+                      <div class="col">
+                        <h6 class="fw-bold text-black">訪問</h6>
+                        <div class="form-check small">
+                          <input class="form-check-input indicator" type="checkbox" data-group="visit" data-default="true" checked />
+                          <label class="form-check-label">商品瀏覽量</label>
+                        </div>
+                      </div>
+
+                      <!-- 銷售 -->
+                      <div class="col">
+                        <h6 class="fw-bold text-black">銷售</h6>
+                        <div class="form-check small">
+                          <input class="form-check-input indicator" type="checkbox" data-group="sale" data-default="true" checked />
+                          <label class="form-check-label">淨訂購數量</label>
+                        </div>
+                        <div class="form-check small">
+                          <input class="form-check-input indicator" type="checkbox" data-group="sale" data-default="true" checked />
+                          <label class="form-check-label">淨訂購金額</label>
+                        </div>
+                        <div class="form-check small">
+                          <input class="form-check-input indicator" type="checkbox" data-group="sale" />
+                          <label class="form-check-label">訂購數量</label>
+                        </div>
+                        <div class="form-check small">
+                          <input class="form-check-input indicator" type="checkbox" data-group="sale" />
+                          <label class="form-check-label">訂購金額</label>
+                        </div>
+                        <div class="form-check small">
+                          <input class="form-check-input indicator" type="checkbox" data-group="sale" data-default="true" checked />
+                          <label class="form-check-label">有購會員數</label>
+                        </div>
+                        <div class="form-check small">
+                          <input class="form-check-input indicator" type="checkbox" data-group="sale" data-default="true" checked />
+                          <label class="form-check-label">平均客單價</label>
+                        </div>
+                      </div>
+
+                      <div class="col">
+                        <h6 class="fw-bold text-black opacity-0">銷售</h6>
+                        <h6 class="fw-bold text-black"></h6>
+                        <div class="form-check small">
+                          <input class="form-check-input indicator" type="checkbox" data-group="sale" />
+                          <label class="form-check-label">訂單數</label>
+                        </div>
+                        <div class="form-check small">
+                          <input class="form-check-input indicator" type="checkbox" data-group="sale" />
+                          <label class="form-check-label">平均訂單價</label>
+                        </div>
+                        <div class="form-check small">
+                          <input class="form-check-input indicator" type="checkbox" data-group="sale" />
+                          <label class="form-check-label">件單價</label>
+                        </div>
+                        <div class="form-check small">
+                          <input class="form-check-input indicator" type="checkbox" data-group="sale" />
+                          <label class="form-check-label">會員平均購買件數</label>
+                        </div>
+                        <div class="form-check small">
+                          <input class="form-check-input indicator" type="checkbox" data-group="sale" data-default="true" checked />
+                          <label class="form-check-label">商品成交率</label>
+                        </div>
+                      </div>
+
+                      <!-- 取消 -->
+                      <div class="col">
+                        <h6 class="fw-bold text-black">取消</h6>
+                        <div class="form-check small">
+                          <input class="form-check-input indicator" type="checkbox" data-group="cart" />
+                          <label class="form-check-label">取消數量</label>
+                        </div>
+                        <div class="form-check small">
+                          <input class="form-check-input indicator" type="checkbox" data-group="cart" />
+                          <label class="form-check-label">取消金額</label>
+                        </div>
+                        <div class="form-check small">
+                          <input class="form-check-input indicator" type="checkbox" data-group="cart" />
+                          <label class="form-check-label">取消率</label>
+                        </div>
+                      </div>
+
+                      <!-- 退貨 -->
+                      <div class="col">
+                        <h6 class="fw-bold text-black">退貨</h6>
+                        <div class="form-check small">
+                          <input class="form-check-input indicator" type="checkbox" data-group="track" />
+                          <label class="form-check-label">退貨數量</label>
+                        </div>
+                        <div class="form-check small">
+                          <input class="form-check-input indicator" type="checkbox" data-group="track" />
+                          <label class="form-check-label">退貨金額</label>
+                        </div>
+                        <div class="form-check small">
+                          <input class="form-check-input indicator" type="checkbox" data-group="track" />
+                          <label class="form-check-label">退貨率</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Footer -->
+                  <div class="card-footer">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <button type="button" class="btn btn-sm btn-link px-0 reset-btn">恢復預設</button>
+                      <div class="d-flex align-items-center gap-3">
+                        <span><span class="current-count">0</span>/6</span>
+                        <button type="button" class="btn btn-sm btn-primary confirm-btn" disabled>確定</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="report-overview-body card-body">
+            <p class="report-note-date text-black">資料區間：日期區間：2025/11/04 - 2025/11/04 19:00 比較區間：2025/11/03 - 2025/11/03 19:00</p>
+            <!-- <p class="report-note-content fw-bold text-black">說明 : 歸因邏輯為7日,間接,Last，銷售資料與其他報表有所差異</p> -->
+
+            <!-- KPI 總覽區（對應附圖上半部） -->
+            <div class="overview-kpi-grid">
+              <div class="kpi-card kpi-yellow">
+                <p class="kpi-title">
+                  淨訂購數量
+                  <img class="img" src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M9.58333%2017.9167C14.1857%2017.9167%2017.9167%2014.1857%2017.9167%209.58333C17.9167%204.98096%2014.1857%201.25%209.58333%201.25C4.98096%201.25%201.25%204.98096%201.25%209.58333C1.25%2014.1857%204.98096%2017.9167%209.58333%2017.9167Z'%20fill='black'/%3e%3cpath%20d='M9.58333%2012.9167V9.58333M9.58333%206.25H9.59167M17.9167%209.58333C17.9167%2014.1857%2014.1857%2017.9167%209.58333%2017.9167C4.98096%2017.9167%201.25%2014.1857%201.25%209.58333C1.25%204.98096%204.98096%201.25%209.58333%201.25C14.1857%201.25%2017.9167%204.98096%2017.9167%209.58333Z'%20stroke='white'%20stroke-width='2.5'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" data-bs-toggle="tooltip" data-placement="top" title="查詢條件下，訂購數量-(取消數量+退貨數量)" />
+                </p>
+                <p class="kpi-value">1,406</p>
+                <p class="kpi-trend">vs 比較區間<span class="down">-25.6%</span></p>
+              </div>
+
+              <div class="kpi-card">
+                <p class="kpi-title">
+                  淨訂購金額
+                  <img class="img" src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M9.58333%2017.9167C14.1857%2017.9167%2017.9167%2014.1857%2017.9167%209.58333C17.9167%204.98096%2014.1857%201.25%209.58333%201.25C4.98096%201.25%201.25%204.98096%201.25%209.58333C1.25%2014.1857%204.98096%2017.9167%209.58333%2017.9167Z'%20fill='black'/%3e%3cpath%20d='M9.58333%2012.9167V9.58333M9.58333%206.25H9.59167M17.9167%209.58333C17.9167%2014.1857%2014.1857%2017.9167%209.58333%2017.9167C4.98096%2017.9167%201.25%2014.1857%201.25%209.58333C1.25%204.98096%204.98096%201.25%209.58333%201.25C14.1857%201.25%2017.9167%204.98096%2017.9167%209.58333Z'%20stroke='white'%20stroke-width='2.5'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" data-bs-toggle="tooltip" data-placement="top" title="查詢條件下，訂購金額-(取消金額+退貨金額)" />
+                </p>
+                <p class="kpi-value">25,871</p>
+                <p class="kpi-trend">vs 比較區間<span class="down">-25.6%</span></p>
+              </div>
+
+              <div class="kpi-card">
+                <p class="kpi-title">
+                  有購會員數
+                  <img class="img" src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M9.58333%2017.9167C14.1857%2017.9167%2017.9167%2014.1857%2017.9167%209.58333C17.9167%204.98096%2014.1857%201.25%209.58333%201.25C4.98096%201.25%201.25%204.98096%201.25%209.58333C1.25%2014.1857%204.98096%2017.9167%209.58333%2017.9167Z'%20fill='black'/%3e%3cpath%20d='M9.58333%2012.9167V9.58333M9.58333%206.25H9.59167M17.9167%209.58333C17.9167%2014.1857%2014.1857%2017.9167%209.58333%2017.9167C4.98096%2017.9167%201.25%2014.1857%201.25%209.58333C1.25%204.98096%204.98096%201.25%209.58333%201.25C14.1857%201.25%2017.9167%204.98096%2017.9167%209.58333Z'%20stroke='white'%20stroke-width='2.5'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" data-bs-toggle="tooltip" data-placement="top" title="查詢條件下，不重複訂單數量" />
+                </p>
+                <p class="kpi-value">1,032</p>
+                <p class="kpi-trend">vs 比較區間<span class="down">-25.6%</span></p>
+              </div>
+
+              <div class="kpi-card">
+                <p class="kpi-title">
+                  平均客單價
+                  <img class="img" src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M9.58333%2017.9167C14.1857%2017.9167%2017.9167%2014.1857%2017.9167%209.58333C17.9167%204.98096%2014.1857%201.25%209.58333%201.25C4.98096%201.25%201.25%204.98096%201.25%209.58333C1.25%2014.1857%204.98096%2017.9167%209.58333%2017.9167Z'%20fill='black'/%3e%3cpath%20d='M9.58333%2012.9167V9.58333M9.58333%206.25H9.59167M17.9167%209.58333C17.9167%2014.1857%2014.1857%2017.9167%209.58333%2017.9167C4.98096%2017.9167%201.25%2014.1857%201.25%209.58333C1.25%204.98096%204.98096%201.25%209.58333%201.25C14.1857%201.25%2017.9167%204.98096%2017.9167%209.58333Z'%20stroke='white'%20stroke-width='2.5'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" data-bs-toggle="tooltip" data-placement="top" title="查詢條件下，訂購金額÷有購會員數" />
+                </p>
+                <p class="kpi-value">786</p>
+                <p class="kpi-trend">vs 比較區間<span class="down">-25.6%</span></p>
+              </div>
+
+              <div class="kpi-card">
+                <p class="kpi-title">
+                  商品瀏覽量
+                  <img class="img" src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M9.58333%2017.9167C14.1857%2017.9167%2017.9167%2014.1857%2017.9167%209.58333C17.9167%204.98096%2014.1857%201.25%209.58333%201.25C4.98096%201.25%201.25%204.98096%201.25%209.58333C1.25%2014.1857%204.98096%2017.9167%209.58333%2017.9167Z'%20fill='black'/%3e%3cpath%20d='M9.58333%2012.9167V9.58333M9.58333%206.25H9.59167M17.9167%209.58333C17.9167%2014.1857%2014.1857%2017.9167%209.58333%2017.9167C4.98096%2017.9167%201.25%2014.1857%201.25%209.58333C1.25%204.98096%204.98096%201.25%209.58333%201.25C14.1857%201.25%2017.9167%204.98096%2017.9167%209.58333Z'%20stroke='white'%20stroke-width='2.5'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" data-bs-toggle="tooltip" data-placement="top" title="查詢條件下，商品頁的瀏覽量" />
+                </p>
+                <p class="kpi-value">2.256</p>
+                <p class="kpi-trend">vs 比較區間<span class="down">-25.6%</span></p>
+              </div>
+
+              <div class="kpi-card">
+                <p class="kpi-title">
+                  商品成交率
+                  <img class="img" src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M9.58333%2017.9167C14.1857%2017.9167%2017.9167%2014.1857%2017.9167%209.58333C17.9167%204.98096%2014.1857%201.25%209.58333%201.25C4.98096%201.25%201.25%204.98096%201.25%209.58333C1.25%2014.1857%204.98096%2017.9167%209.58333%2017.9167Z'%20fill='black'/%3e%3cpath%20d='M9.58333%2012.9167V9.58333M9.58333%206.25H9.59167M17.9167%209.58333C17.9167%2014.1857%2014.1857%2017.9167%209.58333%2017.9167C4.98096%2017.9167%201.25%2014.1857%201.25%209.58333C1.25%204.98096%204.98096%201.25%209.58333%201.25C14.1857%201.25%2017.9167%204.98096%2017.9167%209.58333Z'%20stroke='white'%20stroke-width='2.5'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" data-bs-toggle="tooltip" data-placement="top" title="查詢條件下，訂購數量÷商品瀏覽量x100%" />
+                </p>
+                <p class="kpi-value">8.0%</p>
+                <p class="kpi-trend">vs 比較區間<span class="down">-25.6%</span></p>
+              </div>
+            </div>
+
+            <!-- 圖表區（對應附圖下半部） -->
+            <div class="overview-chart">
+              <div class="card-body">
+                <div id="overviewChart" style="height: 320px"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- report-display 報表內容區 -->
+        <div class="report-display card shadow border-0 mb-5 d-none">
+          <div class="report-display-header card-header bg-white border-0 d-flex justify-content-between p-3 pb-0">
+            <div class="report-header-title fs-6 fw-bold text-black">銷售組成</div>
+          </div>
+          <ul class="sales-tabs d-flex mt-3 mb-0 fw-bold">
+            <li class="tab text-center selected" data-mode="brand">依品牌</li>
+            <li class="tab text-center" data-mode="category">依分類</li>
+            <li class="tab text-center" data-mode="product">依商品</li>
+          </ul>
+
+          <div class="report-display-body card-body">
+            <!-- 依品牌 -->
+            <div class="report-section" data-mode="brand">
+              <table class="report-table table table-bordered table-hover align-middle fs-6 fw-bold">
+                <colgroup>
+                  <col style="width: 30%" />
+                  <col style="width: 14%" />
+                  <col style="width: 14%" />
+                  <col style="width: 14%" />
+                  <col style="width: 14%" />
+                  <col style="width: 14%" />
+                </colgroup>
+                <thead class="report-thead text-center">
+                  <tr>
+                    <th>
+                      品牌
+                      <img class="img" src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M9.58333%2017.9167C14.1857%2017.9167%2017.9167%2014.1857%2017.9167%209.58333C17.9167%204.98096%2014.1857%201.25%209.58333%201.25C4.98096%201.25%201.25%204.98096%201.25%209.58333C1.25%2014.1857%204.98096%2017.9167%209.58333%2017.9167Z'%20fill='black'/%3e%3cpath%20d='M9.58333%2012.9167V9.58333M9.58333%206.25H9.59167M17.9167%209.58333C17.9167%2014.1857%2014.1857%2017.9167%209.58333%2017.9167C4.98096%2017.9167%201.25%2014.1857%201.25%209.58333C1.25%204.98096%204.98096%201.25%209.58333%201.25C14.1857%201.25%2017.9167%204.98096%2017.9167%209.58333Z'%20stroke='white'%20stroke-width='2.5'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" data-bs-toggle="tooltip" data-placement="top" title="統計各商品品牌 (其他: 商品無對應品牌)" />
+                    </th>
+                    <th class="sortable">
+                      淨訂購數量
+                      <img class="img" src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M9.58333%2017.9167C14.1857%2017.9167%2017.9167%2014.1857%2017.9167%209.58333C17.9167%204.98096%2014.1857%201.25%209.58333%201.25C4.98096%201.25%201.25%204.98096%201.25%209.58333C1.25%2014.1857%204.98096%2017.9167%209.58333%2017.9167Z'%20fill='black'/%3e%3cpath%20d='M9.58333%2012.9167V9.58333M9.58333%206.25H9.59167M17.9167%209.58333C17.9167%2014.1857%2014.1857%2017.9167%209.58333%2017.9167C4.98096%2017.9167%201.25%2014.1857%201.25%209.58333C1.25%204.98096%204.98096%201.25%209.58333%201.25C14.1857%201.25%2017.9167%204.98096%2017.9167%209.58333Z'%20stroke='white'%20stroke-width='2.5'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" data-bs-toggle="tooltip" data-placement="top" title="查詢條件下，訂購數量-(取消數量+退貨數量)" />
+                      <span class="sort-icons">
+                        <i class="arrow up"></i>
+                        <i class="arrow down"></i>
+                      </span>
+                    </th>
+                    <th class="sortable">
+                      比較區間
+                      <img class="img" src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M9.58333%2017.9167C14.1857%2017.9167%2017.9167%2014.1857%2017.9167%209.58333C17.9167%204.98096%2014.1857%201.25%209.58333%201.25C4.98096%201.25%201.25%204.98096%201.25%209.58333C1.25%2014.1857%204.98096%2017.9167%209.58333%2017.9167Z'%20fill='black'/%3e%3cpath%20d='M9.58333%2012.9167V9.58333M9.58333%206.25H9.59167M17.9167%209.58333C17.9167%2014.1857%2014.1857%2017.9167%209.58333%2017.9167C4.98096%2017.9167%201.25%2014.1857%201.25%209.58333C1.25%204.98096%204.98096%201.25%209.58333%201.25C14.1857%201.25%2017.9167%204.98096%2017.9167%209.58333Z'%20stroke='white'%20stroke-width='2.5'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" data-bs-toggle="tooltip" data-placement="top" title="所選指標於比較區間的數值" />
+                      <span class="sort-icons">
+                        <i class="arrow up"></i>
+                        <i class="arrow down"></i>
+                      </span>
+                    </th>
+                    <th class="sortable">
+                      差異
+                      <img class="img" src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M9.58333%2017.9167C14.1857%2017.9167%2017.9167%2014.1857%2017.9167%209.58333C17.9167%204.98096%2014.1857%201.25%209.58333%201.25C4.98096%201.25%201.25%204.98096%201.25%209.58333C1.25%2014.1857%204.98096%2017.9167%209.58333%2017.9167Z'%20fill='black'/%3e%3cpath%20d='M9.58333%2012.9167V9.58333M9.58333%206.25H9.59167M17.9167%209.58333C17.9167%2014.1857%2014.1857%2017.9167%209.58333%2017.9167C4.98096%2017.9167%201.25%2014.1857%201.25%209.58333C1.25%204.98096%204.98096%201.25%209.58333%201.25C14.1857%201.25%2017.9167%204.98096%2017.9167%209.58333Z'%20stroke='white'%20stroke-width='2.5'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" data-bs-toggle="tooltip" data-placement="top" title="日期區間 - 比較區間 的指標數值" />
+                      <span class="sort-icons">
+                        <i class="arrow up"></i>
+                        <i class="arrow down"></i>
+                      </span>
+                    </th>
+                    <th class="sortable">
+                      成長率
+                      <img class="img" src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M9.58333%2017.9167C14.1857%2017.9167%2017.9167%2014.1857%2017.9167%209.58333C17.9167%204.98096%2014.1857%201.25%209.58333%201.25C4.98096%201.25%201.25%204.98096%201.25%209.58333C1.25%2014.1857%204.98096%2017.9167%209.58333%2017.9167Z'%20fill='black'/%3e%3cpath%20d='M9.58333%2012.9167V9.58333M9.58333%206.25H9.59167M17.9167%209.58333C17.9167%2014.1857%2014.1857%2017.9167%209.58333%2017.9167C4.98096%2017.9167%201.25%2014.1857%201.25%209.58333C1.25%204.98096%204.98096%201.25%209.58333%201.25C14.1857%201.25%2017.9167%204.98096%2017.9167%209.58333Z'%20stroke='white'%20stroke-width='2.5'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" data-bs-toggle="tooltip" data-placement="top" title="所選指標在兩段時間之間的增減幅度(百分比)" />
+                      <span class="sort-icons">
+                        <i class="arrow up"></i>
+                        <i class="arrow down"></i>
+                      </span>
+                    </th>
+                    <th class="sortable">
+                      佔比
+                      <img class="img" src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M9.58333%2017.9167C14.1857%2017.9167%2017.9167%2014.1857%2017.9167%209.58333C17.9167%204.98096%2014.1857%201.25%209.58333%201.25C4.98096%201.25%201.25%204.98096%201.25%209.58333C1.25%2014.1857%204.98096%2017.9167%209.58333%2017.9167Z'%20fill='black'/%3e%3cpath%20d='M9.58333%2012.9167V9.58333M9.58333%206.25H9.59167M17.9167%209.58333C17.9167%2014.1857%2014.1857%2017.9167%209.58333%2017.9167C4.98096%2017.9167%201.25%2014.1857%201.25%209.58333C1.25%204.98096%204.98096%201.25%209.58333%201.25C14.1857%201.25%2017.9167%204.98096%2017.9167%209.58333Z'%20stroke='white'%20stroke-width='2.5'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" data-bs-toggle="tooltip" data-placement="top" title="該項目的所選指標相對於同層級指標總和的佔比" />
+                      <span class="sort-icons">
+                        <i class="arrow up"></i>
+                        <i class="arrow down"></i>
+                      </span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody id="brandTbody">
+                  <!-- JS動態資料 -->
+                </tbody>
+              </table>
+              <div class="pagination-bar d-flex justify-content-between align-items-center">
+                <div class="page-btns d-flex">
+                  <span><img class="img mx-3" src="data:image/svg+xml,%3csvg%20width='11'%20height='10'%20viewBox='0%200%2011%2010'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M0%2010V0H1.66667V10H0ZM10.8333%2010L3.33333%205L10.8333%200V10Z'%20fill='%23808080'/%3e%3c/svg%3e" /></span>
+                  <span><img class="img" src="data:image/svg+xml,%3csvg%20width='10'%20height='12'%20viewBox='0%200%2010%2012'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M9.1665%2011.6667V0L-0.000163078%205.83333L9.1665%2011.6667Z'%20fill='%23808080'/%3e%3c/svg%3e" /></span>
+                  <span class="mx-3 d-flex">第 <span class="bg-white white-text">1</span>/共5頁</span>
+                  <span><img class="img img-right" src="data:image/svg+xml,%3csvg%20width='10'%20height='12'%20viewBox='0%200%2010%2012'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M9.1665%2011.6667V0L-0.000163078%205.83333L9.1665%2011.6667Z'%20fill='%23808080'/%3e%3c/svg%3e" /></span>
+                  <span><img class="img mx-3 img-right" src="data:image/svg+xml,%3csvg%20width='11'%20height='10'%20viewBox='0%200%2011%2010'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M0%2010V0H1.66667V10H0ZM10.8333%2010L3.33333%205L10.8333%200V10Z'%20fill='%23808080'/%3e%3c/svg%3e" /></span>
+                </div>
+                <div class="page-info">記錄 1-6 共6筆</div>
+              </div>
+            </div>
+
+            <!-- 依分類 -->
+            <div class="report-section d-none" data-mode="category">
+              <div class="category-filter d-flex align-items-center flex-wrap gap-2 mb-3">
+                <span class="fw-bold me-2">商品分類：</span>
+
+                <select id="lv1" class="form-select form-select-sm w-auto">
+                  <option value="">全部第一層分類</option>
+                </select>
+
+                <select id="lv2" class="form-select form-select-sm w-auto">
+                  <option value="">全部第二層分類</option>
+                </select>
+
+                <select id="lv3" class="form-select form-select-sm w-auto">
+                  <option value="">全部第三層分類</option>
+                </select>
+
+                <select id="lv4" class="form-select form-select-sm w-auto">
+                  <option value="">全部第四層分類</option>
+                </select>
+
+                <button id="filterBtn" class="btn btn-outline-secondary btn-sm px-3 mx-5">篩選</button>
+              </div>
+              <table class="report-table table table-bordered table-hover align-middle fs-6 fw-bold">
+                <colgroup>
+                  <col style="width: 30%" />
+                  <col style="width: 14%" />
+                  <col style="width: 14%" />
+                  <col style="width: 14%" />
+                  <col style="width: 14%" />
+                  <col style="width: 14%" />
+                </colgroup>
+                <thead class="report-thead text-center">
+                  <tr>
+                    <th>
+                      商品分類
+                      <img class="img" src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M9.58333%2017.9167C14.1857%2017.9167%2017.9167%2014.1857%2017.9167%209.58333C17.9167%204.98096%2014.1857%201.25%209.58333%201.25C4.98096%201.25%201.25%204.98096%201.25%209.58333C1.25%2014.1857%204.98096%2017.9167%209.58333%2017.9167Z'%20fill='black'/%3e%3cpath%20d='M9.58333%2012.9167V9.58333M9.58333%206.25H9.59167M17.9167%209.58333C17.9167%2014.1857%2014.1857%2017.9167%209.58333%2017.9167C4.98096%2017.9167%201.25%2014.1857%201.25%209.58333C1.25%204.98096%204.98096%201.25%209.58333%201.25C14.1857%201.25%2017.9167%204.98096%2017.9167%209.58333Z'%20stroke='white'%20stroke-width='2.5'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" data-bs-toggle="tooltip" data-placement="top" title="商品分類" />
+                    </th>
+                    <th class="sortable">
+                      淨訂購數量
+                      <img class="img" src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M9.58333%2017.9167C14.1857%2017.9167%2017.9167%2014.1857%2017.9167%209.58333C17.9167%204.98096%2014.1857%201.25%209.58333%201.25C4.98096%201.25%201.25%204.98096%201.25%209.58333C1.25%2014.1857%204.98096%2017.9167%209.58333%2017.9167Z'%20fill='black'/%3e%3cpath%20d='M9.58333%2012.9167V9.58333M9.58333%206.25H9.59167M17.9167%209.58333C17.9167%2014.1857%2014.1857%2017.9167%209.58333%2017.9167C4.98096%2017.9167%201.25%2014.1857%201.25%209.58333C1.25%204.98096%204.98096%201.25%209.58333%201.25C14.1857%201.25%2017.9167%204.98096%2017.9167%209.58333Z'%20stroke='white'%20stroke-width='2.5'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" data-bs-toggle="tooltip" data-placement="top" title="查詢條件下，訂購數量-(取消數量+退貨數量)" />
+                      <span class="sort-icons">
+                        <i class="arrow up"></i>
+                        <i class="arrow down"></i>
+                      </span>
+                    </th>
+                    <th class="sortable">
+                      比較區間
+                      <img class="img" src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M9.58333%2017.9167C14.1857%2017.9167%2017.9167%2014.1857%2017.9167%209.58333C17.9167%204.98096%2014.1857%201.25%209.58333%201.25C4.98096%201.25%201.25%204.98096%201.25%209.58333C1.25%2014.1857%204.98096%2017.9167%209.58333%2017.9167Z'%20fill='black'/%3e%3cpath%20d='M9.58333%2012.9167V9.58333M9.58333%206.25H9.59167M17.9167%209.58333C17.9167%2014.1857%2014.1857%2017.9167%209.58333%2017.9167C4.98096%2017.9167%201.25%2014.1857%201.25%209.58333C1.25%204.98096%204.98096%201.25%209.58333%201.25C14.1857%201.25%2017.9167%204.98096%2017.9167%209.58333Z'%20stroke='white'%20stroke-width='2.5'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" data-bs-toggle="tooltip" data-placement="top" title="比較區間" />
+                      <span class="sort-icons">
+                        <i class="arrow up"></i>
+                        <i class="arrow down"></i>
+                      </span>
+                    </th>
+                    <th class="sortable">
+                      差異
+                      <img class="img" src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M9.58333%2017.9167C14.1857%2017.9167%2017.9167%2014.1857%2017.9167%209.58333C17.9167%204.98096%2014.1857%201.25%209.58333%201.25C4.98096%201.25%201.25%204.98096%201.25%209.58333C1.25%2014.1857%204.98096%2017.9167%209.58333%2017.9167Z'%20fill='black'/%3e%3cpath%20d='M9.58333%2012.9167V9.58333M9.58333%206.25H9.59167M17.9167%209.58333C17.9167%2014.1857%2014.1857%2017.9167%209.58333%2017.9167C4.98096%2017.9167%201.25%2014.1857%201.25%209.58333C1.25%204.98096%204.98096%201.25%209.58333%201.25C14.1857%201.25%2017.9167%204.98096%2017.9167%209.58333Z'%20stroke='white'%20stroke-width='2.5'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" data-bs-toggle="tooltip" data-placement="top" title="日期區間 - 比較區間 的指標數值" />
+                      <span class="sort-icons">
+                        <i class="arrow up"></i>
+                        <i class="arrow down"></i>
+                      </span>
+                    </th>
+                    <th class="sortable">
+                      成長率
+                      <img class="img" src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M9.58333%2017.9167C14.1857%2017.9167%2017.9167%2014.1857%2017.9167%209.58333C17.9167%204.98096%2014.1857%201.25%209.58333%201.25C4.98096%201.25%201.25%204.98096%201.25%209.58333C1.25%2014.1857%204.98096%2017.9167%209.58333%2017.9167Z'%20fill='black'/%3e%3cpath%20d='M9.58333%2012.9167V9.58333M9.58333%206.25H9.59167M17.9167%209.58333C17.9167%2014.1857%2014.1857%2017.9167%209.58333%2017.9167C4.98096%2017.9167%201.25%2014.1857%201.25%209.58333C1.25%204.98096%204.98096%201.25%209.58333%201.25C14.1857%201.25%2017.9167%204.98096%2017.9167%209.58333Z'%20stroke='white'%20stroke-width='2.5'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" data-bs-toggle="tooltip" data-placement="top" title="所選指標在兩段時間之間的增減幅度(百分比)" />
+                      <span class="sort-icons">
+                        <i class="arrow up"></i>
+                        <i class="arrow down"></i>
+                      </span>
+                    </th>
+                    <th class="sortable">
+                      佔比
+                      <img class="img" src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M9.58333%2017.9167C14.1857%2017.9167%2017.9167%2014.1857%2017.9167%209.58333C17.9167%204.98096%2014.1857%201.25%209.58333%201.25C4.98096%201.25%201.25%204.98096%201.25%209.58333C1.25%2014.1857%204.98096%2017.9167%209.58333%2017.9167Z'%20fill='black'/%3e%3cpath%20d='M9.58333%2012.9167V9.58333M9.58333%206.25H9.59167M17.9167%209.58333C17.9167%2014.1857%2014.1857%2017.9167%209.58333%2017.9167C4.98096%2017.9167%201.25%2014.1857%201.25%209.58333C1.25%204.98096%204.98096%201.25%209.58333%201.25C14.1857%201.25%2017.9167%204.98096%2017.9167%209.58333Z'%20stroke='white'%20stroke-width='2.5'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" data-bs-toggle="tooltip" data-placement="top" title="該分類的指標數值在同層級合計中的比例" />
+                      <span class="sort-icons">
+                        <i class="arrow up"></i>
+                        <i class="arrow down"></i>
+                      </span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody id="categoryTbody">
+                  <!-- JS 動態資料 -->
+                </tbody>
+              </table>
+              <div class="pagination-bar d-flex justify-content-between align-items-center">
+                <div class="page-btns d-flex">
+                  <span><img class="img mx-3" src="data:image/svg+xml,%3csvg%20width='11'%20height='10'%20viewBox='0%200%2011%2010'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M0%2010V0H1.66667V10H0ZM10.8333%2010L3.33333%205L10.8333%200V10Z'%20fill='%23808080'/%3e%3c/svg%3e" /></span>
+                  <span><img class="img" src="data:image/svg+xml,%3csvg%20width='10'%20height='12'%20viewBox='0%200%2010%2012'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M9.1665%2011.6667V0L-0.000163078%205.83333L9.1665%2011.6667Z'%20fill='%23808080'/%3e%3c/svg%3e" /></span>
+                  <span class="mx-3 d-flex">第 <span class="bg-white white-text">1</span>/共5頁</span>
+                  <span><img class="img img-right" src="data:image/svg+xml,%3csvg%20width='10'%20height='12'%20viewBox='0%200%2010%2012'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M9.1665%2011.6667V0L-0.000163078%205.83333L9.1665%2011.6667Z'%20fill='%23808080'/%3e%3c/svg%3e" /></span>
+                  <span><img class="img mx-3 img-right" src="data:image/svg+xml,%3csvg%20width='11'%20height='10'%20viewBox='0%200%2011%2010'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M0%2010V0H1.66667V10H0ZM10.8333%2010L3.33333%205L10.8333%200V10Z'%20fill='%23808080'/%3e%3c/svg%3e" /></span>
+                </div>
+                <div class="page-info">記錄 1-6 共6筆</div>
+              </div>
+            </div>
+
+            <!-- 依商品 -->
+            <div class="report-section d-none" data-mode="product">
+              <div class="product-filter mb-3">
+                <div class="d-flex align-items-center gap-4 flex-wrap mt-3">
+                  <!-- 商品編號 -->
+                  <div class="form-check d-flex align-items-center gap-2">
+                    <input class="form-check-input" type="radio" name="productFilter" id="filterByCode" value="code" checked />
+                    <label class="form-check-label" for="filterByCode"> 商品編號 </label>
+                    <input type="text" id="productCodeInput" class="form-control form-control-sm" style="width: 420px" placeholder="請輸入商品編號(上限20筆，請以','分隔)" />
+                  </div>
+                </div>
+                <div class="d-flex align-items-center gap-4 flex-wrap mt-3 mb-3" style="max-width: 720px">
+                  <!-- 僅顯示 SET -->
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="productFilter" id="filterSetOnly" value="set" />
+                    <label class="form-check-label" for="filterSetOnly"> 僅顯示SET組合商品 </label>
+                  </div>
+                  <!-- 篩選按鈕 -->
+                  <button id="productSearchBtn" class="btn btn-outline-secondary btn-sm px-3 ms-auto">篩選</button>
+                </div>
+              </div>
+              <table class="report-table table table-bordered table-hover align-middle fs-6 fw-bold">
+                <colgroup>
+                  <col style="width: 20%" />
+                  <col style="width: 10%" />
+                  <col style="width: 14%" />
+                  <col style="width: 14%" />
+                  <col style="width: 14%" />
+                  <col style="width: 14%" />
+                  <col style="width: 14%" />
+                </colgroup>
+                <thead class="report-thead text-center">
+                  <tr>
+                    <th>
+                      商品
+                      <img class="img" src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M9.58333%2017.9167C14.1857%2017.9167%2017.9167%2014.1857%2017.9167%209.58333C17.9167%204.98096%2014.1857%201.25%209.58333%201.25C4.98096%201.25%201.25%204.98096%201.25%209.58333C1.25%2014.1857%204.98096%2017.9167%209.58333%2017.9167Z'%20fill='black'/%3e%3cpath%20d='M9.58333%2012.9167V9.58333M9.58333%206.25H9.59167M17.9167%209.58333C17.9167%2014.1857%2014.1857%2017.9167%209.58333%2017.9167C4.98096%2017.9167%201.25%2014.1857%201.25%209.58333C1.25%204.98096%204.98096%201.25%209.58333%201.25C14.1857%201.25%2017.9167%204.98096%2017.9167%209.58333Z'%20stroke='white'%20stroke-width='2.5'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" data-bs-toggle="tooltip" data-placement="top" title="統計各商品維度" />
+                    </th>
+                    <th class="sortable">
+                      商品售價
+                      <img class="img" src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M9.58333%2017.9167C14.1857%2017.9167%2017.9167%2014.1857%2017.9167%209.58333C17.9167%204.98096%2014.1857%201.25%209.58333%201.25C4.98096%201.25%201.25%204.98096%201.25%209.58333C1.25%2014.1857%204.98096%2017.9167%209.58333%2017.9167Z'%20fill='black'/%3e%3cpath%20d='M9.58333%2012.9167V9.58333M9.58333%206.25H9.59167M17.9167%209.58333C17.9167%2014.1857%2014.1857%2017.9167%209.58333%2017.9167C4.98096%2017.9167%201.25%2014.1857%201.25%209.58333C1.25%204.98096%204.98096%201.25%209.58333%201.25C14.1857%201.25%2017.9167%204.98096%2017.9167%209.58333Z'%20stroke='white'%20stroke-width='2.5'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" data-bs-toggle="tooltip" data-placement="top" title="商品售價" />
+                      <span class="sort-icons">
+                        <i class="arrow up"></i>
+                        <i class="arrow down"></i>
+                      </span>
+                    </th>
+                    <th class="sortable">
+                      淨訂購數量
+                      <img class="img" src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M9.58333%2017.9167C14.1857%2017.9167%2017.9167%2014.1857%2017.9167%209.58333C17.9167%204.98096%2014.1857%201.25%209.58333%201.25C4.98096%201.25%201.25%204.98096%201.25%209.58333C1.25%2014.1857%204.98096%2017.9167%209.58333%2017.9167Z'%20fill='black'/%3e%3cpath%20d='M9.58333%2012.9167V9.58333M9.58333%206.25H9.59167M17.9167%209.58333C17.9167%2014.1857%2014.1857%2017.9167%209.58333%2017.9167C4.98096%2017.9167%201.25%2014.1857%201.25%209.58333C1.25%204.98096%204.98096%201.25%209.58333%201.25C14.1857%201.25%2017.9167%204.98096%2017.9167%209.58333Z'%20stroke='white'%20stroke-width='2.5'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" data-bs-toggle="tooltip" data-placement="top" title="查詢條件下，訂購數量-(取消數量+退貨數量)" />
+                      <span class="sort-icons">
+                        <i class="arrow up"></i>
+                        <i class="arrow down"></i>
+                      </span>
+                    </th>
+                    <th class="sortable">
+                      比較區間
+                      <img class="img" src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M9.58333%2017.9167C14.1857%2017.9167%2017.9167%2014.1857%2017.9167%209.58333C17.9167%204.98096%2014.1857%201.25%209.58333%201.25C4.98096%201.25%201.25%204.98096%201.25%209.58333C1.25%2014.1857%204.98096%2017.9167%209.58333%2017.9167Z'%20fill='black'/%3e%3cpath%20d='M9.58333%2012.9167V9.58333M9.58333%206.25H9.59167M17.9167%209.58333C17.9167%2014.1857%2014.1857%2017.9167%209.58333%2017.9167C4.98096%2017.9167%201.25%2014.1857%201.25%209.58333C1.25%204.98096%204.98096%201.25%209.58333%201.25C14.1857%201.25%2017.9167%204.98096%2017.9167%209.58333Z'%20stroke='white'%20stroke-width='2.5'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" data-bs-toggle="tooltip" data-placement="top" title="比較區間" />
+                      <span class="sort-icons">
+                        <i class="arrow up"></i>
+                        <i class="arrow down"></i>
+                      </span>
+                    </th>
+                    <th class="sortable">
+                      差異
+                      <img class="img" src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M9.58333%2017.9167C14.1857%2017.9167%2017.9167%2014.1857%2017.9167%209.58333C17.9167%204.98096%2014.1857%201.25%209.58333%201.25C4.98096%201.25%201.25%204.98096%201.25%209.58333C1.25%2014.1857%204.98096%2017.9167%209.58333%2017.9167Z'%20fill='black'/%3e%3cpath%20d='M9.58333%2012.9167V9.58333M9.58333%206.25H9.59167M17.9167%209.58333C17.9167%2014.1857%2014.1857%2017.9167%209.58333%2017.9167C4.98096%2017.9167%201.25%2014.1857%201.25%209.58333C1.25%204.98096%204.98096%201.25%209.58333%201.25C14.1857%201.25%2017.9167%204.98096%2017.9167%209.58333Z'%20stroke='white'%20stroke-width='2.5'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" data-bs-toggle="tooltip" data-placement="top" title="日期區間 - 比較區間 的指標數值" />
+                      <span class="sort-icons">
+                        <i class="arrow up"></i>
+                        <i class="arrow down"></i>
+                      </span>
+                    </th>
+                    <th class="sortable">
+                      成長率
+                      <img class="img" src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M9.58333%2017.9167C14.1857%2017.9167%2017.9167%2014.1857%2017.9167%209.58333C17.9167%204.98096%2014.1857%201.25%209.58333%201.25C4.98096%201.25%201.25%204.98096%201.25%209.58333C1.25%2014.1857%204.98096%2017.9167%209.58333%2017.9167Z'%20fill='black'/%3e%3cpath%20d='M9.58333%2012.9167V9.58333M9.58333%206.25H9.59167M17.9167%209.58333C17.9167%2014.1857%2014.1857%2017.9167%209.58333%2017.9167C4.98096%2017.9167%201.25%2014.1857%201.25%209.58333C1.25%204.98096%204.98096%201.25%209.58333%201.25C14.1857%201.25%2017.9167%204.98096%2017.9167%209.58333Z'%20stroke='white'%20stroke-width='2.5'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" data-bs-toggle="tooltip" data-placement="top" title="所選指標在兩段時間之間的增減幅度(百分比)" />
+                      <span class="sort-icons">
+                        <i class="arrow up"></i>
+                        <i class="arrow down"></i>
+                      </span>
+                    </th>
+                    <th class="sortable">
+                      佔比
+                      <img class="img" src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M9.58333%2017.9167C14.1857%2017.9167%2017.9167%2014.1857%2017.9167%209.58333C17.9167%204.98096%2014.1857%201.25%209.58333%201.25C4.98096%201.25%201.25%204.98096%201.25%209.58333C1.25%2014.1857%204.98096%2017.9167%209.58333%2017.9167Z'%20fill='black'/%3e%3cpath%20d='M9.58333%2012.9167V9.58333M9.58333%206.25H9.59167M17.9167%209.58333C17.9167%2014.1857%2014.1857%2017.9167%209.58333%2017.9167C4.98096%2017.9167%201.25%2014.1857%201.25%209.58333C1.25%204.98096%204.98096%201.25%209.58333%201.25C14.1857%201.25%2017.9167%204.98096%2017.9167%209.58333Z'%20stroke='white'%20stroke-width='2.5'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" data-bs-toggle="tooltip" data-placement="top" title="該商品的指標數值在同層級合計中的比例" />
+                      <span class="sort-icons">
+                        <i class="arrow up"></i>
+                        <i class="arrow down"></i>
+                      </span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody id="productTbody"></tbody>
+              </table>
+              <div class="pagination-bar d-flex justify-content-between align-items-center">
+                <div class="page-btns d-flex">
+                  <span><img class="img mx-3" src="data:image/svg+xml,%3csvg%20width='11'%20height='10'%20viewBox='0%200%2011%2010'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M0%2010V0H1.66667V10H0ZM10.8333%2010L3.33333%205L10.8333%200V10Z'%20fill='%23808080'/%3e%3c/svg%3e" /></span>
+                  <span><img class="img" src="data:image/svg+xml,%3csvg%20width='10'%20height='12'%20viewBox='0%200%2010%2012'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M9.1665%2011.6667V0L-0.000163078%205.83333L9.1665%2011.6667Z'%20fill='%23808080'/%3e%3c/svg%3e" /></span>
+                  <span class="mx-3 d-flex">第 <span class="bg-white white-text">1</span>/共5頁</span>
+                  <span><img class="img img-right" src="data:image/svg+xml,%3csvg%20width='10'%20height='12'%20viewBox='0%200%2010%2012'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M9.1665%2011.6667V0L-0.000163078%205.83333L9.1665%2011.6667Z'%20fill='%23808080'/%3e%3c/svg%3e" /></span>
+                  <span><img class="img mx-3 img-right" src="data:image/svg+xml,%3csvg%20width='11'%20height='10'%20viewBox='0%200%2011%2010'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M0%2010V0H1.66667V10H0ZM10.8333%2010L3.33333%205L10.8333%200V10Z'%20fill='%23808080'/%3e%3c/svg%3e" /></span>
+                </div>
+                <div class="page-info">記錄 1-6 共6筆</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- report-display 報表內容區 -->
+      </div>
+    </div>
+
+    <script language="javascript" type="text/javascript" src="./S1107_files/js/category-analysis.js"></script>
+    <script language="javascript" type="text/javascript" src="./S1107_files/js/category-report.js"></script>
+  </body>
+</html>

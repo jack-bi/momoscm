@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="SCM Center 前端 UI 作品展示">
+  <title>SCM Center — UI Showcase</title>
+  <link rel="icon" href="/momoscm/assets/icon-DnKfFtDw.png" type="image/ico">
+  <link rel="stylesheet" crossorigin href="/momoscm/assets/showcase-DrD1AWbM.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./showcase.html" aria-label="回到作品展示首頁">
+      <span class="brand-mark">SCM</span>
+      <span><b>Center</b><small>UI Showcase</small></span>
+    </a>
+    <div class="top-actions">
+      <span class="status"><i></i> Interactive prototype</span>
+      <a class="ghost-button" href="./index.html?dashboard=1" target="_blank" rel="noopener">開啟系統首頁 ↗</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro" aria-labelledby="intro-title">
+      <div class="intro-copy">
+        <p class="eyebrow">PORTFOLIO · 2026</p>
+        <h1 id="intro-title">複雜的供應鏈任務，<br><em>設計成清楚的操作流程。</em></h1>
+        <p class="lead">SCM Center 是一套供應商後台介面，涵蓋商品、行銷、客服與數據分析。下方可直接操作每個高擬真頁面，無需登入。</p>
+        <div class="intro-meta">
+          <span><b id="projectCount">12</b> 個功能畫面</span>
+          <span><b>5</b> 大業務領域</span>
+          <span><b>Responsive</b> 互動展示</span>
+        </div>
+      </div>
+      <div class="intro-visual" aria-hidden="true">
+        <div class="visual-window">
+          <div class="window-bar"><i></i><i></i><i></i><span>SCM / Analytics</span></div>
+          <div class="window-content">
+            <aside><b></b><i></i><i></i><i></i><i></i></aside>
+            <div class="mock-dashboard">
+              <span class="mock-title"></span>
+              <div class="mock-kpis"><i></i><i></i><i></i></div>
+              <div class="mock-chart"><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="work" aria-labelledby="work-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">SELECTED SCREENS</p>
+          <h2 id="work-title">選擇畫面，立即體驗</h2>
+        </div>
+        <label class="search">
+          <span>⌕</span>
+          <input id="searchInput" type="search" placeholder="搜尋頁面或功能…" autocomplete="off">
+        </label>
+      </div>
+      <nav class="filters" aria-label="功能分類">
+        <button class="active" data-filter="all">全部</button>
+        <button data-filter="overview">系統總覽</button>
+        <button data-filter="product">商品管理</button>
+        <button data-filter="marketing">行銷營運</button>
+        <button data-filter="service">顧客服務</button>
+        <button data-filter="analytics">數據分析</button>
+      </nav>
+      <div id="screenGrid" class="screen-grid" aria-live="polite"></div>
+      <p id="emptyState" class="empty-state" hidden>沒有符合的畫面，請換個關鍵字。</p>
+    </section>
+  </main>
+
+  <dialog id="previewDialog" class="preview-dialog">
+    <div class="dialog-head">
+      <div>
+        <span id="dialogCode" class="dialog-code"></span>
+        <h2 id="dialogTitle"></h2>
+      </div>
+      <div class="dialog-actions">
+        <div class="viewport-switch" aria-label="預覽尺寸">
+          <button class="active" data-width="desktop" title="桌面版">▰</button>
+          <button data-width="tablet" title="平板版">▯</button>
+          <button data-width="mobile" title="手機版">▯</button>
+        </div>
+        <a id="openOriginal" class="open-link" target="_blank" rel="noopener">開新分頁 ↗</a>
+        <button id="closeDialog" class="close-button" aria-label="關閉預覽">×</button>
+      </div>
+    </div>
+    <div class="dialog-stage">
+      <div id="deviceFrame" class="device-frame desktop">
+        <iframe id="previewFrame" title="功能頁面預覽"></iframe>
+      </div>
+    </div>
+  </dialog>
+
+  <footer>
+    <span>SCM Center UI Prototype</span>
+    <span>Frontend &amp; Interface Design · 2026</span>
+  </footer>
+  <script src="./showcase.js"></script>
+</body>
+</html>

@@ -1,0 +1,1835 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>[D1214]行銷活動</title>
+    <link rel="icon" href="/momoscm/assets/icon-DnKfFtDw.png" type="image/ico">
+    <script src="https://scm.momoshop.com.tw/common/js/jquery-1.7.2.min.js"></script>
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./D1101_files/calendar.js"></script>
+    <script src="./floatLayer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+    <script type="module" crossorigin src="/momoscm/assets/D1214-BPpJd0vu.js"></script>
+    <link rel="modulepreload" crossorigin href="/momoscm/assets/modulepreload-polyfill-B5Qt9EMX.js">
+    <link rel="stylesheet" crossorigin href="/momoscm/assets/D1214-9o-pWprv.css">
+    <link rel="stylesheet" crossorigin href="/momoscm/assets/bootstrap-DedGxb-O.css">
+    <link rel="stylesheet" crossorigin href="/momoscm/assets/notify-DCRyhBfs.css">
+    <link rel="stylesheet" crossorigin href="/momoscm/assets/utilities-DnkMqMQv.css">
+    <link rel="stylesheet" crossorigin href="/momoscm/assets/cert-UMqHIega.css">
+    <link rel="stylesheet" crossorigin href="/momoscm/assets/headerWrap-B-d797h8.css">
+  </head>
+  <body class="w1220">
+    <script language="javascript" type="text/javascript" src="headerWrap.js"></script>
+    <!-- 路徑區塊 start -->
+    <div class="contentArea wide">
+      <table>
+        <tbody>
+          <tr>
+            <td width="50%">
+              <dl class="nav">
+                <dt><a href="javascript:goJump('home');">首頁</a></dt>
+                <dd class="first">商品</dd>
+                <dd class="next show">商品管理</dd>
+                <dd class="last show">[D1214]行銷活動</dd>
+                <dd class="video" style="display: none" id="theVideo"><a>影音教學</a></dd>
+              </dl>
+            </td>
+            <td></td>
+            <td id="marqueeArea" style="display: none">
+              <div id="abgne_marquee"></div>
+            </td>
+            <td width="50%" id="addAppArea" align="right">
+              <input
+                type="checkbox"
+                name="addApp"
+                id="addApp"
+                style="vertical-align: middle"
+                checked="checked"
+              />加入常用程式集
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- 路徑區塊 end -->
+    <div class="contentArea">
+      <div class="mainArea">
+        <div class="styleArea styleD1214">
+          <!-- 行銷活動主頁 -->
+          <div id="page_1" class="mb-2">
+            <div class="curvy curvy-outside">
+              <em class="ctl"><b>•</b></em>
+              <em class="ctr"><b>•</b></em>
+              <em class="cbr"><b>•</b></em>
+              <em class="cbl"><b>•</b></em>
+              <div class="tipsA">
+                <div class="curvy curvy-inner">
+                  <em class="cbr"><b>•</b></em>
+                  <em class="cbl"><b>•</b></em>
+                  <em class="cbr"><b>•</b></em>
+                  <em class="cbl"><b>•</b></em>
+                  <h2>
+                    <a href="javascript:void(0)" class="toggle-search"><b>+</b>展開查詢</a>
+                    查詢
+                  </h2>
+                  <div class="innerArea innerAreaSearch">
+                    <table width="100%" border="0" cellpadding="0" cellspacing="3">
+                      <tbody>
+                        <tr>
+                          <th width="10%">
+                            <input
+                              type="checkbox"
+                              name="dateYn"
+                              id="dateYn"
+                              value="1"
+                              checked="checked"
+                              class="align-text-bottom"
+                            />
+                            活動區間：
+                          </th>
+                          <td>
+                            <input
+                              class="fixtable"
+                              type="date"
+                              name="fr_date"
+                              id="fr_date1"
+                              maxlength="10"
+                              size="10"
+                              onclick="Calendar_D_New(this)"
+                              placeholder="2025/09/30"
+                            />
+                            &nbsp;~&nbsp;
+                            <input
+                              class="fixtable"
+                              type="date"
+                              name="to_date"
+                              id="to_date1"
+                              maxlength="10"
+                              size="10"
+                              onclick="Calendar_D_New(this)"
+                              placeholder="2025/09/30"
+                            />
+                          </td>
+                          <th width="10%">活動編號：</th>
+                          <td>
+                            <input type="text" maxlength="10" name="goodsCode" id="goodsCode" value="" />
+                          </td>
+                          <td width="12%" rowspan="3" align="right" valign="bottom" class="searchbtn">
+                            <div class="newBtnStyle" id="queryButton">查詢</div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th width="10%">商品編號：</th>
+                          <td>
+                            <input
+                              type="text"
+                              maxlength="10"
+                              name="goodsCode"
+                              id="goodsCode"
+                              value=""
+                              placeholder="查詢有置入指定品號的活動"
+                            />
+                          </td>
+                          <th width="10%">活動類型：</th>
+                          <td>
+                            <select name="thresholdType" id="thresholdType">
+                              <option value="" selected="selected">全部</option>
+                              <option value="2">滿件滿額贈</option>
+                              <option value="0">滿件滿額出貨</option>
+                            </select>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th width="10%">發佈狀態：</th>
+                          <td>
+                            <select name="useYn" id="useYn">
+                              <option value="" selected="selected">全部</option>
+                              <option value="1">已發佈</option>
+                              <option value="0">未發佈</option>
+                            </select>
+                          </td>
+                          <th width="10%">活動門檻：</th>
+                          <td>
+                            <select name="thresholdType" id="thresholdType">
+                              <option value="" selected="selected">全部</option>
+                              <option value="3">滿件+滿額</option>
+                              <option value="2">滿件</option>
+                              <option value="1">滿額</option>
+                            </select>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <!-- 注意事項(此功能無注意事項，所以在CSS設定裡將此區隱藏) -->
+              <dl class="note">
+                <dt>
+                  <b>注意事項：</b>
+                  <font color="#FF0000">行銷活動設定完成，點擊「發佈」後，活動即正式生效。</font>
+                </dt>
+              </dl>
+            </div>
+            <div class="resultArea">
+              <div class="summary">
+                <div class="topnav d-flex">
+                  <b>活動總覽</b>
+                  <p class="ps-2">請輸入上方查詢條件，查出您所需要的資料！</p>
+                  <dl class="subnav">
+                    <dd class="button">
+                      <a class="newBtnStyle addAtivityBtn">新增活動</a>
+                    </dd>
+                  </dl>
+                </div>
+                <ul class="inner">
+                  <table class="actInfoList" width="100%" border="0" cellpadding="0" cellspacing="0">
+                    <thead>
+                      <tr name="queryTitle">
+                        <th width="150">活動編號</th>
+                        <th width="220">活動名稱</th>
+                        <th width="100">活動類型</th>
+                        <th width="80">門檻類型</th>
+                        <th width="250">活動時間</th>
+                        <th width="80">發布狀態</th>
+                        <th width="100">建立人</th>
+                        <th width="150">備註</th>
+                        <th width="80"></th>
+                      </tr>
+                    </thead>
+                    <tr>
+                      <td><p>20200424154158799</p></td>
+                      <td><p>1111</p></td>
+                      <td><p>滿件滿額贈</p></td>
+                      <td><p>滿額</p></td>
+                      <td><p>2020/04/01 00:00:00~2020/04/30 23:00:00</p></td>
+                      <td><p>2020/04/22 12:00:00</p></td>
+                      <td class="modfiyArea">
+                        <span>master</span>
+                        <div class="modfiyInfo">
+                          <p>建立人：<b>master</b></p>
+                          <p>最後修改人：<b>master</b></p>
+                          <p>最後時間：<b>2020/06/19 12:33:56</b></p>
+                        </div>
+                      </td>
+                      <td></td>
+                      <td class="dropDownArea">
+                        <button class="dropDownBtn">作業<i></i></button>
+                        <ul class="dropDownMenu menuR">
+                          <li>編輯活動</li>
+                          <li>複製活動</li>
+                          <li class="stopAct">中止活動</li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><p>20200424154158794</p></td>
+                      <td>
+                        <p>2121212121212121212121212121212121212121212121212121212131231315489416123131</p>
+                      </td>
+                      <td><p>滿件+滿額</p></td>
+                      <td><p>滿件+滿額</p></td>
+                      <td><p>2020/04/01 00:00:00~2020/04/30 23:00:00</p></td>
+                      <td><p>2020/04/22 12:00:00</p></td>
+                      <td class="modfiyArea">
+                        <span>營運－王小明</span>
+                        <div class="modfiyInfo">
+                          <p>建立人：<b>營運－王小明</b></p>
+                          <p>最後修改人：<b>營運－大明</b></p>
+                          <p>最後時間：<b>2020/06/19 12:33:56</b></p>
+                        </div>
+                      </td>
+                      <td><p></p></td>
+                      <td class="dropDownArea">
+                        <button class="dropDownBtn">作業<i></i></button>
+                        <ul class="dropDownMenu menuR">
+                          <li>編輯活動</li>
+                          <li>複製活動</li>
+                          <li>送出活動</li>
+                          <li class="delAct">刪除活動</li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr class="endActList">
+                      <td><p>20200424154158794</p></td>
+                      <td>
+                        <p>06/09~06/30 618年中慶限定▼下單現折$300</p>
+                      </td>
+                      <td><p>滿件+滿額</p></td>
+                      <td><p>滿件+滿額</p></td>
+                      <td><p>2020/04/01 00:00:00~2020/04/30 23:00:00</p></td>
+                      <td><p>未發佈</p></td>
+                      <td class="modfiyArea">
+                        <span>營運－王小明</span>
+                        <div class="modfiyInfo">
+                          <p>建立人：<b>營運－王小明</b></p>
+                          <p>最後修改人：<b>營運－大明</b></p>
+                          <p>最後時間：<b>2020/06/19 12:33:56</b></p>
+                        </div>
+                      </td>
+                      <td><p></p></td>
+                      <td class="dropDownArea">
+                        <button class="dropDownBtn">作業<i></i></button>
+                        <ul class="dropDownMenu menuR">
+                          <li>複製活動</li>
+                        </ul>
+                      </td>
+                    </tr>
+                  </table>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- 新增活動 -->
+          <div id="page_2" class="actSettingArea">
+            <div class="curvy curvy-outside">
+              <em class="ctl"><b>•</b></em> <em class="ctr"><b>•</b></em> <em class="cbr"><b>•</b></em>
+              <em class="cbl"><b>•</b></em>
+              <div class="tipsA">
+                <div class="curvy curvy-inner">
+                  <em class="cbr d-inline"><b>•</b></em>
+                  <em class="cbl d-inline"><b>•</b></em>
+                  <em class="cbr d-inline"><b>•</b></em>
+                  <em class="cbl d-inline"><b>•</b></em>
+
+                  <div class="funBtnList">
+                    <a class="backBtn text-decoration-none" href="javascript:void(0)">回上頁面</a>
+                    <button class="btn btn-outline-primary btn-outline-primary-custom btn-sm mx-2">暫存活動</button>
+                    <button class="btn btn-primary btn-primary-custom btn-sm btn-activity">發佈活動</button>
+                  </div>
+
+                  <h2 class="addAtivityTitle">新增活動</h2>
+                  <!-- 滿件滿額贈 -->
+                  <div class="innerArea" id="supplierCont1" class="d-block">
+                    <!-- 頁籤 -->
+                    <div class="tabArea">
+                      <ul>
+                        <li class="tabType1 selected">
+                          滿件滿額贈
+                          <span class="toolTip"
+                            >?<span class="tipTxt"
+                              >顧客購買達指定件數或金額，即贈送指定贈品，單一門檻贈送無上限，贈品庫存無量即不再贈送。</span
+                            ></span
+                          >
+                        </li>
+                        <li class="tabType2">
+                          滿件滿額出貨
+                          <span class="toolTip">?<span class="tipTxt">顧客購買達指定件數或金額，即出貨。</span></span>
+                        </li>
+                      </ul>
+                    </div>
+                    <div style="line-height: 4">設定活動說明</div>
+                    <table class="editActTable" width="100%" border="0" cellpadding="0" cellspacing="0">
+                      <tbody>
+                        <tr>
+                          <th width="10%" class="required">活動名稱：</th>
+                          <td>
+                            <input type="text" size="70" maxlength="20" placeholder="限20字" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <th width="10%" class="required">活動說明：</th>
+                          <td colspan="3">
+                            <input type="text" size="70" maxlength="60" placeholder="限60字" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <th width="10%">備註：</th>
+                          <td colspan="3">
+                            <input
+                              type="text"
+                              size="70"
+                              maxlength="50"
+                              placeholder="限50字，非必填，內容不會於前台顯示"
+                            />
+                          </td>
+                        </tr>
+                        <tr>
+                          <th width="10%" class="required">開始日期：</th>
+                          <td>
+                            <input
+                              type="date"
+                              size="10"
+                              maxlength="10"
+                              name="fr_date"
+                              id="fr_date2"
+                              class="fixtable"
+                              onclick="Calendar_D_New(this)"
+                              placeholder="2025/09/30"
+                            />
+                            <input
+                              type="number"
+                              name="fr_hh"
+                              id="fr_hh2"
+                              size="2"
+                              maxlength="2"
+                              placeholder="00"
+                              value="00"
+                              min="0"
+                              max="23"
+                            />
+                            :
+                            <input
+                              type="number"
+                              name="fr_mm"
+                              id="fr_mm2"
+                              size="2"
+                              maxlength="2"
+                              placeholder="00"
+                              value="00"
+                              min="0"
+                              max="59"
+                            />
+                            :00
+                          </td>
+                        </tr>
+                        <tr>
+                          <th width="10%" class="required">結束日期：</th>
+                          <td>
+                            <input
+                              type="date"
+                              size="10"
+                              maxlength="10"
+                              name="to_date"
+                              id="to_date2"
+                              class="fixtable"
+                              onclick="Calendar_D_New(this)"
+                              placeholder="2025/09/30"
+                            />
+                            <input
+                              type="number"
+                              name="to_hh"
+                              id="to_hh2"
+                              size="2"
+                              maxlength="2"
+                              placeholder="23"
+                              value="23"
+                              min="0"
+                              max="23"
+                            />
+                            :
+                            <input
+                              type="number"
+                              name="to_mm"
+                              id="to_mm2"
+                              size="2"
+                              maxlength="2"
+                              placeholder="59"
+                              value="59"
+                              min="0"
+                              max="59"
+                            />
+                            :00
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <hr class="mt-4 mb-2 mx-auto" />
+
+                    <div style="line-height: 4">設定活動內容</div>
+                    <table class="editActTable" width="100%" border="0" cellpadding="0" cellspacing="0">
+                      <tbody>
+                        <tr>
+                          <th width="10%" class="required">活動門檻：</th>
+                          <td colspan="3">
+                            <label class="active">
+                              <input name="activityTypes" type="radio" value="count" checked />滿件
+                            </label>
+                            <label> <input name="activityTypes" type="radio" value="amount" />滿額 </label>
+                            <label> <input name="activityTypes" type="radio" value="both" />滿件+滿額 </label>
+                            <b class="introBtn" id="activityBtn"></b>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th width="10%" class="required">贈品門檻：</th>
+                          <td colspan="3">
+                            <label> <input name="goodsTypes" type="radio" value="gift" />贈品 </label>
+                            <label class="active">
+                              <input name="goodsTypes" type="radio" value="point" checked="true" />mo 點
+                            </label>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <th class="w-10 bg-transparent"></th>
+
+                          <!-- 贈品 回饋方式 -->
+                          <td colspan="3" class="bg-light rounded ps-3 py-2 position-relative gift-block d-none">
+                            <label class="form-label required">商品倉別：</label>
+                            <label class="active">
+                              <input name="warehouseType" type="radio" value="supplier" checked />供應商倉</label
+                            >
+                            <label> <input name="warehouseType" type="radio" value="consignment" />寄倉</label>
+
+                            <div class="gift-list d-flex pe-5">
+                              <div class="gift-item bg-secondary bg-opacity-10 rounded p-2 me-2 mt-2">
+                                <!-- 滿件 贈品-->
+                                <div
+                                  class="condition condition-count mb-2 pb-2 border-bottom align-items-center d-flex"
+                                >
+                                  <span class="me-1">滿</span>
+                                  <input
+                                    type="text"
+                                    name="giftLimitQty"
+                                    class="integer-only me-1"
+                                    size="10"
+                                    placeholder="請輸入件數"
+                                    min="1"
+                                  />
+                                  <span>件</span>
+                                  <a class="ms-1">
+                                    <div class="icon-btn">
+                                      <img class="img btn-remove-gift" src="data:image/svg+xml,%3csvg%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M1.3335%207.99967C1.3335%204.31768%204.31817%201.33301%208.00016%201.33301C11.6822%201.33301%2014.6668%204.31768%2014.6668%207.99967C14.6668%2011.6817%2011.6822%2014.6663%208.00016%2014.6663C4.31817%2014.6663%201.3335%2011.6817%201.3335%207.99967Z'%20fill='%23757575'/%3e%3cpath%20d='M9.88549%206.11426L6.11426%209.88549L9.88549%206.11426Z'%20stroke='white'%20stroke-width='1.6'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cpath%20d='M6.11426%206.11426L9.88549%209.88549L6.11426%206.11426Z'%20stroke='white'%20stroke-width='1.6'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" />
+                                      <img class="img" src="data:image/svg+xml,%3csvg%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M1.33301%207.99967C1.33301%204.31768%204.31768%201.33301%207.99967%201.33301C11.6817%201.33301%2014.6663%204.31768%2014.6663%207.99967C14.6663%2011.6817%2011.6817%2014.6663%207.99967%2014.6663C4.31768%2014.6663%201.33301%2011.6817%201.33301%207.99967Z'%20fill='%23C2C2C2'/%3e%3cpath%20d='M9.88549%206.11426L6.11426%209.88549L9.88549%206.11426Z'%20stroke='white'%20stroke-width='1.6'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cpath%20d='M6.11426%206.11426L9.88549%209.88549L6.11426%206.11426Z'%20stroke='white'%20stroke-width='1.6'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" />
+                                    </div>
+                                  </a>
+                                </div>
+
+                                <!-- 滿額 贈品-->
+                                <div
+                                  class="condition condition-amount mb-2 pb-2 border-bottom align-items-center d-flex d-none"
+                                >
+                                  <span class="me-1">滿</span>
+                                  <input
+                                    type="text"
+                                    name="giftFullAmount"
+                                    class="integer-only me-1"
+                                    size="10"
+                                    placeholder="請輸入金額"
+                                    min="1"
+                                  />
+                                  <span>元</span>
+                                  <a class="ms-1">
+                                    <div class="icon-btn">
+                                      <img class="img btn-remove-gift" src="data:image/svg+xml,%3csvg%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M1.3335%207.99967C1.3335%204.31768%204.31817%201.33301%208.00016%201.33301C11.6822%201.33301%2014.6668%204.31768%2014.6668%207.99967C14.6668%2011.6817%2011.6822%2014.6663%208.00016%2014.6663C4.31817%2014.6663%201.3335%2011.6817%201.3335%207.99967Z'%20fill='%23757575'/%3e%3cpath%20d='M9.88549%206.11426L6.11426%209.88549L9.88549%206.11426Z'%20stroke='white'%20stroke-width='1.6'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cpath%20d='M6.11426%206.11426L9.88549%209.88549L6.11426%206.11426Z'%20stroke='white'%20stroke-width='1.6'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" />
+                                      <img class="img" src="data:image/svg+xml,%3csvg%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M1.33301%207.99967C1.33301%204.31768%204.31768%201.33301%207.99967%201.33301C11.6817%201.33301%2014.6663%204.31768%2014.6663%207.99967C14.6663%2011.6817%2011.6817%2014.6663%207.99967%2014.6663C4.31768%2014.6663%201.33301%2011.6817%201.33301%207.99967Z'%20fill='%23C2C2C2'/%3e%3cpath%20d='M9.88549%206.11426L6.11426%209.88549L9.88549%206.11426Z'%20stroke='white'%20stroke-width='1.6'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cpath%20d='M6.11426%206.11426L9.88549%209.88549L6.11426%206.11426Z'%20stroke='white'%20stroke-width='1.6'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" />
+                                    </div>
+                                  </a>
+                                </div>
+
+                                <!-- 滿件+滿額 贈品-->
+                                <div
+                                  class="condition condition-both mb-2 pb-2 border-bottom align-items-center d-flex d-none"
+                                >
+                                  <span class="me-1">滿</span>
+                                  <input
+                                    type="text"
+                                    name="giftFullQty"
+                                    inputmode="numeric"
+                                    class="integer-only me-1"
+                                    size="10"
+                                    placeholder="請輸入件數"
+                                    min="1"
+                                  />
+                                  <span>件</span>，且滿
+                                  <input
+                                    type="text"
+                                    name="giftFullAmount"
+                                    class="integer-only w-auto mx-1"
+                                    size="10"
+                                    placeholder="請輸入金額"
+                                    min="1"
+                                  />
+                                  <span>元</span>
+                                  <a class="ms-1">
+                                    <div class="icon-btn">
+                                      <img class="img btn-remove-gift" src="data:image/svg+xml,%3csvg%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M1.3335%207.99967C1.3335%204.31768%204.31817%201.33301%208.00016%201.33301C11.6822%201.33301%2014.6668%204.31768%2014.6668%207.99967C14.6668%2011.6817%2011.6822%2014.6663%208.00016%2014.6663C4.31817%2014.6663%201.3335%2011.6817%201.3335%207.99967Z'%20fill='%23757575'/%3e%3cpath%20d='M9.88549%206.11426L6.11426%209.88549L9.88549%206.11426Z'%20stroke='white'%20stroke-width='1.6'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cpath%20d='M6.11426%206.11426L9.88549%209.88549L6.11426%206.11426Z'%20stroke='white'%20stroke-width='1.6'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" />
+                                      <img class="img" src="data:image/svg+xml,%3csvg%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M1.33301%207.99967C1.33301%204.31768%204.31768%201.33301%207.99967%201.33301C11.6817%201.33301%2014.6663%204.31768%2014.6663%207.99967C14.6663%2011.6817%2011.6817%2014.6663%207.99967%2014.6663C4.31768%2014.6663%201.33301%2011.6817%201.33301%207.99967Z'%20fill='%23C2C2C2'/%3e%3cpath%20d='M9.88549%206.11426L6.11426%209.88549L9.88549%206.11426Z'%20stroke='white'%20stroke-width='1.6'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cpath%20d='M6.11426%206.11426L9.88549%209.88549L6.11426%206.11426Z'%20stroke='white'%20stroke-width='1.6'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" />
+                                    </div>
+                                  </a>
+                                </div>
+
+                                <button class="btn btn-primary btn-primary-custom btn-sm me-auto">挑選贈品</button>
+                              </div>
+                            </div>
+                            <button
+                              type="button"
+                              class="btn btn-outline-secondary rounded-circle position-absolute top-50 end-0 translate-middle-y me-3 p-0 lh-1 btn-add-gift"
+                              style="width: 20px; height: 20px; margin-top: 10px"
+                            >
+                              ＋
+                            </button>
+                          </td>
+
+                          <!-- mo點 回饋方式-->
+                          <td colspan="3" class="bg-light rounded ps-3 py-2 pe-5 position-relative point-block">
+                            <label class="form-label required">回饋方式：</label>
+                            <label class="active">
+                              <input name="feedbackType" type="radio" value="percent" checked />% 數回饋
+                            </label>
+                            <label> <input name="feedbackType" type="radio" value="fixed" /> 固定金額回饋 </label>
+
+                            <div class="feedback-list d-flex">
+                              <div class="feedback-item bg-secondary bg-opacity-10 rounded p-2 pe-5 mt-2 text-nowrap">
+                                <!-- 滿件 -->
+                                <div
+                                  class="condition condition-count mb-2 pb-2 border-bottom align-items-center d-flex"
+                                >
+                                  <span class="me-1">滿</span>
+                                  <input
+                                    type="text"
+                                    name="pointFullQty"
+                                    inputmode="numeric"
+                                    class="integer-only me-1"
+                                    size="10"
+                                    placeholder="請輸入件數"
+                                    min="1"
+                                  />
+                                  <span>件</span>
+                                </div>
+
+                                <!-- 滿額 -->
+                                <div
+                                  class="condition condition-amount mb-2 pb-2 border-bottom align-items-center d-flex d-none"
+                                >
+                                  <span class="me-1">滿</span>
+                                  <input
+                                    type="text"
+                                    name="pointFullAmount"
+                                    class="integer-only me-1"
+                                    size="10"
+                                    placeholder="請輸入金額"
+                                    min="1"
+                                  />
+                                  <span>元</span>
+                                </div>
+
+                                <!-- 滿件+滿額 -->
+                                <div
+                                  class="condition condition-both mb-2 pb-2 border-bottom align-items-center d-flex d-none"
+                                >
+                                  <span class="me-1">滿</span>
+                                  <input
+                                    type="text"
+                                    name="pointFullQty"
+                                    inputmode="numeric"
+                                    class="integer-only me-1"
+                                    size="10"
+                                    placeholder="請輸入件數"
+                                    min="1"
+                                  />
+                                  <span>件</span>，且滿
+                                  <input
+                                    type="text"
+                                    name="pointFullAmount"
+                                    class="integer-only w-auto mx-1"
+                                    size="10"
+                                    placeholder="請輸入金額"
+                                    min="1"
+                                  />
+                                  <span>元</span>
+                                </div>
+
+                                <div class="mb-2">
+                                  <span>回饋</span>
+                                  <input
+                                    type="text"
+                                    name="feedbackPercent"
+                                    class="integer-only"
+                                    size="10"
+                                    placeholder="請輸入"
+                                    min="0"
+                                  />
+                                  <span>%</span>
+                                </div>
+
+                                <div class="mb-2">
+                                  <span>上限</span>
+                                  <input
+                                    type="text"
+                                    name="maxAmount"
+                                    class="integer-only"
+                                    size="10"
+                                    placeholder="請輸入"
+                                    min="1"
+                                  />
+                                  <span>元</span>
+                                </div>
+
+                                <div class="d-flex align-items-center">
+                                  <span class="me-1">限量</span>
+                                  <input
+                                    type="text"
+                                    name="limitQty"
+                                    class="integer-only me-1"
+                                    size="10"
+                                    placeholder="贈送數量"
+                                    min="1"
+                                  />
+                                  <span>份</span>
+                                </div>
+                              </div>
+                            </div>
+                            <button
+                              type="button"
+                              class="btn btn-outline-secondary rounded-circle position-absolute top-50 end-0 translate-middle-y me-3 p-0 lh-1 alert-btn"
+                              style="width: 20px; height: 20px; margin-top: -10px"
+                            >
+                              ＋
+                            </button>
+
+                            <!-- 備註 -->
+                            <div class="feedback-text mt-1">
+                              ※ 如各別門檻達贈送數量上限，前台該贈品將顯示(已贈完)<br />
+                              ※ mo 點預估最大使用額<span class="position-absolute end-0">
+                                <span class="fw-bold">0</span>元（可用 mo 點：$<span class="mo-balance"></span>）
+                              </span>
+                            </div>
+                            <div class="text-red mt-1 d-none">
+                              超過可用 mo 點上限，請調整內容或
+                              <a href="M1101.html" target="_blank" class="text-red text-decoration-underline">
+                                購買 mo 點
+                                <img class="img" src="data:image/svg+xml,%3csvg%20width='12'%20height='12'%20viewBox='0%200%2012%2012'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M10%207.33333V9.7C10%209.86569%209.86569%2010%209.7%2010H2.3C2.13431%2010%202%209.86569%202%209.7V2.3C2%202.13431%202.13431%202%202.3%202H4.66667'%20stroke='%23FF0000'%20stroke-width='0.5'%20stroke-linecap='round'/%3e%3cpath%20d='M6.32322%205.32322C6.22559%205.42085%206.22559%205.57915%206.32322%205.67678C6.42085%205.77441%206.57915%205.77441%206.67678%205.67678L6.5%205.5L6.32322%205.32322ZM6.5%205.5L6.67678%205.67678L10.6768%201.67678L10.5%201.5L10.3232%201.32322L6.32322%205.32322L6.5%205.5Z'%20fill='%23FF0000'/%3e%3cpath%20d='M7%201.5H10.2C10.3657%201.5%2010.5%201.63431%2010.5%201.8V5'%20stroke='%23FF0000'%20stroke-width='0.5'%20stroke-linecap='round'/%3e%3c/svg%3e" />
+                              </a>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <hr class="mt-4 mb-2 mx-auto" />
+
+                    <div class="py-3" style="font-size: 14px">設定參與活動商品</div>
+                    <button class="btn btn-primary btn-primary-custom btn-sm me-auto btn-add-products">新增商品</button>
+
+                    <!-- 匯入首頁資料 -->
+                    <div class="home-import mt-4" style="width: 912px">
+                      <!-- hasSearch -->
+                      <div id="has-search" class="product-search-box d-flex d-none">
+                        「手機 >智慧型手機>Android」中的商品，<br />
+                        且品牌包含「QC_YAP 要QC品牌」，目前共 5 件符合設定條件
+                        <button
+                          class="btn btn-outline-primary btn-outline-primary-custom btn-custom-sm download-btn ms-auto"
+                        >
+                          下載商品列表
+                        </button>
+                      </div>
+
+                      <!-- hasBatch -->
+                      <div id="has-batch" class="home-batchImportResult d-none">
+                        <div class="batch-content d-flex">
+                          <h6>匯入結果</h6>
+                          <div>共計 <span class="text-primary">5</span> 個商品匯入成功</div>
+                          <div>共計 <span class="text-danger">11</span> 個商品匯入失敗</div>
+                          <button class="btn btn-outline-primary btn-outline-primary-custom ms-auto">
+                            下載失敗結果檔
+                          </button>
+                        </div>
+                      </div>
+
+                      <!-- hasSelected -->
+                      <div id="has-selected" class="product-result d-none">
+                        <div class="product-table-wrapper">
+                          <table class="table align-middle product-table">
+                            <thead>
+                              <tr>
+                                <th class="text-start" width="108">商品編號</th>
+                                <th class="text-start" width="115">商品名稱</th>
+                                <th class="text-center" width="74">銷售狀況</th>
+                                <th class="text-end" width="92">進價</th>
+                                <th class="text-end" width="92">售價</th>
+                                <th class="text-start" width="85">超商取貨</th>
+                                <th class="text-start" width="57">Set品</th>
+                                <th class="text-center" width="59">倉別</th>
+                                <th class="text-start" width="90">負責 MD</th>
+                                <th class="text-start" width="90">負責企劃</th>
+                              </tr>
+                            </thead>
+
+                            <tbody>
+                              <tr style="height: 45px">
+                                <td>100076137</td>
+                                <td class="name-truncate" style="height: 45px">
+                                  <div class="name-text">刮鬍刀</div>
+                                </td>
+                                <td>進行中</td>
+                                <td class="text-end">2,545</td>
+                                <td class="text-end">4,692</td>
+                                <td>是</td>
+                                <td>是</td>
+                                <td>供應商</td>
+                                <td>林momo</td>
+                                <td>林momo</td>
+                              </tr>
+
+                              <tr style="height: 45px">
+                                <td>100076138</td>
+                                <td class="name-truncate" style="height: 45px">
+                                  <div class="name-text">短袖T恤</div>
+                                </td>
+                                <td>停售</td>
+                                <td class="text-end">1,569</td>
+                                <td class="text-end">5,660</td>
+                                <td>否</td>
+                                <td>否</td>
+                                <td>自營倉</td>
+                                <td>王momo</td>
+                                <td>張momo</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- 人工置入商品 -->
+                    <div class="manualAddBlcok">
+                      <dl>
+                        <dt class="dropDownArea">
+                          <button class="dropDownBtn">加入商品<i></i></button>
+                          <ul class="dropDownMenu">
+                            <li>單筆查詢</li>
+                            <li>批次上傳</li>
+                          </ul>
+                          <p>已置入<b>3</b>筆商品</p>
+                        </dt>
+                        <dd>
+                          <p>已選擇<b>1</b>筆商品</p>
+                          <button class="active">刪除商品</button>
+                        </dd>
+                      </dl>
+                      <table class="actInfoList" width="100%" border="0" cellpadding="0" cellspacing="0">
+                        <thead>
+                          <tr>
+                            <th width="80">商品編號</th>
+                            <th width="250">商品名稱</th>
+                            <th width="100">銷售狀況</th>
+                            <th width="80">進價</th>
+                            <th width="80">售價</th>
+                            <th width="80">活動價</th>
+                            <th width="100">超商取貨與否</th>
+                            <th width="100">SET品與否</th>
+                            <th width="80">倉別</th>
+                            <th width="100">負責MD</th>
+                            <th width="100">負責PM</th>
+                            <th width="30"><input type="checkBox" /></th>
+                          </tr>
+                        </thead>
+                        <tr>
+                          <td><p>1055552234</p></td>
+                          <td>
+                            <p>
+                              1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+                            </p>
+                          </td>
+                          <td><p>進行中</p></td>
+                          <td><p>15000</p></td>
+                          <td><p>18000</p></td>
+                          <td><p>14000</p></td>
+                          <td><p>否</p></td>
+                          <td><p>否</p></td>
+                          <td><p>供應商</p></td>
+                          <td><p>林momo</p></td>
+                          <td><p>楊momo</p></td>
+                          <td><input type="checkBox" checked="checked" /></td>
+                        </tr>
+                        <tr>
+                          <td><p>1055552234</p></td>
+                          <td><p>1111</p></td>
+                          <td><p class="alterTxt">暫時中斷</p></td>
+                          <td><p>15000</p></td>
+                          <td><p>18000</p></td>
+                          <td><p>14000</p></td>
+                          <td><p>否</p></td>
+                          <td><p>否</p></td>
+                          <td><p>供應商</p></td>
+                          <td><p>林momo</p></td>
+                          <td><p>楊momo</p></td>
+                          <td><input type="checkBox" /></td>
+                        </tr>
+                        <tr>
+                          <td><p>1055552234</p></td>
+                          <td><p>1111</p></td>
+                          <td><p>進行中</p></td>
+                          <td><p>15000</p></td>
+                          <td><p>18000</p></td>
+                          <td><p>14000</p></td>
+                          <td><p>否</p></td>
+                          <td><p>否</p></td>
+                          <td><p>供應商</p></td>
+                          <td><p>林momo</p></td>
+                          <td><p>楊momo</p></td>
+                          <td><input type="checkBox" /></td>
+                        </tr>
+                      </table>
+                    </div>
+                    <!-- 系統置入商品 -->
+                    <dl class="systemAddBlock" style="display: none">
+                      <dd>
+                        <h4>系統撈品範圍 <b class="introBtn" id="systemNoteBtn"></b></h4>
+                        <ul>
+                          <li>
+                            <select>
+                              <option value="">全部第一層分類</option>
+                              <option value="">--</option>
+                              <option value="">--</option>
+                            </select>
+                            <select>
+                              <option value="">全部第二層分類</option>
+                              <option value="">--</option>
+                              <option value="">--</option>
+                            </select>
+                            <select>
+                              <option value="">全部第三層分類</option>
+                              <option value="">--</option>
+                              <option value="">--</option>
+                            </select>
+                            <select>
+                              <option value="">全部第四層分類</option>
+                              <option value="">--</option>
+                              <option value="">--</option>
+                            </select>
+                            <div class="thresholdControl">
+                              <span class="addBtn"></span>
+                              <span class="delBtn"></span>
+                            </div>
+                          </li>
+                          <li>
+                            <select name="" id="">
+                              <option value="">全部第一層分類</option>
+                              <option value="">--</option>
+                              <option value="">--</option>
+                            </select>
+                            <select name="" id="">
+                              <option value="">全部第二層分類</option>
+                              <option value="">--</option>
+                              <option value="">--</option>
+                            </select>
+                            <select name="" id="">
+                              <option value="">全部第三層分類</option>
+                              <option value="">--</option>
+                              <option value="">--</option>
+                            </select>
+                            <select name="" id="">
+                              <option value="">全部第四層分類</option>
+                              <option value="">--</option>
+                              <option value="">--</option>
+                            </select>
+                            <div class="thresholdControl">
+                              <span class="addBtn"></span>
+                              <span class="delBtn"></span>
+                            </div>
+                          </li>
+                        </ul>
+                        <h4>商品篩選條件</h4>
+                        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                          <tr>
+                            <th>品牌:</th>
+                            <td colspan="3">
+                              <a>挑選品牌<b>(7)</b></a>
+                              <span href="javascript:void(0)">清空</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>屬性:</th>
+                            <td colspan="3">
+                              <ul>
+                                <li>
+                                  <select name="" id="">
+                                    <option value="">選擇屬性</option>
+                                    <option value="">尺寸</option>
+                                  </select>
+                                  <select name="" id="">
+                                    <option value="">選擇分群</option>
+                                    <option value="">鞋碼</option>
+                                  </select>
+                                  <a>挑選內容<b>(10)</b></a>
+                                  <span href="javascript:void(0)">清空</span>
+                                  <div class="thresholdControl">
+                                    <span class="addBtn"></span>
+                                    <span class="delBtn"></span>
+                                  </div>
+                                </li>
+                                <li>
+                                  <select>
+                                    <option value="">選擇屬性</option>
+                                    <option value="">尺寸</option>
+                                  </select>
+                                  <select>
+                                    <option value="">選擇分群</option>
+                                    <option value="">鞋碼</option>
+                                  </select>
+                                  <a>挑選內容<b>(10)</b></a>
+                                  <span href="javascript:void(0)">清空</span>
+                                  <div class="thresholdControl">
+                                    <span class="addBtn"></span>
+                                    <span class="delBtn"></span>
+                                  </div>
+                                </li>
+                              </ul>
+                            </td>
+                          </tr>
+                        </table>
+                      </dd>
+                      <dt>
+                        <h4>
+                          系統撈品結果<span
+                            >套用條件後更新結果，撈品數量上限 5000 品。<br />
+                            需按暫存或送出才會保存更新結果。</span
+                          >
+                        </h4>
+                        <button>套用條件</button>
+                        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                          <tr class="searchResult">
+                            <td colspan="2">
+                              目前共 <i>1500</i> 件符合設定條件。
+                              <b>查看商品列表</b>
+                            </td>
+                          </tr>
+                          <tr class="topText">
+                            <td colspan="2">
+                              <b
+                                >「家電>大型家電」、「家電>生活家電」「家電>大型家電」、「家電>生活家電」「家電>大型家電」、「家電>生活家電」「家電>大型家電」、「家電>生活家電」「家電>大型家電」、「家電>生活家電」</b
+                              >中的商品(<span>展開</span>)，
+                            </td>
+                          </tr>
+                          <tr>
+                            <th><i>且</i> 關鍵字包含</th>
+                            <td>「<b>冰箱、冷凍櫃</b>」，</td>
+                          </tr>
+                          <tr>
+                            <th><i>且</i> 品牌包含</th>
+                            <td>
+                              「<b
+                                >Phlllps 飛利浦、SAMPO 聲寶、Phlllps 飛利浦、SAMPO 聲寶、Phlllps 飛利浦、SAMPO
+                                聲寶、Phlllps 飛利浦、SAMPO 聲寶</b
+                              >
+                              (<span>展開</span>)」，
+                            </td>
+                          </tr>
+                          <tr>
+                            <th><i>且</i> 屬性包含</th>
+                            <td>「<b>容量-冰箱:600L、800L</b>」，</td>
+                          </tr>
+                          <tr>
+                            <th><i>且</i> 屬性包含</th>
+                            <td>「<b>類型-冰箱:變頻、定頻</b>」，</td>
+                          </tr>
+                        </table>
+                      </dt>
+                    </dl>
+                  </div>
+
+                  <!-- 滿件滿額出貨 -->
+                  <div class="innerArea" id="supplierCont2" class="d-none">
+                    <!-- 滿件滿額頁籤 -->
+                    <div class="tabArea">
+                      <ul>
+                        <li class="tabType1">
+                          滿件滿額贈
+                          <span class="toolTip"
+                            >?<span class="tipTxt"
+                              >顧客購買達指定件數或金額，即贈送指定贈品，單一門檻贈送無上限，贈品庫存無量即不再贈送。</span
+                            ></span
+                          >
+                        </li>
+                        <li class="tabType2 selected">
+                          滿件滿額出貨
+                          <span class="toolTip">?<span class="tipTxt">顧客購買達指定件數或金額，即出貨。</span></span>
+                        </li>
+                      </ul>
+                    </div>
+                    <div style="line-height: 4">設定活動說明</div>
+                    <table class="editActTable" width="100%" border="0" cellpadding="0" cellspacing="0">
+                      <tbody>
+                        <tr>
+                          <th width="10%" class="required">活動名稱：</th>
+                          <td>
+                            <input type="text" size="70" maxlength="20" placeholder="限20字" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <th width="10%">備註：</th>
+                          <td colspan="3">
+                            <input
+                              type="text"
+                              size="70"
+                              maxlength="50"
+                              placeholder="限50字，非必填，內容不會於前台顯示"
+                            />
+                          </td>
+                        </tr>
+                        <tr>
+                          <th width="10%" class="required">開始日期：</th>
+                          <td>
+                            <input
+                              type="date"
+                              size="10"
+                              maxlength="10"
+                              name="fr_date"
+                              id="fr_date3"
+                              class="fixtable"
+                              onclick="Calendar_D_New(this)"
+                              placeholder="2025/09/30"
+                            />
+                            <input
+                              type="text"
+                              name="fr_hh"
+                              id="fr_hh3"
+                              size="2"
+                              maxlength="2"
+                              placeholder="00"
+                              value="00"
+                            />
+                            :
+                            <input
+                              type="text"
+                              name="fr_mm"
+                              id="fr_mm3"
+                              size="2"
+                              maxlength="2"
+                              placeholder="00"
+                              value="00"
+                            />
+                            :00
+                          </td>
+                        </tr>
+                        <tr>
+                          <th width="10%" class="required">結束日期：</th>
+                          <td>
+                            <input
+                              type="date"
+                              size="10"
+                              maxlength="10"
+                              name="to_date"
+                              id="to_date3"
+                              class="fixtable"
+                              onclick="Calendar_D_New(this)"
+                              placeholder="2025/09/30"
+                            />
+                            <input
+                              type="text"
+                              name="to_hh"
+                              id="to_hh3"
+                              size="2"
+                              maxlength="2"
+                              placeholder="23"
+                              value="23"
+                            />
+                            :
+                            <input
+                              type="text"
+                              name="to_mm"
+                              id="to_mm3"
+                              size="2"
+                              maxlength="2"
+                              placeholder="59"
+                              value="59"
+                            />
+                            :59
+                          </td>
+                        </tr>
+                        <tr>
+                          <th width="10%">商品倉別：</th>
+                          <td colspan="3">
+                            <label class="disabled"> <input type="radio" checked="true" disabled="" />供應商倉 </label>
+                          </td>
+                        </tr>
+                        <!-- 出貨門檻 -->
+                        <tr>
+                          <th width="10%">出貨門檻：</th>
+                          <td colspan="3">
+                            <label>
+                              <input name="goodsTypes" type="radio" />滿
+                              <input type="text" placeholder="請輸入件數" /> 件以上可出貨
+                            </label>
+                            <label>
+                              <input name="goodsTypes" type="radio" />滿
+                              <input type="text" placeholder="請輸入金額" /> 元以上可出貨
+                            </label>
+                          </td>
+                        </tr>
+                        <!-- 優惠門檻 -->
+                        <tr>
+                          <th width="10%">優惠門檻：</th>
+                          <td colspan="3">
+                            <label> <input name="activityTypes" type="radio" />有 </label>
+                            <label> <input name="activityTypes" type="radio" />無 </label>
+                            <b class="introBtn" id="promoBtn"></b>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th width="10%">優惠種類：</th>
+                          <td colspan="3">
+                            <label class="disabled"> <input type="radio" disabled="" checked="" />贈品 </label>
+                          </td>
+                        </tr>
+                        <!-- 優惠累加 -->
+                        <tr>
+                          <th width="10%">優惠累加：</th>
+                          <td colspan="3">
+                            <label> <input name="activityTypes" type="radio" />累加 </label>
+                            <label> <input name="activityTypes" type="radio" />不累加 </label>
+                          </td>
+                        </tr>
+                        <!-- Banner -->
+                        <tr>
+                          <th width="10%">大網Banner：</th>
+                          <td colspan="3">
+                            <label class="uploadFile">
+                              選擇檔案
+                              <input type="file" value="選擇檔案" />
+                            </label>
+                            <b class="introBtn" id="pcBanner"></b>
+                          </td>
+                        </tr>
+                        <tr class="collapseTr bannerFile">
+                          <th width="10%"></th>
+                          <td colspan="3">
+                            <b>123任選活動.png</b>
+                            <span id="pcReview">預覽</span><span>刪除</span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th width="10%">小網Banner：</th>
+                          <td colspan="3">
+                            <label class="uploadFile">
+                              選擇檔案
+                              <input type="file" value="選擇檔案" />
+                            </label>
+                            <b class="introBtn" id="mobBanner"></b>
+                          </td>
+                        </tr>
+                        <tr class="collapseTr bannerFile">
+                          <th width="10%"></th>
+                          <td colspan="3">
+                            <b>123任選活動.png</b>
+                            <span id="mobReview">預覽</span><span>刪除</span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th width="10%">活動賣場位置：</th>
+                          <td colspan="3">
+                            <i>發佈經PM審核後，將更新活動賣場位置</i>
+                          </td>
+                        </tr>
+                        <tr class="collapseTr">
+                          <th width="10%"></th>
+                          <td colspan="3">
+                            <a href="javascript:void(0)"
+                              >服飾 &gt; 男裝 &gt; 館長推薦 &gt; 【HADAY】冬季百搭品399出貨</a
+                            >
+                            <a href="javascript:void(0)"
+                              >品牌旗艦 &gt; HADAY &gt; 館長推薦 &gt; 【HADAY】冬季百搭品399出貨</a
+                            >
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 加入活動商品 -->
+          <div id="page_3" class="prdSettingArea">
+            <div class="curvy curvy-outside">
+              <em class="ctl"><b>•</b></em> <em class="ctr"><b>•</b></em> <em class="cbr"><b>•</b></em>
+              <em class="cbl"><b>•</b></em>
+              <div class="tipsA">
+                <div class="curvy curvy-inner">
+                  <em class="cbr d-inline"><b>•</b></em>
+                  <em class="cbl d-inline"><b>•</b></em>
+                  <em class="cbr d-inline"><b>•</b></em>
+                  <em class="cbl d-inline"><b>•</b></em>
+                  <h2>
+                    加入活動商品
+                    <a class="backBtn" href="javascript:void(0)">回上層</a>
+                  </h2>
+                  <div class="innerArea">
+                    <table class="prdsearchTable" width="100%" border="0" cellpadding="0" cellspacing="0">
+                      <tbody>
+                        <tr>
+                          <th width="10%">
+                            <input type="checkbox" value="1" checked="checked" />
+                            登錄日期：
+                          </th>
+                          <td>
+                            <input type="text" size="7" />
+                            ~
+                            <input type="text" size="7" />
+                          </td>
+                          <th width="10%">商品編號：</th>
+                          <td>
+                            <input type="text" size="16" />
+                          </td>
+                          <th>商品名稱：</th>
+                          <td><input type="text" placeholder="可輸入商品關鍵字" size="16" /></td>
+                        </tr>
+                        <tr>
+                          <th width="10%">銷售狀況：</th>
+                          <td>
+                            <select>
+                              <option value="" selected="selected">全部</option>
+                              <option value="">--</option>
+                            </select>
+                          </td>
+                          <th width="10%">商品分類：</th>
+                          <td colspan="4">
+                            <select>
+                              <option value="" selected="selected">所有分類</option>
+                              <option value="">--</option>
+                            </select>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th width="10%">售價區間：</th>
+                          <td>
+                            <input type="text" size="7" />
+                            ~
+                            <input type="text" size="7" />
+                          </td>
+                          <th width="10%">商品品牌：</th>
+                          <td colspan="4">
+                            <a>挑選品牌<b>(4)</b></a
+                            ><span>清空</span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th width="10%">實際倉別：</th>
+                          <td>
+                            <select>
+                              <option value="" selected="selected">供應商倉</option>
+                              <option value="">--</option>
+                            </select>
+                          </td>
+                          <th width="10%">商品屬性：</th>
+                          <td colspan="3">
+                            <select>
+                              <option value="" selected="selected">選擇屬性</option>
+                              <option value="">--</option>
+                            </select>
+                            <select>
+                              <option value="" selected="selected">選擇分群</option>
+                              <option value="">--</option>
+                            </select>
+                            <a>挑選內容<b>(4)</b></a
+                            ><span>清空</span>
+                          </td>
+                          <td>
+                            <a class="queryBtn" href="javascript:void(0)">查詢</a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <div class="manualAddBlcok">
+                      <dl>
+                        <dt>
+                          <p>共查詢到<b>3</b>筆商品</p>
+                        </dt>
+                        <dd>
+                          <p>已選擇<b>1</b>筆商品</p>
+                          <button class="active">置入商品</button>
+                        </dd>
+                      </dl>
+                      <table class="actInfoList" width="100%" border="0" cellpadding="0" cellspacing="0">
+                        <thead>
+                          <tr>
+                            <th width="80">商品編號</th>
+                            <th width="250">商品名稱</th>
+                            <th width="100">銷售狀況</th>
+                            <th width="80">進價</th>
+                            <th width="80">售價</th>
+                            <th width="80">活動價</th>
+                            <th width="100">超商取貨與否</th>
+                            <th width="100">SET品與否</th>
+                            <th width="80">倉別</th>
+                            <th width="100">負責MD</th>
+                            <th width="100">負責PM</th>
+                            <th width="30"><input type="checkBox" /></th>
+                          </tr>
+                        </thead>
+                        <tr>
+                          <td><p>1055552234</p></td>
+                          <td>
+                            <p>
+                              1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+                            </p>
+                          </td>
+                          <td><p>進行中</p></td>
+                          <td><p>15000</p></td>
+                          <td><p>18000</p></td>
+                          <td><p>14000</p></td>
+                          <td><p>否</p></td>
+                          <td><p>否</p></td>
+                          <td><p>供應商</p></td>
+                          <td><p>林momo</p></td>
+                          <td><p>楊momo</p></td>
+                          <td><input type="checkBox" checked="checked" /></td>
+                        </tr>
+                        <tr>
+                          <td><p>1055552234</p></td>
+                          <td><p>1111</p></td>
+                          <td><p class="alterTxt">暫時中斷</p></td>
+                          <td><p>15000</p></td>
+                          <td><p>18000</p></td>
+                          <td><p>14000</p></td>
+                          <td><p>否</p></td>
+                          <td><p>否</p></td>
+                          <td><p>供應商</p></td>
+                          <td><p>林momo</p></td>
+                          <td><p>楊momo</p></td>
+                          <td><input type="checkBox" /></td>
+                        </tr>
+                        <tr>
+                          <td><p>1055552234</p></td>
+                          <td><p>1111</p></td>
+                          <td><p>進行中</p></td>
+                          <td><p>15000</p></td>
+                          <td><p>18000</p></td>
+                          <td><p>14000</p></td>
+                          <td><p>否</p></td>
+                          <td><p>否</p></td>
+                          <td><p>供應商</p></td>
+                          <td><p>林momo</p></td>
+                          <td><p>楊momo</p></td>
+                          <td><input type="checkBox" /></td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 置入商品 -->
+          <div id="page_4" class="prdEditEvent" style="display: none">
+            <div class="curvy curvy-outside">
+              <em class="ctl"><b>•</b></em> <em class="ctr"><b>•</b></em> <em class="cbr"><b>•</b></em>
+              <em class="cbl"><b>•</b></em>
+              <div class="tipsA">
+                <div class="curvy curvy-inner">
+                  <em class="cbr d-inline"><b>•</b></em>
+                  <em class="cbl d-inline"><b>•</b></em>
+                  <em class="cbr d-inline"><b>•</b></em>
+                  <em class="cbl d-inline"><b>•</b></em>
+                  <h2>
+                    編輯活動贈品
+                    <a class="backBtn" href="javascript:void(0)">回上層</a>
+                    <span class="notice"
+                      >*商品名稱置入規則：必須 &lt;= 12個字元才可置入商品 1 個中文字 = 2 個字元;
+                      1個半形英文\標點\数字=1個字元</span
+                    >
+                  </h2>
+                  <div class="innerArea">
+                    <div class="manualAddBlcok">
+                      <dl>
+                        <dt>
+                          <p>共置入<b>3</b>筆商品</p>
+                        </dt>
+                        <dd>
+                          <p>已選擇<b>1</b>筆商品</p>
+                          <button class="active">刪除商品</button>
+                        </dd>
+                      </dl>
+                      <table class="actInfoList" width="100%" border="0" cellpadding="0" cellspacing="0">
+                        <thead>
+                          <tr>
+                            <th width="80"><p>商品編號</p></th>
+                            <th><p>商品名稱</p></th>
+                            <th width="120"><p>銷售狀況</p></th>
+                            <th width="120"><p>超商取貨與否</p></th>
+                            <th width="120"><p>SET品與否</p></th>
+                            <th width="80"><p>倉別</p></th>
+                            <th width="120"><p>負責MD</p></th>
+                            <th width="120"><p>負責PM</p></th>
+                            <th width="30"><input type="checkBox" /></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td><p>1000064667</p></td>
+                            <td>
+                              <input
+                                type="text"
+                                class="editEventInput"
+                                maxlength="20"
+                                name=""
+                                id=""
+                                value="贈Ｔ甲配（Ｔ）"
+                              />
+                            </td>
+                            <td><p>是</p></td>
+                            <td><p>否</p></td>
+                            <td><p>供應商</p></td>
+                            <td><p>王OO</p></td>
+                            <td><p>黃OO</p></td>
+                            <td><p>王OO</p></td>
+                            <td><input type="checkBox" /></td>
+                          </tr>
+                          <tr>
+                            <td><p>1000064667</p></td>
+                            <td>
+                              <input
+                                class="editEventInput erro"
+                                type="text"
+                                maxlength="20"
+                                name=""
+                                id=""
+                                value="贈Ｔ甲配（Ｔ）"
+                              />
+                            </td>
+                            <td><p>是</p></td>
+                            <td><p>否</p></td>
+                            <td><p>供應商</p></td>
+                            <td><p>王OO</p></td>
+                            <td><p>黃OO</p></td>
+                            <td><p>王OO</p></td>
+                            <td><input type="checkBox" /></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 贈品門檻說明 Modal -->
+    <div class="modal fade styleD1214-modal" id="thresholdModal" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header border-0">
+            <h5 class="modal-title">贈品門檻說明</h5>
+          </div>
+
+          <div class="modal-body">
+            <ul class="introbox">
+              <li>
+                <b>1. 設定單一門檻：</b>
+                <p class="ps-3 mb-0">採累加計算。當達門檻倍數時，優惠以倍數計算。</p>
+                <div class="example">
+                  <span class="me-1">贈品</span> e.g. 設定滿 $1,000 送 "贈品A"，商品售價 $2,300 → 贈 2 個
+                </div>
+                <div class="example">
+                  <span class="me-1">mo 點</span> e.g. 設定滿 $1,000 送 100 mo 點 → 贈 200 mo 點
+                </div>
+              </li>
+
+              <li>
+                <b>2. 設定多門檻：</b>
+                <p class="ps-3 mb-0">設定多門檻：活動採不累加計算。(同一門檻僅會提供一次優惠)</p>
+                <div class="example example-highlight">
+                  <span class="tag me-1">贈品</span>
+                  <span class="text">
+                    e.g. 設定滿 $1,000 送 "贈品A"、滿 $2,000 送 "贈品B"，商品售價 $2300，則只會送 1 個 "贈品B"
+                  </span>
+                </div>
+                <div class="example"><span class="me-1">mo 點</span>僅可設定單門檻"</div>
+              </li>
+
+              <li>
+                <b>3. 滿額 + 滿件：</b>
+                <p class="ps-3">預設為不累加計算，且僅能設定單一門檻。</p>
+              </li>
+
+              <li>
+                <b>4. 同時購買多個主商品：</b>
+                <p class="ps-3 mb-0">件數(或金額)門檻以加總方式計算，未參與活動商品不列入計算。</p>
+                <div class="example">
+                  e.g. 活動門檻：滿 $1,000 送 "贈品A"、滿 $2,000 送 "贈品B" ，消費購者買： 活動品A $900 + 活動品B $600 +
+                  其他商品 $8,000。 <br />贈品的計算方式為： 活動品A $900 + 活動品B $600 = $1,500，因此僅贈送 "贈品A"
+                </div>
+              </li>
+
+              <li>
+                <b>5. 每一個活動，最多可設定 5 個門檻，每一個門檻，最多設定 5 個贈品。</b>
+              </li>
+
+              <li>
+                <b>6. 主商品與贈品須為同倉別，才可綁定活動。</b>
+                <div class="example">
+                  e.g. <br />
+                  供應商倉+供應商倉 → 可綁<br />
+                  林口三倉+林口三倉 → 可綁<br />
+                  供應商倉+林口三倉 → 不可綁<br />
+                  林口三倉+DC1(自) → 不可綁
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Footer -->
+          <div class="modal-footer">
+            <button class="btn confirm-btn" data-bs-dismiss="modal">了解</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 確認發佈 Modal -->
+    <div class="modal fade styleD1214-modal" id="publishModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-small">
+        <div class="modal-content">
+          <div class="modal-header border-0">
+            <h5 class="modal-title fw-bold">活動將發佈</h5>
+          </div>
+          <div class="modal-body">
+            <!-- 確認發佈後，將預扣此活動的 mo 點金額。<br />
+            預扣餘額將在活動結束且 mo 點全數歸戶後，退還至您的可用 mo 點內。 -->
+          </div>
+          <div class="modal-footer border-0">
+            <button class="btn btn-cancel" data-bs-dismiss="modal">取消</button>
+            <button id="saveDraftBtn" class="btn btn-outline-primary btn-outline-primary-custom btn-lg mx-2">
+              改為暫存
+            </button>
+            <button id="publishBtn" class="btn btn-primary btn-primary-custom btn-lg">確認發佈</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- mo 點上限提醒 Modal -->
+    <div class="modal fade styleD1214-alert" id="globalAlertModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content mb-auto bg-white">
+          <div class="modal-header">
+            <h7 class="modal-title alert-title"></h7>
+          </div>
+          <div class="modal-body alert-body"></div>
+          <div class="modal-footer">
+            <button class="btn btn-primary" data-bs-dismiss="modal">確定</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 新增商品 Modal -->
+    <div class="modal fade right-half styleD1214-modal" id="productModal" tabindex="-1">
+      <div class="modal-dialog modal-xl modal-dialog-scrollable">
+        <div class="modal-content">
+          <!-- 置品方式 -->
+          <div class="mt-3 d-flex align-items-center lh-lg">
+            <span class="ms-4">
+              <span class="text-danger">*</span>
+              置品方式
+            </span>
+
+            <div class="form-check ms-3">
+              <input class="form-check-input" type="radio" name="placementType" value="system" checked />
+              <label class="form-check-label">系統置品</label>
+            </div>
+
+            <div class="form-check ms-3">
+              <input class="form-check-input" type="radio" name="placementType" value="manual" />
+              <label class="form-check-label">人工置品</label>
+            </div>
+          </div>
+
+          <div class="d-flex align-items-center ms-3 manual-text">
+            ※ 設定方式僅能擇一，活動將以最後存檔的設定方式置入商品
+          </div>
+
+          <!-- 設定商品 -->
+          <div class="mt-4 d-flex align-items-center lh-lg d-none" id="productSetting">
+            <span class="ms-4">
+              <span class="text-danger">*</span>
+              設定商品
+            </span>
+
+            <div class="form-check ms-3">
+              <input class="form-check-input" type="radio" name="productSettingType" value="manualSelect" checked />
+              <label class="form-check-label">手動挑選</label>
+            </div>
+
+            <div class="form-check ms-3">
+              <input class="form-check-input" type="radio" name="productSettingType" value="batchImport" />
+              <label class="form-check-label">批次匯入</label>
+            </div>
+          </div>
+          <div class="mt-3 d-flex align-items-center lh-lg">
+            <div class="batchImportText d-none">
+              <div class="d-flex mt-1 mb-4">
+                <div class="label-text">實際倉別</div>
+                <div class="label-text">供應商倉</div>
+                <button type="button" class="btn btn-primary-custom ms-3 btn-import-file">選擇檔案</button>
+                <input type="file" id="xlsFileInput" accept=".xls" class="d-none" />
+              </div>
+
+              <div class="d-flex mt-3 batch-text lh-base">
+                ※ 挑選主商品條件，請先選擇欲匯入的品號所屬倉別。<br />
+                ※ 需與贈品同倉別。<br />
+                ※ 匯入檔案格式為.xls，A欄填入主商品品號即可。<span id="downloadExample">(下載匯入範例)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- body -->
+          <div class="modal-body overflow-y-hidden">
+            <div id="productSearchArea">
+              <div class="product-search-box">
+                <!-- 搜尋區 -->
+                <div class="mt-3 d-flex align-items-center lh-lg" id="sort-rule">
+                  <span class="sort-title">前台展示排序規則</span>
+
+                  <div class="form-check ms-3">
+                    <input class="form-check-input" type="radio" name="sortRule" value="sales" checked />
+                    <label class="form-check-label"> 按最高銷售量 </label>
+                  </div>
+
+                  <div class="form-check ms-3">
+                    <input class="form-check-input" type="radio" name="sortRule" value="newest" />
+                    <label class="form-check-label"> 按最新上架 </label>
+                  </div>
+                </div>
+
+                <div class="mt-3 text-end">
+                  <button class="btn btn-outline-primary btn-outline-primary-custom btn-clear-all">
+                    <span class="svg-icon refresh-icon"></span>
+                    清空
+                  </button>
+                  <button class="btn btn-primary btn-primary-custom search-btn ms-2">
+                    <span class="svg-icon search-icon"></span>
+                    搜尋
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 請先設定條件 -->
+            <div class="search-first text-center mt-5 mb-5">
+              <img class="" src="/momoscm/assets/search-first-CG9Vck4l.png" />
+              <span class="d-block mt-2">請先設定條件</span>
+            </div>
+
+            <!-- 搜尋無資料 -->
+            <div class="no-data text-center mt-5 mb-5 d-none">
+              <img class="" src="data:image/svg+xml,%3csvg%20width='132'%20height='155'%20viewBox='0%200%20132%20155'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M66.9324%20119.113L85.5505%2051.4693L117.172%2079.4101L98.9814%20145.499L66.9324%20119.113Z'%20fill='url(%23paint0_linear_3211_9091)'/%3e%3cpath%20d='M66.7151%20119.887L85.5472%2051.4659L26.4348%2044.3964L7.6027%20112.817L66.7151%20119.887Z'%20fill='url(%23paint1_linear_3211_9091)'/%3e%3cpath%20d='M36.5441%20138.348L55.1622%2070.7046L23.6482%2042.375L4.92309%20110.407L36.5441%20138.348Z'%20fill='url(%23paint2_linear_3211_9091)'/%3e%3cpath%20d='M36.5451%20138.347L54.9492%2071.4808L117.172%2079.4062L98.7675%20146.272L36.5451%20138.347Z'%20fill='url(%23paint3_linear_3211_9091)'/%3e%3cpath%20d='M82.7376%2013.0549L75.74%2011.1289L107.361%2039.0697L114.359%2040.9958L82.7376%2013.0549Z'%20fill='%23BEC5C5'/%3e%3cg%20filter='url(%23filter0_i_3211_9091)'%3e%3cpath%20d='M75.6166%2011.0939L23.5403%2042.7632L55.1613%2070.704L107.362%2039.0689L75.6166%2011.0939Z'%20fill='%23D2D6D6'/%3e%3c/g%3e%3cdefs%3e%3cfilter%20id='filter0_i_3211_9091'%20x='23.5408'%20y='11.0938'%20width='83.8203'%20height='59.6094'%20filterUnits='userSpaceOnUse'%20color-interpolation-filters='sRGB'%3e%3cfeFlood%20flood-opacity='0'%20result='BackgroundImageFix'/%3e%3cfeBlend%20mode='normal'%20in='SourceGraphic'%20in2='BackgroundImageFix'%20result='shape'/%3e%3cfeColorMatrix%20in='SourceAlpha'%20type='matrix'%20values='0%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%20127%200'%20result='hardAlpha'/%3e%3cfeOffset%20dx='-0.585789'/%3e%3cfeComposite%20in2='hardAlpha'%20operator='arithmetic'%20k2='-1'%20k3='1'/%3e%3cfeColorMatrix%20type='matrix'%20values='0%200%200%200%201%200%200%200%200%201%200%200%200%200%201%200%200%200%200.3%200'/%3e%3cfeBlend%20mode='normal'%20in2='shape'%20result='effect1_innerShadow_3211_9091'/%3e%3c/filter%3e%3clinearGradient%20id='paint0_linear_3211_9091'%20x1='107.589'%20y1='33.6972'%20x2='92.7439'%20y2='90.6696'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20stop-color='%23F3F3F3'/%3e%3cstop%20offset='1'%20stop-color='%23737A7A'/%3e%3c/linearGradient%3e%3clinearGradient%20id='paint1_linear_3211_9091'%20x1='57.168'%20y1='43.6548'%20x2='42.7907'%20y2='97.4101'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20stop-color='%23D6D6D6'/%3e%3cstop%20offset='1'%20stop-color='%236B7474'/%3e%3c/linearGradient%3e%3clinearGradient%20id='paint2_linear_3211_9091'%20x1='47.4612'%20y1='10.3877'%20x2='20.2664'%20y2='127.595'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20stop-color='%23D2D6D6'/%3e%3cstop%20offset='1'%20stop-color='%23B3BABA'/%3e%3c/linearGradient%3e%3clinearGradient%20id='paint3_linear_3211_9091'%20x1='87.2375'%20y1='71.1672'%20x2='66.4793'%20y2='146.586'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20stop-color='%23D2D6D6'/%3e%3cstop%20offset='1'%20stop-color='%23D2D6D6'/%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e" />
+              <span class="d-block mt-5">無符合商品，請重新設定範圍</span>
+            </div>
+
+            <!-- 搜尋結果 -->
+            <div class="had-data d-none">
+              <div class="d-flex py-3 px-0 manual-text">
+                ※ 套用條件後更新結果，置品數量上限 5000 品。需按暫存或送出才會保存更新結果。
+              </div>
+              <div class="product-search-box d-flex">
+                「手機 >智慧型手機>Android」中的商品，<br />
+                且品牌包含「QC_YAP 要QC品牌」，目前共 5 件符合設定條件
+                <button class="btn btn-outline-primary btn-outline-primary-custom btn-custom-sm download-btn ms-auto">
+                  下載商品列表
+                </button>
+              </div>
+            </div>
+
+            <!-- 批次匯入結果 -->
+            <div class="batchImportResult d-none">
+              <div class="batch-content d-flex">
+                <h6>匯入結果</h6>
+                <div>共計 <span class="text-primary">5</span> 個商品匯入成功</div>
+                <div>共計 <span class="text-danger">11</span> 個商品匯入失敗</div>
+                <button class="btn btn-outline-primary btn-outline-primary-custom ms-auto">下載失敗結果檔</button>
+              </div>
+            </div>
+
+            <!-- 商品結果 -->
+            <div id="productResult" class="d-none">
+              <div class="d-flex py-3 px-0 mt-3 manual-text">
+                ※ 套用條件後更新結果，置品數量上限 5000 品。需按暫存或送出才會保存更新結果。
+              </div>
+              <div class="product-result">
+                <div class="product-table-wrapper mb-4">
+                  <table class="table align-middle product-table">
+                    <thead>
+                      <tr>
+                        <th class="text-center checkbox-col" width="44">
+                          <input type="checkbox" id="product-check-all" class="product-check-all align-middle" />
+                        </th>
+                        <th class="text-start" width="108">商品編號</th>
+                        <th class="text-start" width="115">商品名稱</th>
+                        <th class="text-center" width="74">銷售狀況</th>
+                        <th class="text-end" width="92">進價</th>
+                        <th class="text-end" width="92">售價</th>
+                        <th class="text-start" width="85">超商取貨</th>
+                        <th class="text-start" width="57">Set品</th>
+                        <th class="text-center" width="59">倉別</th>
+                        <th class="text-start" width="90">負責 MD</th>
+                        <th class="text-start" width="90">負責企劃</th>
+                      </tr>
+                    </thead>
+
+                    <tbody id="productTableBody"></tbody>
+                  </table>
+                </div>
+                <div class="d-flex align-items-center mt-3 page-text">
+                  <!-- 左 -->
+                  <div>
+                    <button class="btn btn-select-all btn-select-all-toggle d-none">全選</button>
+                  </div>
+
+                  <!-- 右 -->
+                  <div class="d-flex align-items-center page-text position-absolute me-3">
+                    <!-- 商品數量 -->
+                    <div class="text-nowrap" style="color: #343a40; font-size: 14px">
+                      共 <span id="totalCount">0</span> 筆
+                    </div>
+
+                    <!-- 分頁 -->
+                    <ul id="pagination" class="pagination pagination-sm mb-0"></ul>
+
+                    <!-- 每頁筆數 -->
+                    <select
+                      id="pageSize"
+                      class="form-select form-select-sm text-center"
+                      style="
+                        -webkit-appearance: none;
+                        -moz-appearance: none;
+                        appearance: none;
+                        background: transparent;
+                        padding-right: 0.5rem;
+                        background-color: #f3f4f6;
+                      "
+                    >
+                      <option value="10">10筆/頁</option>
+                      <option value="20">20筆/頁</option>
+                      <option value="50">50筆/頁</option>
+                      <option value="100" selected="">100筆/頁</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- footer -->
+          <div class="modal-footer justify-content-end">
+            <button class="btn btn-outline-primary btn-outline-primary-custom" data-bs-dismiss="modal">
+              取消並關閉
+            </button>
+            <button id="applyProductBtn" class="btn btn-primary btn-primary-custom" disabled>套用商品</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./D1214_files/js/promo-selector.js"></script>
+
+    <script>
+      fetch('category-selector.html')
+        .then((response) => response.text())
+        .then((data) => {
+          const elements = document.querySelectorAll('.categorySelector')
+          elements.forEach((el) => {
+            el.innerHTML = data
+
+            // 每一個都要初始化
+            initMenu(el)
+          })
+        })
+        .catch((error) => {
+          console.error('載入分類選擇器時發生錯誤:', error)
+        })
+    </script>
+  </body>
+</html>

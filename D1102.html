@@ -1,0 +1,212 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>:: Scm Center ::</title>
+    <link rel="icon" href="/momoscm/assets/icon-DnKfFtDw.png" type="image/ico">
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script language="javascript" type="text/javascript" src="./D1101_files/jquery-1.7.2.min.js"></script>
+    <link rel="stylesheet" crossorigin href="/momoscm/assets/D1102-CRdhkOLY.css">
+    <link rel="stylesheet" crossorigin href="/momoscm/assets/bootstrap-DedGxb-O.css">
+    <link rel="stylesheet" crossorigin href="/momoscm/assets/notify-DCRyhBfs.css">
+    <link rel="stylesheet" crossorigin href="/momoscm/assets/utilities-DnkMqMQv.css">
+    <link rel="stylesheet" crossorigin href="/momoscm/assets/headerWrap-B-d797h8.css">
+  </head>
+
+  <body>
+    <script language="javascript" type="text/javascript" src="headerWrap.js"></script>
+
+    <div class="contentArea wide">
+      <table class="full">
+        <tbody>
+          <tr>
+            <td class="nowrap">
+              <dl class="nav">
+                <dt><a href="javascript:goJump('home')">首頁</a></dt>
+                <dd class="first">商品</dd>
+                <dd class="next show">商品管理</dd>
+                <dd class="last show">[D1102]商品提報管理(批次)</dd>
+                <dd class="video" style="display: none" id="theVideo"><a>影音教學</a></dd>
+              </dl>
+            </td>
+            <td>
+              <div class="videoPic show" style="vertical-align: middle; display: inline-block"></div>
+              <div class="media" style="vertical-align: middle; display: inline-block">
+                <audio id="audio" src="https://scmentp.momoshop.com.tw/scmItemVideo/getScmItemVideo.scm?path=videoupload/_MP3" controls="" style="height: 30px; display: none" controlslist="nodownload" oncontextmenu="return false"></audio>
+              </div>
+            </td>
+            <td id="addAppArea"><input type="checkbox" name="addApp" id="addApp" style="vertical-align: middle" checked="checked" />加入常用程式集</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="contentArea wide">
+      <div class="topTitle">
+        <div>規範與費用</div>
+        <div>
+          <!-- 同意時間：2024-05-22 17:20: 同意人：iOSDevelop002 -->
+          同意時間：<span id="agreeTime"></span>　 同意人：iOSDevelop002
+          <i><input type="checkbox" id="toggle" class="toggle-input" /></i>
+        </div>
+      </div>
+      <div id="topContent">
+        <div><input type="checkbox" class="agree-check align-text-bottom">入庫規範及費用：大材商品<span>入庫規範及費用</span>(材積S171-300、100公斤以下)、大型家電商品 <span>入庫範例及費用</span>、低溫商品 <span>入庫規範及費用</span></div>
+        <div><input type="checkbox" class="agree-check align-text-bottom">寄倉規範：<span>寄倉規範</span>、低溫商品<span>寄倉規範、網路寄倉分攤運費材積費用一覽表</span></div>
+        <div><input type="checkbox" class="agree-check align-text-bottom">其他：約定送貨<span>規範與罰則</span>、商品特色(專推) <span>開放外網使用條款</span>、安裝商品<span>安裝費用一覽表</span></div>
+        <button class="btn" id="agreeBtn" disabled>我已閱讀且同意</button>
+      </div>
+
+      <div class="innerArea">
+        <div class="step step1">
+          <div class="title">步驟 1. 下載模版<span class="spanTitle">編碼對照表</span></div>
+          <div class="content">
+            <div>請先下載 EXCEL 範例，依提示說明填寫內容。</div>
+            <div>再至【步驟2.上傳資料】。</div>
+            <button class="btn" id="downloadBtn" disabled>下載EXCEL範例</button>
+          </div>
+        </div>
+        <div class="step step2">
+          <div class="title">
+            步驟 2. 上傳資料
+            <i><input type="checkbox" id="toggle2" class="toggle-input" /></i>
+          </div>
+          <div class="content">
+            <div>請將 EXCEL 檔案與所有圖檔壓縮成一個ZIP檔後上傳。</div>
+            <div>上傳後，請至【步驟3. 上傳結果】查看上傳商品結果及補充資料。</div>
+            <input type="file" id="uploadInput" accept=".zip" style="display: none" />
+            <button class="btn btn-white" id="uploadBtn" disabled>上傳檔案</button>
+          </div>
+        </div>
+        <div class="step step3">
+          <div class="title">步驟 3. 上傳結果</div>
+          <div class="content">
+            <div>[失敗商品數] 、[待補充屬性商品數]、[待補充資料商品數] 請點按數字下載檔案，填寫資料後上傳。</div>
+            <div>[成功送審商品數] 即為資料皆填寫完整且正確，已自動申請送審。可至【D1101商品提報管理(單筆) 】查看，待momo審核成功即上架商品並產生正式商品編號。</div>
+            <span>。 為符合政府法令標示規定，屬食品、保健食品、乙類成藥、醫療器材，或需環境用藥許可字號之商品，請依規定以中文填寫相關資訊，並於「待補充資料」下載的 EXCEL 檔案中補充內容後重新上傳（環境用藥需同時上傳授權書）。</span>
+            <table id="uploadTable">
+              <thead>
+                <tr>
+                  <td>上傳時間</td>
+                  <td>上傳檔案名稱</td>
+                  <td>上傳總商品數</td>
+                  <td>
+                    失敗商品數
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect x="0.5" y="0.5" width="13" height="13" rx="6.5" stroke="#9E9E9E" />
+                      <path d="M7.00057 3C6.34584 3 5.81508 3.53076 5.81508 4.18548C5.81508 4.84021 6.34584 5.37097 7.00057 5.37097C7.65529 5.37097 8.18605 4.84021 8.18605 4.18548C8.18605 3.53076 7.65529 3 7.00057 3Z" fill="#9E9E9E" />
+                      <path d="M8.58121 10.1694V9.49194C8.58121 9.30488 8.42955 9.15323 8.2425 9.15323H7.90379V6.33065C7.90379 6.14359 7.75214 5.99194 7.56508 5.99194H5.75863C5.57158 5.99194 5.41992 6.14359 5.41992 6.33065V7.00806C5.41992 7.19512 5.57158 7.34677 5.75863 7.34677H6.09734V9.15323H5.75863C5.57158 9.15323 5.41992 9.30488 5.41992 9.49194V10.1694C5.41992 10.3564 5.57158 10.5081 5.75863 10.5081H8.2425C8.42955 10.5081 8.58121 10.3564 8.58121 10.1694Z" fill="#9E9E9E" />
+                    </svg>
+                  </td>
+                  <td>
+                    待補充屬性商品數
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect x="0.5" y="0.5" width="13" height="13" rx="6.5" stroke="#9E9E9E" />
+                      <path d="M7.00057 3C6.34584 3 5.81508 3.53076 5.81508 4.18548C5.81508 4.84021 6.34584 5.37097 7.00057 5.37097C7.65529 5.37097 8.18605 4.84021 8.18605 4.18548C8.18605 3.53076 7.65529 3 7.00057 3Z" fill="#9E9E9E" />
+                      <path d="M8.58121 10.1694V9.49194C8.58121 9.30488 8.42955 9.15323 8.2425 9.15323H7.90379V6.33065C7.90379 6.14359 7.75214 5.99194 7.56508 5.99194H5.75863C5.57158 5.99194 5.41992 6.14359 5.41992 6.33065V7.00806C5.41992 7.19512 5.57158 7.34677 5.75863 7.34677H6.09734V9.15323H5.75863C5.57158 9.15323 5.41992 9.30488 5.41992 9.49194V10.1694C5.41992 10.3564 5.57158 10.5081 5.75863 10.5081H8.2425C8.42955 10.5081 8.58121 10.3564 8.58121 10.1694Z" fill="#9E9E9E" />
+                    </svg>
+                  </td>
+                  <td>
+                    待補充資料商品數
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect x="0.5" y="0.5" width="13" height="13" rx="6.5" stroke="#9E9E9E" />
+                      <path d="M7.00057 3C6.34584 3 5.81508 3.53076 5.81508 4.18548C5.81508 4.84021 6.34584 5.37097 7.00057 5.37097C7.65529 5.37097 8.18605 4.84021 8.18605 4.18548C8.18605 3.53076 7.65529 3 7.00057 3Z" fill="#9E9E9E" />
+                      <path d="M8.58121 10.1694V9.49194C8.58121 9.30488 8.42955 9.15323 8.2425 9.15323H7.90379V6.33065C7.90379 6.14359 7.75214 5.99194 7.56508 5.99194H5.75863C5.57158 5.99194 5.41992 6.14359 5.41992 6.33065V7.00806C5.41992 7.19512 5.57158 7.34677 5.75863 7.34677H6.09734V9.15323H5.75863C5.57158 9.15323 5.41992 9.30488 5.41992 9.49194V10.1694C5.41992 10.3564 5.57158 10.5081 5.75863 10.5081H8.2425C8.42955 10.5081 8.58121 10.3564 8.58121 10.1694Z" fill="#9E9E9E" />
+                    </svg>
+                  </td>
+                  <td>
+                    成功送審商品數
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect x="0.5" y="0.5" width="13" height="13" rx="6.5" stroke="#9E9E9E" />
+                      <path d="M7.00057 3C6.34584 3 5.81508 3.53076 5.81508 4.18548C5.81508 4.84021 6.34584 5.37097 7.00057 5.37097C7.65529 5.37097 8.18605 4.84021 8.18605 4.18548C8.18605 3.53076 7.65529 3 7.00057 3Z" fill="#9E9E9E" />
+                      <path d="M8.58121 10.1694V9.49194C8.58121 9.30488 8.42955 9.15323 8.2425 9.15323H7.90379V6.33065C7.90379 6.14359 7.75214 5.99194 7.56508 5.99194H5.75863C5.57158 5.99194 5.41992 6.14359 5.41992 6.33065V7.00806C5.41992 7.19512 5.57158 7.34677 5.75863 7.34677H6.09734V9.15323H5.75863C5.57158 9.15323 5.41992 9.30488 5.41992 9.49194V10.1694C5.41992 10.3564 5.57158 10.5081 5.75863 10.5081H8.2425C8.42955 10.5081 8.58121 10.3564 8.58121 10.1694Z" fill="#9E9E9E" />
+                    </svg>
+                  </td>
+                  <td>作業</td>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- JS 動態塞資料 -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 窗口服務區塊 -->
+    <div class="bg-overlay" id="bgOverlay"></div>
+    <div class="showboxServicePersonnel" id="showboxServicePersonnel" style="left: 0; right: 0; top: 0; bottom: 0; margin: auto; width: 672px; height: 318px">
+      <p><a id="closeServiceBox" href="#">關閉</a></p>
+      <table border="0" cellspacing="0" cellpadding="0" width="100%">
+        <tbody>
+          <tr>
+            <th>服務窗口</th>
+            <th>聯絡人員</th>
+            <th>服務時間</th>
+          </tr>
+          <tr>
+            <td><b>廠服人員</b></td>
+            <td id="user_name" class="user_name">
+              <b><i class="phone"></i>致電廠服專線 (02)6600-7600</b><b class="indent">-訂單與系統操作問題：熊小姐/先生 00266@fmt.com.tw</b><b class="indent">-寄倉進貨/倉庫退貨問題：李小姐/先生 ydlee@fmt.com.tw</b><b><i class="messenge"></i><span class="mPlusMsg">M+ Messenger</span></b>
+            </td>
+            <td rowspan="1" align="center">
+              <b>09:00 - 18:00 週一到週六</b>
+              <b>(連續假期，另行公告)</b>
+            </td>
+          </tr>
+          <tr>
+            <td align="center"><b>帳務人員</b></td>
+            <td>
+              <span id="acc_user_name" class="acc_user_name"
+                ><b><i class="phone"></i>公司電話 (02)2162-6688 蔡小姐/先生 (9999)</b></span
+              >
+              <a class="style03btn" onclick="contactPersonOfReconciliation();">
+                <span class="leftbk">
+                  <span class="rightbk">
+                    <span class="centerbk">連絡對帳窗口</span>
+                  </span>
+                </span>
+              </a>
+            </td>
+            <td rowspan="2" align="center">
+              <b>09:00 - 18:00 週一到週五</b>
+            </td>
+          </tr>
+          <tr>
+            <td><b>業務窗口</b></td>
+            <td class="prompt" colspan="2">
+              <a class="style03btn" onclick="ue_xls_down_NEW('momo業務窗口快速引檔.pdf','/IndexServlet.do');" href="#">
+                <span class="leftbk">
+                  <span class="rightbk">
+                    <span class="centerbk">MD/企劃</span>
+                  </span>
+                </span>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+      const BASE_URL = 'https://scmentp.momoshop.com.tw/'
+
+      function topMenuFindForward(page) {
+        window.location.href = BASE_URL + page
+      }
+
+      // 顯示服務窗口
+      function getServicePersonnel() {
+        document.getElementById('showboxServicePersonnel').style.display = 'block'
+        document.getElementById('bgOverlay').style.display = 'block'
+      }
+      // 點擊關閉按鈕時隱藏窗口
+      document.getElementById('closeServiceBox').addEventListener('click', function (e) {
+        e.preventDefault() // 避免跳轉
+        document.getElementById('showboxServicePersonnel').style.display = 'none'
+        document.getElementById('bgOverlay').style.display = 'none'
+      })
+    </script>
+    <script language="javascript" type="text/javascript" src="D1102_files/js/batchUpload.js"></script>
+  </body>
+</html>

@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Q1101 問問</title>
+    <link rel="icon" href="/momoscm/assets/icon-DnKfFtDw.png" type="image/ico">
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://scm.momoshop.com.tw/common/css/scmBase.css?t=20200421">
+    <link rel="stylesheet" type="text/css" href="https://scm.momoshop.com.tw/common/css/scmBase2.css?t=20200225">
+    <link rel="stylesheet" type="text/css" href="https://scm.momoshop.com.tw/common/css/scm_w1220.css?t=20200102">
+    <script language="javascript" type="text/javascript"
+        src="https://scm.momoshop.com.tw/common/js/jquery-1.7.2.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://scm.momoshop.com.tw/common/css/scmBase.css?t=20200421">
+    <!-- <link rel="stylesheet" type="text/css" href="styleS.css"> -->
+    <script language="javascript" type="text/javascript" src="scmjq.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen"
+        href="https://scm.momoshop.com.tw/common/css/scmWidget.css?t=20200116">
+
+  <link rel="stylesheet" crossorigin href="/momoscm/assets/Q1101-Cvi8MkgR.css">
+  <link rel="stylesheet" crossorigin href="/momoscm/assets/bootstrap-DedGxb-O.css">
+  <link rel="stylesheet" crossorigin href="/momoscm/assets/scmbase-DSO4z_0v.css">
+  <link rel="stylesheet" crossorigin href="/momoscm/assets/headerWrap-B-d797h8.css">
+</head>
+
+<body class="w1220">
+    <script language="javascript" type="text/javascript" src="headerWrap.js"></script>
+    <!-- 路徑區塊 start -->
+    <div class="contentArea wide">
+        <table>
+            <tbody>
+                <tr>
+                    <td width="50%">
+                        <dl class="nav">
+                            <dt><a href="javascript:goJump('home');">首頁</a></dt>
+                            <dd class="first">銷售分析</dd>
+                            <dd class="last show">網路數據首頁</dd>
+                            <dd class="video" style="display:none" id="theVideo"><a>影音教學</a></dd>
+                        </dl>
+                    </td>
+                    <td>
+                    </td>
+                    <td id="marqueeArea" style="display: none;">
+                        <div id="abgne_marquee" style="">
+                        </div>
+                    </td>
+                    <td width="50%" id="addAppArea" align="right">
+                        <input type="checkbox" name="addApp" id="addApp" style="vertical-align: middle"
+                            checked="checked">加入常用程式集
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- 路徑區塊 end -->
+
+    <!-- 20230904 SCM Q1101 問問 -->
+    <div class="styleQ1101 container-fluid">
+        <div class="container">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label fw-bold" for="flexCheckDefault">
+                    本公司已詳閱並同意以下「問問」之管理及罰則規範：
+                </label>
+            </div>
+            <ol>
+                <li>消費者透過「問問」所詢問每則問題，甲方同意均應於<span class="text-danger">4小時內</span>完成回覆(時間不計例假日及國定假日全天；與平日18:00~09:00)。
+                </li>
+                <li>如有逾期回覆情形，同意乙方得依每則問答訊息，按則罰款新<span class="text-danger">台幣100元</span>，乙方並得逕自貨款中扣除。 </li>
+                <li>為維護問問回應品質，<span class="text-danger">連續2週回應率未達99%</span>，或<span
+                        class="text-danger">連續2週平均回應時間超過4小時</span>，將會自動關閉問問功能。(時間不計假日全天、平日18:00~09:00)</li>
+            </ol>
+        </div>
+
+        <div class="container">
+            <div class="row g-1">
+                <div class="col-5">
+                    <div class="card border-secondary-subtle">
+                        
+                        <!-- 查詢欄位區塊 -->
+                        <div class="card-body p-2 border-bottom border-secondary-subtle">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="row g-1 mb-1">
+                                        <label for="inputOrderNumber" class="col-4 text-end col-form-label">訂單編號</label>
+                                        <div class="col-8">
+                                            <input type="text" class="form-control form-control-sm" id="inputOrderNumber">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="row g-1 mb-1">
+                                        <label for="inputOrderName" class="col-4 text-end col-form-label">訂購人姓名</label>
+                                        <div class="col-8">
+                                            <input type="text" class="form-control form-control-sm" id="inputOrderName">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="row g-1 mb-1">
+                                        <label for="inputProductsNumber" class="col-4 text-end col-form-label">品號</label>
+                                        <div class="col-8">
+                                            <input type="text" class="form-control form-control-sm" id="inputProductsNumber">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="tool-bar d-flex justify-content-end">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary me-1">取消</button>
+                                        <button type="button" class="btn btn-sm btn-primary">查詢</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-body p-0">
+                            
+                            <!-- 頁籤分類選單  -->
+                            <!-- (全部 /未讀 / 已讀 / 標記 / 超過4小時未回覆) -->
+                            <ul class="nav nav-underline qachat-search-bar border-bottom border-secondary-subtle px-3"
+                                id="myTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <!-- 選取樣式 active ， 此項目透過 Bootstrap JS 已處理 -->
+                                    <!-- data-bs-target="#all-tab-pane" aria-controls="all-tab-pane"  
+                                        2個項目是提供給下方頁籤面板使用，未使用到可以移除 -->
+                                    <!-- <span>(16)</span>
+                                        筆數部分已先行標籤分離，以利後續間隔與變更樣式處理   -->
+                                    <button class="nav-link active" id="all-tab" data-bs-toggle="tab"
+                                        data-bs-target="#all-tab-pane" type="button" role="tab"
+                                        aria-controls="all-tab-pane" aria-selected="true">全部<span>(16)</span></button>
+                                </li>
+                                
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="unread-tab" data-bs-toggle="tab"
+                                        data-bs-target="#unread-tab-pane" type="button" role="tab"
+                                        aria-controls="unread-tab-pane"
+                                        aria-selected="false">未讀<span>(4)</span></button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="read-tab" data-bs-toggle="tab"
+                                        data-bs-target="#read-tab-pane" type="button" role="tab"
+                                        aria-controls="read-tab-pane" aria-selected="false">已讀<span>(4)</span></button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="mark-tab" data-bs-toggle="tab"
+                                        data-bs-target="#mark-tab-pane" type="button" role="tab"
+                                        aria-controls="mark-tab-pane" aria-selected="false">標記<span>(4)</span></button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="no-reply-tab" data-bs-toggle="tab"
+                                        data-bs-target="#no-reply-tab-pane" type="button" role="tab"
+                                        aria-controls="no-reply-tab-pane"
+                                        aria-selected="false">超過4小時未回覆<span>(0)</span></button>
+                                </li>
+                            </ul>
+
+
+                            <!-- 對話列表  list-group -->
+                            <div class="list-group list-group-flush rounded-bottom overflow-y-auto qachat-list">
+                                <!-- 選取狀態請添加 active -->
+                                <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                                <div class="row g-0">
+                                    <div class="col-1 d-flex align-items-center">
+                                       <!-- 未釘選 icon-qachat-unmarked / 釘選 icon-qachat-mark -->
+                                        <i class="icon-qachat icon-qachat-mark flex-shrink-0"></i>
+                                    </div>
+                                    <div class="col-11">
+                                        <p class="mb-0 d-flex justify-content-between">
+                                            <span class="fs-6">蔡*莫</span>
+                                            <span class="text-body-tertiary">08/25</span>
+                                        </p>
+                                        <p class="mb-0 d-flex justify-content-between">
+                                            <span class="text-nowrap text-overflow pe-5">您好，我已收到另一項商品了,有問題會再發送訊息到問問，有問題會再發送訊息到問問</span>
+                                            <!-- 已讀後請移除下方標籤 -->
+                                            <span class="badge rounded-pill text-bg-primary">未讀</span>
+                                        </p>
+                                    </div>
+                                </div>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action">
+                                <div class="row g-0">
+                                    <div class="col-1 d-flex align-items-center"><i class="icon-qachat icon-qachat-mark flex-shrink-0"></i></div>
+                                    <div class="col-11">
+                                        <p class="mb-0 d-flex justify-content-between">
+                                            <span class="fs-6">蔡*莫</span><span class="text-body-tertiary">08/25</span>
+                                        </p>
+                                        <p class="mb-0 d-flex justify-content-between">
+                                            <span class="text-nowrap text-overflow pe-5">您好，我已收到另一項商品了,有問題會再發送訊息到問問，有問題會再發送訊息到問問</span>
+                                            <span class="badge rounded-pill text-bg-primary">未讀</span>
+                                        </p>
+                                    </div>
+                                </div>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action">
+                                <div class="row g-0">
+                                    <div class="col-1 d-flex align-items-center"><i
+                                        class="icon-qachat icon-qachat-mark flex-shrink-0"></i></div>
+                                    <div class="col-11">
+                                        <p class="mb-0 d-flex justify-content-between"><span
+                                            class="fs-6">蔡*莫</span><span class="text-body-tertiary">08/25</span>
+                                        </p>
+                                        <p class="mb-0 d-flex justify-content-between">
+                                            <span class="text-nowrap text-overflow pe-5">您好，我已收到另一項商品了,有問題會再發送訊息到問問，有問題會再發送訊息到問問</span>
+                                            <span class="badge rounded-pill text-bg-primary">未讀</span>
+                                        </p>
+                                    </div>
+                                </div>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action">
+                                <div class="row g-0">
+                                    <div class="col-1 d-flex align-items-center"><i
+                                        class="icon-qachat icon-qachat-unmarked flex-shrink-0"></i></div>
+                                    <div class="col-11">
+                                        <p class="mb-0 d-flex justify-content-between"><span
+                                            class="fs-6">蔡*莫</span><span class="text-body-tertiary">08/25</span>
+                                        </p>
+                                        <p class="mb-0 d-flex justify-content-between"><span
+                                            class="text-nowrap text-overflow pe-5">您好，我已收到另一項商品了,有問題會再發送訊息到問問，有問題會再發送訊息到問問</span><span
+                                            class="badge rounded-pill text-bg-primary">未讀</span> </p>
+                                    </div>
+                                </div>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action">
+                                <div class="row g-0">
+                                    <div class="col-1 d-flex align-items-center"><i
+                                        class="icon-qachat icon-qachat-unmarked flex-shrink-0"></i></div>
+                                    <div class="col-11">
+                                        <p class="mb-0 d-flex justify-content-between"><span
+                                            class="fs-6">蔡*莫</span><span class="text-body-tertiary">08/25</span>
+                                        </p>
+                                        <p class="mb-0 d-flex justify-content-between"><span
+                                            class="text-nowrap text-overflow pe-5">您好，我已收到另一項商品了,有問題會再發送訊息到問問，有問題會再發送訊息到問問</span><span
+                                            class="badge rounded-pill text-bg-primary">未讀</span> </p>
+                                    </div>
+                                </div>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action">
+                                <div class="row g-0">
+                                    <div class="col-1 d-flex align-items-center"><i
+                                        class="icon-qachat icon-qachat-unmarked flex-shrink-0"></i></div>
+                                    <div class="col-11">
+                                        <p class="mb-0 d-flex justify-content-between"><span
+                                            class="fs-6">蔡*莫</span><span class="text-body-tertiary">08/25</span>
+                                        </p>
+                                        <p class="mb-0 d-flex justify-content-between"><span
+                                            class="text-nowrap text-overflow pe-5">您好，我已收到另一項商品了,有問題會再發送訊息到問問，有問題會再發送訊息到問問</span><span
+                                            class="badge rounded-pill text-bg-primary">未讀</span> </p>
+                                    </div>
+                                </div>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action">
+                                <div class="row g-0">
+                                    <div class="col-1 d-flex align-items-center"><i
+                                        class="icon-qachat icon-qachat-unmarked flex-shrink-0"></i></div>
+                                    <div class="col-11">
+                                        <p class="mb-0 d-flex justify-content-between"><span
+                                            class="fs-6">蔡*莫</span><span class="text-body-tertiary">08/25</span>
+                                        </p>
+                                        <p class="mb-0 d-flex justify-content-between"><span
+                                            class="text-nowrap text-overflow pe-5">您好，我已收到另一項商品了,有問題會再發送訊息到問問，有問題會再發送訊息到問問</span><span
+                                            class="badge rounded-pill text-bg-primary">未讀</span> </p>
+                                    </div>
+                                </div>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action">
+                                <div class="row g-0">
+                                    <div class="col-1 d-flex align-items-center"><i
+                                        class="icon-qachat icon-qachat-unmarked flex-shrink-0"></i></div>
+                                    <div class="col-11">
+                                        <p class="mb-0 d-flex justify-content-between"><span
+                                            class="fs-6">蔡*莫</span><span class="text-body-tertiary">08/25</span>
+                                        </p>
+                                        <p class="mb-0 d-flex justify-content-between"><span
+                                            class="text-nowrap text-overflow pe-5">您好，我已收到另一項商品了,有問題會再發送訊息到問問，有問題會再發送訊息到問問</span><span
+                                            class="badge rounded-pill text-bg-primary">未讀</span> </p>
+                                    </div>
+                                </div>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action">
+                                <div class="row g-0">
+                                    <div class="col-1 d-flex align-items-center"><i
+                                        class="icon-qachat icon-qachat-unmarked flex-shrink-0"></i></div>
+                                    <div class="col-11">
+                                        <p class="mb-0 d-flex justify-content-between"><span
+                                            class="fs-6">蔡*莫</span><span class="text-body-tertiary">08/25</span>
+                                        </p>
+                                        <p class="mb-0 d-flex justify-content-between"><span
+                                            class="text-nowrap text-overflow pe-5">您好，我已收到另一項商品了,有問題會再發送訊息到問問，有問題會再發送訊息到問問</span><span
+                                            class="badge rounded-pill text-bg-primary">未讀</span> </p>
+                                    </div>
+                                </div>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-7">
+                    <div class="card border-secondary-subtle qachat-card-detail">
+                        <!-- 對話內容版面 -->
+                        <!-- 樣式區別 interlocutor 對話方 / own 自己 -->
+                        <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                            <p class="fs-6 mb-0">蔡*莫</p>
+                            <button type="button" class="btn btn-sm d-flex justify-content-between align-items-center"><i class="icon-qachat icon-qachat-mark"></i></button>
+                        </div>
+                        <div class="card-body p-0 overflow-y-auto">
+
+                            <div class="dialog-group">
+                                <div class="alert-bar d-flex justify-content-start align-items-center">
+                                    <i class="icon-qachat icon-qachat-notice me-2"></i> <span>提醒您，請勿透露個人資料及私下議價報價</span>
+                                </div>
+                                <!-- 對話日期群組 -->
+                                <!-- 下方 3 筆都一樣，選擇其中一筆呈現就好 -->
+                                <div class="d-flex justify-content-center align-items-center p-0 dialog-date-row">
+                                    <span class="badge rounded-pill text-bg-date-light px-2 py-1">今天</span>
+                                </div>
+                                <div class="d-flex justify-content-center align-items-center p-0 dialog-date-row">
+                                    <span class="badge rounded-pill text-bg-date-light px-2 py-1">8/17 (四)</span>
+                                </div>
+                                <div class="d-flex justify-content-center align-items-center p-0 dialog-date-row">
+                                    <span class="badge rounded-pill text-bg-date-light px-2 py-1">2026/2/28 (一)</span>
+                                </div>
+                            
+                            
+                            <!-- 對話項目 interlocutor 對話方 -->
+                            <div class="row g-2 dialog-item">
+                                <!-- 如果沒有頭像 avatar ，同時不需要空出頭像空間
+                                請移除以下這一個 <div class="col-auto"> -->
+                                <div class="col-auto">
+                                    <div class="interlocutor-avatar">
+                                        <!-- 如果沒有頭像 avatar ，需要空出頭像空間
+                                        請移除以下這一個 img -->
+                                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAABTklEQVR4nO3XQYuCQACG4XfE8mAk0WUCg6BrEvT/f0Idi+hmIGZQBJYEY80eFlrYg2OySx7mPc83PCIIiuVyqWlRzqcBv7MgUxZkyoJMWZApCzJlQaZaB3LfOayUYrPZUBQFi8UCz/P+fPMW6HA40Ov1iKIIIcS/bCpB+/2eJEleF+Z5ThiGOM7Pm95ut/T7fdI0ZTabkWWZcVNV5anRaEQURVyvV7TWlGVJHMesVivu9zsAUkqSJMH3fTzPq7VpDNJas16vGQ6HCCF4Pp+Mx2N83+dyuQAQBAFKKYIgqL1pDOp2u8znc87nM3me47ouWmsejweu+/22T6cTnU6H4/FYe9MYpJR6PbXjOEgp2e12lGXJYDAAIMsyptMpt9uNoihqbaoSVX8dcRyTpilSSiaTifGyppvaoE/Uui+1BZmyIFMWZMqCTFmQqdaBvgA59sgs50S3QAAAAABJRU5ErkJggg==" alt=""
+                                        class="interlocutor-avatar-img border rounded-circle">
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <!-- 對話卡片 -->
+                                    <div class="card border-0 dialog-card">
+                                        <!-- 連結類型 預覽圖片請添加在此位置 -->
+                                        <img src="data:image/png;base64,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" alt="" class="card-img-top dialog-og-img">
+                                        <div class="card-body">
+                                        <div class="row g-2">
+                                            <div class="col">
+                                                <p class="mb-0 dialog-product-title fs-6 two-ellipsis">NIKE
+                                                    耐吉休閒鞋女鞋運動鞋AJ 喬丹WMNS JORDAN STADIUM 90 白棕FB2269-102
+                                                </p>
+                                                <p class="mb-0 dialog-product-summary two-ellipsis">
+                                                    momo購物網提供美妝保養、流行服飾、時尚精品、3C_最多最多2行超出...
+                                                </p>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-auto align-self-end">
+                                    <!-- 傳送時間 -->
+                                    <!-- 傳送提示 請依據實際使用選擇顯示 -->
+                                    <div class="dialog-time-group">
+                                        <span class="dialog-send-time">10:35</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            <!-- 對話項目 interlocutor 對話方 -->
+                            <div class="row g-2 dialog-item">
+                                <div class="col-auto">
+                                    <div class="interlocutor-avatar">
+                                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAABTklEQVR4nO3XQYuCQACG4XfE8mAk0WUCg6BrEvT/f0Idi+hmIGZQBJYEY80eFlrYg2OySx7mPc83PCIIiuVyqWlRzqcBv7MgUxZkyoJMWZApCzJlQaZaB3LfOayUYrPZUBQFi8UCz/P+fPMW6HA40Ov1iKIIIcS/bCpB+/2eJEleF+Z5ThiGOM7Pm95ut/T7fdI0ZTabkWWZcVNV5anRaEQURVyvV7TWlGVJHMesVivu9zsAUkqSJMH3fTzPq7VpDNJas16vGQ6HCCF4Pp+Mx2N83+dyuQAQBAFKKYIgqL1pDOp2u8znc87nM3me47ouWmsejweu+/22T6cTnU6H4/FYe9MYpJR6PbXjOEgp2e12lGXJYDAAIMsyptMpt9uNoihqbaoSVX8dcRyTpilSSiaTifGyppvaoE/Uui+1BZmyIFMWZMqCTFmQqdaBvgA59sgs50S3QAAAAABJRU5ErkJggg==" alt=""
+                                        class="interlocutor-avatar-img border rounded-circle">
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <!-- 對話卡片 -->
+                                    <!-- 如果需要添加對話框箭頭 請添加 class 
+                                    對方 dialog-interlocutor-arrow / 自己 dialog-own-arrow -->
+                                    <div class="card border-0 dialog-product dialog-interlocutor-arrow">
+                                        <!-- <img src="./img/q1101-220x114.png" alt="" class="card-img-top dialog-og-img"> -->
+                                        <div class="card-body">
+                                        <div class="row g-2">
+                                            <div class="col-auto">
+                                                <div class="dialog-product-figure mb-2">
+                                                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAACVElEQVR4nO3aS2vqQBiA4dcxjaG14qW1VEWCLgQX/v8fUHHTVelOrC6qofVCCJiLxLGLYqiLAzXaU5jOs0yYj7yZMSszj4+PO/4Q8dsP8L/pYNXpYNXpYNXpYNXpYNXpYNXpYNXpYNXpYNXpYNXpYNXpYNUZaRduNhuGwyGe55HNZul2u+Tz+ZMf6Kfm7qUOfn5+JggCKpUKu90OIc5zWH5q7l6qYM/z8H2fVqtFrVY7uOc4Dq+vrwDc39/TaDR+fe5XqV6f67oAVKvVg+vr9ZrRaIRhGFiWxWQywfO85P54PObh4QHXdVksFvT7fVar1clzj5EqOIoihBCMRiMGgwFPT0/EccxyuQTAtm1arRbAQdDd3R0A8/mct7c3LMuiXC6fPPcYqY70drtFSkkQBFxfX+O6Lo7jEEURAJZlkc1mk4i9y8tLisUiy+WS7XabPPypc4+RaoczmQxCCHq9Hp1OB/g8dnEcJ/f/pVarEccxQohkx88x97tSBwMIIbi4uEi+pF+/qFJKgGRH9jabDfC5m0EQnG3ud6UKzuVySCmJoogwDJFSYpompmkCn1H7GMuyDtbOZrPkmuM4Z5v7Xal+w4VCAYDhcJi88ZubG6SUTKdTJpNJcr1UKiXrXNfF9306nQ4vLy+8v79j2zaGYZw09xipdrhUKlGv1/F9nzAMsW2bQqFAsVik2WwShiFxHNNut7m6ukrWzWYzTNOkXC5ze3uLlJLFYnHy3GNk9J9aFKeDVaeDVaeDVaeDVaeDVaeDVaeDVaeDVaeDVaeDVffngj8AHjBo56ep+UMAAAAASUVORK5CYII=" alt=""
+                                                    class="img-fluid dialog-product-img rounded-1 border">
+                                                </div>
+                                                <span
+                                                    class="dialog-order-status-tag badge rounded-1">出貨準備</span>
+                                            </div>
+                                            <div class="col">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <p class="mb-0 dialog-product-number">11095514</p>
+                                                    <p class="mb-0 dialog-order-delivery">由momo配送</p>
+                                                </div>
+                                                <!-- 產品標題 (較大的文字) dialog-product-title -->
+                                                <p class="mb-0 dialog-product-title fs-6 mb-1 two-ellipsis">NIKE
+                                                    耐吉休閒鞋女鞋運動鞋AJ 喬丹WMNS JORDAN STADIUM 90 白棕FB2269-102 NIKE
+                                                    耐吉休閒鞋女鞋運動鞋AJ 喬丹WMNS JORDAN STADIUM 90 白棕FB2269-102
+                                                </p>
+                                                <!-- 產品訂單文字 dialog-product-text -->
+                                                <p class="mb-0 dialog-product-text mb-1 two-ellipsis">
+                                                    退貨商品回收無誤、無發票銷折簽回問題，即進行退款程序，退款完成將以推，謝謝。
+                                                    退貨商品回收無誤、無發票銷折簽回問題，即進行退款程序，退款完成將以推，謝謝。
+                                                </p>
+                                                <!-- 產品簡介 dialog-product-summary -->
+                                                <p class="mb-0 dialog-product-summary mb-1 two-ellipsis">
+                                                    momo購物網提供美妝保養、流行服飾、時尚精品、3C_最多最多2行超出
+                                                    momo購物網提供美妝保養、流行服飾、時尚精品、3C_最多最多2行超出。
+                                                    momo購物網提供美妝保養、流行服飾、時尚精品、3C_最多最多2行超出
+                                                </p>
+                                                <p class="mb-0 dialog-product-spec">
+                                                    商品規格:寬29.3cmx長51.5cmx高29.9cm...
+                                                </p>
+                                                <p class="mb-0 dialog-product-spec">訂單編號:23073171335793</p>
+                                                <p class="mb-0 dialog-product-spec">訂單金額:$51,490</p>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-auto align-self-end">
+                                    <!-- 傳送時間 -->
+                                    <!-- 傳送提示 請依據實際使用選擇顯示 -->
+                                    <div class="dialog-time-group">
+                                        <span class="dialog-send-time">10:35</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            <!-- 對話項目 interlocutor 對話方 -->
+                            <div class="row g-2 dialog-item">
+                                <div class="col-auto">
+                                    <div class="interlocutor-avatar">
+                                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAABTklEQVR4nO3XQYuCQACG4XfE8mAk0WUCg6BrEvT/f0Idi+hmIGZQBJYEY80eFlrYg2OySx7mPc83PCIIiuVyqWlRzqcBv7MgUxZkyoJMWZApCzJlQaZaB3LfOayUYrPZUBQFi8UCz/P+fPMW6HA40Ov1iKIIIcS/bCpB+/2eJEleF+Z5ThiGOM7Pm95ut/T7fdI0ZTabkWWZcVNV5anRaEQURVyvV7TWlGVJHMesVivu9zsAUkqSJMH3fTzPq7VpDNJas16vGQ6HCCF4Pp+Mx2N83+dyuQAQBAFKKYIgqL1pDOp2u8znc87nM3me47ouWmsejweu+/22T6cTnU6H4/FYe9MYpJR6PbXjOEgp2e12lGXJYDAAIMsyptMpt9uNoihqbaoSVX8dcRyTpilSSiaTifGyppvaoE/Uui+1BZmyIFMWZMqCTFmQqdaBvgA59sgs50S3QAAAAABJRU5ErkJggg==" alt=""
+                                        class="interlocutor-avatar-img border rounded-circle">
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <!-- 對話卡片 -->
+                                    <!-- 如果需要添加對話框箭頭 請添加 class 
+                                    對方 dialog-interlocutor-arrow / 自己 dialog-own-arrow -->                                    
+                                    <div class="card border-0 dialog-product dialog-interlocutor-arrow">
+                                        <!-- <img src="./img/q1101-220x114.png" alt="" class="card-img-top dialog-og-img"> -->
+                                        <div class="card-body">
+                                        <div class="row g-2">
+                                            <div class="col-auto">
+                                                <div class="dialog-product-figure mb-2">
+                                                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAACVElEQVR4nO3aS2vqQBiA4dcxjaG14qW1VEWCLgQX/v8fUHHTVelOrC6qofVCCJiLxLGLYqiLAzXaU5jOs0yYj7yZMSszj4+PO/4Q8dsP8L/pYNXpYNXpYNXpYNXpYNXpYNXpYNXpYNXpYNXpYNXpYNXpYNUZaRduNhuGwyGe55HNZul2u+Tz+ZMf6Kfm7qUOfn5+JggCKpUKu90OIc5zWH5q7l6qYM/z8H2fVqtFrVY7uOc4Dq+vrwDc39/TaDR+fe5XqV6f67oAVKvVg+vr9ZrRaIRhGFiWxWQywfO85P54PObh4QHXdVksFvT7fVar1clzj5EqOIoihBCMRiMGgwFPT0/EccxyuQTAtm1arRbAQdDd3R0A8/mct7c3LMuiXC6fPPcYqY70drtFSkkQBFxfX+O6Lo7jEEURAJZlkc1mk4i9y8tLisUiy+WS7XabPPypc4+RaoczmQxCCHq9Hp1OB/g8dnEcJ/f/pVarEccxQohkx88x97tSBwMIIbi4uEi+pF+/qFJKgGRH9jabDfC5m0EQnG3ud6UKzuVySCmJoogwDJFSYpompmkCn1H7GMuyDtbOZrPkmuM4Z5v7Xal+w4VCAYDhcJi88ZubG6SUTKdTJpNJcr1UKiXrXNfF9306nQ4vLy+8v79j2zaGYZw09xipdrhUKlGv1/F9nzAMsW2bQqFAsVik2WwShiFxHNNut7m6ukrWzWYzTNOkXC5ze3uLlJLFYnHy3GNk9J9aFKeDVaeDVaeDVaeDVaeDVaeDVaeDVaeDVaeDVaeDVffngj8AHjBo56ep+UMAAAAASUVORK5CYII=" alt=""
+                                                    class="img-fluid dialog-product-img rounded-1 border">
+                                                </div>
+                                                <span
+                                                    class="dialog-order-status-tag badge rounded-1">出貨準備</span>
+                                            </div>
+                                            <div class="col">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <p class="mb-0 dialog-product-number">11095514</p>
+                                                    <p class="mb-0 dialog-order-delivery">由momo配送</p>
+                                                </div>
+                                                <p class="mb-0 dialog-product-title fs-6 mb-1 two-ellipsis">NIKE
+                                                    耐吉休閒鞋女鞋運動鞋AJ 喬丹WMNS JORDAN STADIUM 90 白棕FB2269-102 NIKE
+                                                    耐吉休閒鞋女鞋運動鞋AJ 喬丹WMNS JORDAN STADIUM 90 白棕FB2269-102
+                                                </p>
+                                                <p class="mb-0 dialog-product-text mb-1 two-ellipsis">
+                                                    退貨商品回收無誤、無發票銷折簽回問題，即進行退款程序，退款完成將以推，謝謝。
+                                                    退貨商品回收無誤、無發票銷折簽回問題，即進行退款程序，退款完成將以推，謝謝。
+                                                </p>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-auto align-self-end">
+                                    <!-- 傳送時間 -->
+                                    <!-- 傳送提示 請依據實際使用選擇顯示 -->
+                                    <div class="dialog-time-group">
+                                        <span class="dialog-send-time">10:35</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            <!-- 對話項目 interlocutor 對話方 -->
+                            <div class="row g-2 dialog-item">
+                                <div class="col-auto">
+                                    <div class="interlocutor-avatar">
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <!-- 對話卡片 -->
+                                    <!-- 如果需要添加對話框箭頭 請添加 class 
+                                    對方 dialog-interlocutor-arrow / 自己 dialog-own-arrow -->                                    
+                                    <div class="card border-0 dialog-text dialog-interlocutor-arrow dialog-interlocutor-bg">
+                                        <div class="card-body">
+                                        <div class="row g-2">
+                                            <div class="col">
+                                                <p class="mb-0">https://www.momo .m.tw/ctegory/LgrpCateg
+                                                    31_e1&ctype=B&sourPP
+                                                </p>
+                                                <p class="mb-0">退貨商品回收無誤、無發票銷折簽回問題，即進行退款程序，退款完成將以推，謝謝。</p>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-auto align-self-end">
+                                    <!-- 傳送時間 -->
+                                    <!-- 傳送提示 請依據實際使用選擇顯示 -->
+                                    <!-- 傳送時間 / 傳送驚嘆號 只會擇一顯示 -->
+                                    <div class="dialog-time-group">
+                                        <span class="dialog-send-time">10:35</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            <!-- 對話項目 own 自己 -->
+                            <div class="row g-2 dialog-item d-flex flex-row-reverse">
+                                <div class="col-auto">
+                                    <!-- <div class="interlocutor-avatar">
+                                        <img src="./img/q1101-36x36.png" alt="" class="interlocutor-avatar-img border rounded-circle">
+                                        </div> -->
+                                </div>
+                                <div class="col-auto">
+                                    <!-- 對話卡片 -->
+                                    <!-- 如果需要添加對話框箭頭 請添加 class 
+                                    對方 dialog-interlocutor-arrow / 自己 dialog-own-arrow -->                                    
+                                    <div class="card border-0 dialog-card">
+                                        <img src="data:image/png;base64,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" alt=""
+                                        class="card-img-top dialog-og-img">
+                                        <div class="card-body">
+                                        <div class="row g-2">
+                                            <div class="col">
+                                                <p class="mb-0 dialog-product-title fs-6 two-ellipsis">NIKE
+                                                    耐吉休閒鞋女鞋運動鞋AJ 喬丹WMNS JORDAN STADIUM 90 白棕FB2269-102
+                                                </p>
+                                                <p class="mb-0 dialog-product-summary two-ellipsis">
+                                                    momo購物網提供美妝保養、流行服飾、時尚精品、3C_最多最多2行超出...
+                                                </p>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <!-- 傳送狀態 -->
+                                    <!-- 傳送狀態   請依據實際使用選擇顯示 -->
+                                    <!-- 重傳 / 刪除 會一起顯示 -->
+                                    <!-- 發送中 會單獨顯示 -->
+                                    <p class="dialog-status-group mb-0 d-flex justify-content-end gap-2 pt-1">
+                                        <span class="dialog-status-link">重傳</span>
+                                        <span class="vr"></span>
+                                        <span class="dialog-status-link">刪除</span>
+                                        <span class="dialog-status-text">發送中</span>
+                                    </p>
+                                </div>
+                                <div class="col-auto align-self-end">
+                                    <!-- 傳送時間 -->
+                                    <!-- 傳送提示 請依據實際使用選擇顯示 -->
+                                    <!-- 傳送時間 / 傳送驚嘆號 只會擇一顯示 -->
+                                    <div class="dialog-time-group">
+                                        <span class="dialog-send-time">10:35</span>
+                                        <!-- 如果 icon 需要轉為 紅色請添加 text-danger -->
+                                        <i class="bi icon-dialog-time bi-info-circle-fill"></i>
+                                        <i class="bi icon-dialog-time bi-info-circle-fill text-danger"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            <!-- 對話項目 own 自己 -->
+                            <div class="row g-2 dialog-item d-flex flex-row-reverse">
+                                <div class="col-auto">
+                                    <!-- <div class="interlocutor-avatar">
+                                        <img src="./img/q1101-36x36.png" alt="" class="interlocutor-avatar-img border rounded-circle">
+                                        </div> -->
+                                </div>
+                                <div class="col-auto">
+                                    <!-- 對話卡片 -->
+                                    <!-- 如果需要添加對話框箭頭 請添加 class 
+                                    對方 dialog-interlocutor-arrow / 自己 dialog-own-arrow -->                                    
+                                    <div class="card border-0 dialog-product dialog-own-arrow">
+                                        <!-- <img src="./img/q1101-220x114.png" alt="" class="card-img-top dialog-og-img"> -->
+                                        <div class="card-body">
+                                        <div class="row g-2">
+                                            <div class="col-auto">
+                                                <div class="dialog-product-figure mb-2">
+                                                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAACVElEQVR4nO3aS2vqQBiA4dcxjaG14qW1VEWCLgQX/v8fUHHTVelOrC6qofVCCJiLxLGLYqiLAzXaU5jOs0yYj7yZMSszj4+PO/4Q8dsP8L/pYNXpYNXpYNXpYNXpYNXpYNXpYNXpYNXpYNXpYNXpYNXpYNUZaRduNhuGwyGe55HNZul2u+Tz+ZMf6Kfm7qUOfn5+JggCKpUKu90OIc5zWH5q7l6qYM/z8H2fVqtFrVY7uOc4Dq+vrwDc39/TaDR+fe5XqV6f67oAVKvVg+vr9ZrRaIRhGFiWxWQywfO85P54PObh4QHXdVksFvT7fVar1clzj5EqOIoihBCMRiMGgwFPT0/EccxyuQTAtm1arRbAQdDd3R0A8/mct7c3LMuiXC6fPPcYqY70drtFSkkQBFxfX+O6Lo7jEEURAJZlkc1mk4i9y8tLisUiy+WS7XabPPypc4+RaoczmQxCCHq9Hp1OB/g8dnEcJ/f/pVarEccxQohkx88x97tSBwMIIbi4uEi+pF+/qFJKgGRH9jabDfC5m0EQnG3ud6UKzuVySCmJoogwDJFSYpompmkCn1H7GMuyDtbOZrPkmuM4Z5v7Xal+w4VCAYDhcJi88ZubG6SUTKdTJpNJcr1UKiXrXNfF9306nQ4vLy+8v79j2zaGYZw09xipdrhUKlGv1/F9nzAMsW2bQqFAsVik2WwShiFxHNNut7m6ukrWzWYzTNOkXC5ze3uLlJLFYnHy3GNk9J9aFKeDVaeDVaeDVaeDVaeDVaeDVaeDVaeDVaeDVaeDVffngj8AHjBo56ep+UMAAAAASUVORK5CYII=" alt=""
+                                                    class="img-fluid dialog-product-img rounded-1 border">
+                                                </div>
+                                                <span
+                                                    class="dialog-order-status-tag badge rounded-1">出貨準備</span>
+                                            </div>
+                                            <div class="col">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <p class="mb-0 dialog-product-number">11095514</p>
+                                                    <p class="mb-0 dialog-order-delivery">由momo配送</p>
+                                                </div>
+                                                <p class="mb-0 dialog-product-title fs-6 mb-1 two-ellipsis">NIKE
+                                                    耐吉休閒鞋女鞋運動鞋AJ 喬丹WMNS JORDAN STADIUM 90 白棕FB2269-102 NIKE
+                                                    耐吉休閒鞋女鞋運動鞋AJ 喬丹WMNS JORDAN STADIUM 90 白棕FB2269-102
+                                                </p>
+                                                <p class="mb-0 dialog-product-text mb-1 two-ellipsis">
+                                                    退貨商品回收無誤、無發票銷折簽回問題，即進行退款程序，退款完成將以推，謝謝。
+                                                    退貨商品回收無誤、無發票銷折簽回問題，即進行退款程序，退款完成將以推，謝謝。
+                                                </p>
+                                                <p class="mb-0 dialog-product-summary mb-1 two-ellipsis">
+                                                    momo購物網提供美妝保養、流行服飾、時尚精品、3C_最多最多2行超出
+                                                    momo購物網提供美妝保養、流行服飾、時尚精品、3C_最多最多2行超出。
+                                                    momo購物網提供美妝保養、流行服飾、時尚精品、3C_最多最多2行超出
+                                                </p>
+                                                <p class="mb-0 dialog-product-spec">
+                                                    商品規格:寬29.3cmx長51.5cmx高29.9cm...
+                                                </p>
+                                                <p class="mb-0 dialog-product-spec">訂單編號:23073171335793</p>
+                                                <p class="mb-0 dialog-product-spec">訂單金額:$51,490</p>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <!-- 傳送狀態 -->
+                                    <!-- 傳送狀態   請依據實際使用選擇顯示 -->
+                                    <!-- 重傳 / 刪除 會一起顯示 -->
+                                    <!-- 發送中 會單獨顯示 -->
+                                    <p class="dialog-status-group mb-0 d-flex justify-content-end gap-2 pt-1">
+                                        <span class="dialog-status-link">重傳</span>
+                                        <span class="vr"></span>
+                                        <span class="dialog-status-link">刪除</span>
+                                        <span class="dialog-status-text">發送中</span>
+                                    </p>
+                                </div>
+                                <div class="col-auto align-self-end">
+                                    <!-- 傳送時間 -->
+                                    <!-- 傳送提示 請依據實際使用選擇顯示 -->
+                                    <!-- 傳送時間 / 傳送驚嘆號 只會擇一顯示 -->
+                                    <div class="dialog-time-group">
+                                        <span class="dialog-send-time">10:35</span>
+                                        <!-- 如果 icon 需要轉為 紅色請添加 text-danger -->
+                                        <i class="bi icon-dialog-time bi-info-circle-fill"></i>
+                                        <i class="bi icon-dialog-time bi-info-circle-fill text-danger"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            <!-- 對話項目 own 自己 -->
+                            <div class="row g-2 dialog-item d-flex flex-row-reverse">
+                                <div class="col-auto">
+                                    <!-- 對話卡片 -->
+                                    <!-- 如果需要添加對話框箭頭 請添加 class 
+                                    對方 dialog-interlocutor-arrow / 自己 dialog-own-arrow -->                                    
+                                    <div class="card border-0 dialog-text dialog-own-arrow dialog-own-bg">
+                                        <div class="card-body">
+                                        <div class="row g-2">
+                                            <div class="col">
+                                                <p class="mb-0">https://www.momo .m.tw/ctegory/LgrpCateg
+                                                    31_e1&ctype=B&sourPP
+                                                </p>
+                                                <p class="mb-0">退貨商品回收無誤、無發票銷折簽回問題，即進行退款程序，退款完成將以推，謝謝。</p>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <!-- 傳送狀態 -->
+                                    <!-- 傳送狀態   請依據實際使用選擇顯示 -->
+                                    <!-- 重傳 / 刪除 會一起顯示 -->
+                                    <!-- 發送中 會單獨顯示 -->
+                                    <p class="dialog-status-group mb-0 d-flex justify-content-end gap-2 pt-1">
+                                        <span class="dialog-status-link">重傳</span>
+                                        <span class="vr"></span>
+                                        <span class="dialog-status-link">刪除</span>
+                                        <span class="dialog-status-text">發送中</span>
+                                    </p>
+                                </div>
+                                <div class="col-auto align-self-end">
+                                    <!-- 傳送時間 -->
+                                    <!-- 傳送提示 請依據實際使用選擇顯示 -->
+                                    <!-- 傳送時間 / 傳送驚嘆號 只會擇一顯示 -->
+                                    <div class="dialog-time-group">
+                                        <span class="dialog-send-time">10:35</span>
+                                        <!-- 如果 icon 需要轉為 紅色請添加 text-danger -->
+                                        <i class="bi icon-dialog-time bi-info-circle-fill"></i>
+                                        <i class="bi icon-dialog-time bi-info-circle-fill text-danger"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+
+
+                        <!-- 常用訊息按鈕群組 -->
+                        <div class="card-footer bg-white">
+                            <div class="btn-group dropup">
+                            <button type="button"
+                                class="btn btn-sm btn-outline-primary dropdown-toggle">常用訊息</button>
+                            </div>
+                            <button type="button" class="btn btn-sm btn-outline-primary">編輯</button>
+                        </div>
+                        <!-- 訊息送出表單群組 -->
+                        <div class="card-footer bg-white">
+                            <div class="row g-2 align-items-end">
+                            <div class="col-auto">
+                                <button class="btn btn-sm p-0 mb-1" type="button">
+                                <i class="align-middle icon-qachat icon-qachat-picture align-middle"></i>
+                                </button>
+                            </div>
+                            <div class="col">
+                                <textarea class="form-control form-control-sm" id="exampleFormControlTextarea1"
+                                    rows="1"></textarea>
+                            </div>
+                            <div class="col-auto">
+                                <button class="btn btn-sm p-0 mb-1" type="button">
+                                <i class="align-middle icon-qachat icon-qachat-send align-middle"></i>
+                                </button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

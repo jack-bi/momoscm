@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>外部廣告成效分析</title>
+    <link rel="icon" href="/momoscm/assets/icon-DnKfFtDw.png" type="image/ico">
+    <link rel="stylesheet" type="text/css" href="https://scm.momoshop.com.tw/common/css/scmBase2.css?t=20200225">
+    <link rel="stylesheet" type="text/css" href="https://scm.momoshop.com.tw/common/css/scm_w1220.css?t=20200102">
+    <script language="javascript" type="text/javascript"
+        src="https://scm.momoshop.com.tw/common/js/jquery-1.7.2.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://scm.momoshop.com.tw/common/css/scmBase.css?t=20200421">
+    <link rel="stylesheet" type="text/css" media="screen"
+        href="https://scm.momoshop.com.tw/common/css/scmWidget.css?t=20200116">
+    <!-- <link rel="stylesheet" type="text/css" href="./sass/pages/styleX.css"> -->
+    <script language="javascript" type="text/javascript" src="scmjq.js"></script>
+  <link rel="stylesheet" crossorigin href="/momoscm/assets/X1201-DPsskRHg.css">
+  <link rel="stylesheet" crossorigin href="/momoscm/assets/scmbase-DSO4z_0v.css">
+  <link rel="stylesheet" crossorigin href="/momoscm/assets/headerWrap-B-d797h8.css">
+</head>
+
+<body class="w1220">
+    <script language="javascript" type="text/javascript" src="headerWrap.js"></script>
+    <!-- 路徑區塊 start -->
+    <div class="contentArea wide">
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        <dl class="nav">
+                          <dt><a href="javascript:goJump(&#39;home&#39;);">首頁</a></dt>
+                          <dd class="first">評價</dd>
+                          <dd class="next show">約配問卷調查</dd>
+                          <dd class="last show">[X1201]約配問卷調查</dd>
+                          <dd class="video" style="display:none" id="theVideo"><a>影音教學</a></dd>
+                        </dl>
+                      </td>
+                    <td>
+                    </td>
+                    <td id="marqueeArea" style="display: none;">
+                        <div id="abgne_marquee" style="">
+                        </div>
+                    </td>
+                    <td width="50%" id="addAppArea" align="right">
+                        <input type="checkbox" name="addApp" id="addApp" style="vertical-align: middle"
+                            checked="checked">加入常用程式集
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- 路徑區塊 end -->
+
+    <!-- 20230213_SCM_X1201 約配問卷調查 -->
+    <div class="contentArea">
+        <div class="styleArea styleX1201">
+            <dl class="queryBox">
+                <dt>約定送貨滿意度調查 <span class="text-danger">*出貨+2天發送問卷／出貨+9天問卷過期</span></dt>
+                <dd>
+                    <!-- 品牌 -->
+                    <div class="row">
+                        <div class="col">
+                            <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                                <tr>
+                                    <td>
+                                        <p class="field-name">問卷發送日</p>
+                                        <div class="dateArea">
+                                            <span>2023/02/01 - 2023/02/28</span>
+                                            <input type="text">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p class="field-name">問卷類型</p>
+                                        <div class="selectArea">
+                                            <span>全部</span>
+                                            <div class="selectList" style="display: none;">
+                                                <label>類型１<input type="radio" name="selectgp"></label>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p class="field-name">訂單編號</p>
+                                        <input type="text" placeholder="請輸入訂單編號">
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                                <tr>
+                                    <td>
+                                        <p class="field-name">品號</p>
+                                        <input type="text" placeholder="品號">
+                                        <p class="product-name" title="【YKSHOUSE】彎彎創意造型小椅/腳椅/板凳 彎彎創意造型小椅/腳椅/板凳 彎彎創意造型小椅/腳椅/板凳 彎彎創意造型小椅/腳椅/板凳 彎彎創意造型小椅/腳椅/板凳">【YKSHOUSE】彎彎創意造型小椅/腳椅/板凳 彎彎創意造型小椅/腳椅/板凳 彎彎創意造型小椅/腳椅/板凳 彎彎創意造型小椅/腳椅/板凳 彎彎創意造型小椅/腳椅/板凳</p>
+                                    </td>                                    
+                                </tr>
+                            </table>                            
+                        </div>
+                        <div class="col">
+                            <div class="btn-group">
+                                <button>查詢</button>
+                                <div class="exportBtn dropMenu">
+                                    <span class="dropBtn">匯出報表</span>
+                                    <ul class="dropList drop_R">
+                                        <li>匯出 xls.</li>
+                                        <li>匯出 xlsx.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </dd>
+            </dl>
+
+            <!-- 圖表與篩選區 -->
+            <div class="adEffectiveness">
+                <div class="card-header d-flex">
+                    <div class="title">約配滿意度調查總覽</div>
+                </div>
+
+                <div class="chart-filter">
+                    <label class="chart-filter-item form-check-label">
+                        <div class="form-check-text">
+                            <p class="title-text">負評率<span class="toolTip">?<span class="tipTxt">(總問題負評數/總問題數)*100%</span></span></p>
+                            <p class="num-text">70.01％</p>
+                        </div>
+                        <input class="form-check-input" type="checkbox">
+                    </label>
+                    <label class="chart-filter-item form-check-label">
+                        <div class="form-check-text">
+                            <p class="title-text">回覆率<span class="toolTip">?<span class="tipTxt">(回應數/發送數)*100%</span></span></p>
+                                        <p class="num-text">70.01％</p>
+                                    </div>
+                        <input class="form-check-input" type="checkbox">
+                    </label>
+                    <label class="chart-filter-item form-check-label">
+                        <div class="form-check-text">
+                            <p class="title-text">發送數</p>
+                            <p class="num-text">77,000</p>
+                        </div>
+                        <input class="form-check-input" type="checkbox">
+                    </label>
+                    <label class="chart-filter-item form-check-label">
+                        <div class="form-check-text">
+                            <p class="title-text">回應數</p>
+                            <p class="num-text">77,000</p>
+                        </div>
+                        <input class="form-check-input" type="checkbox">
+                    </label>
+                </div>
+            </div>
+
+            <!-- 資料列表明細區 -->
+            <div class="adDetail">
+                <div class="returnDetail">
+                    <!-- 約配滿意度問卷內容 -->
+                    <div class="title">約配滿意度問卷內容</div>
+                    <table class="tableStyle" cellspacing="0" cellpadding="0" border="0">
+                        <thead>
+                            <tr>
+                                <th width="30">#</th>
+                                <th width="80">訂單編號</th>
+                                <th width="50">品號</th>
+                                <th width="170">品名</th>
+                                <th width="56">轉單日</th>
+                                <th width="56">約定<br>送貨日</th>
+                                <th width="56">出貨日</th>
+                                <th width="70">
+                                    <label class="form-check-label">
+                                        <div class="form-check-text">
+                                            <p class="title-text">D+1<br>未電聯</span></p>
+                                        </div>
+                                        <input class="form-check-input" type="checkbox" checked>
+                                        <span class="form-checkmark"></span>
+                                        <span class="toolTip">?<span class="tipTxt">廠商主動致電給您確認訂單內容 & 配送時間。</span>
+                                    </label>
+                                </th>
+                                <th width="70">
+                                    <label class="form-check-label">
+                                        <div class="form-check-text">
+                                            <p class="title-text">未告知<br>加收費用</span></p>
+                                        </div>
+                                        <input class="form-check-input" type="checkbox" checked>
+                                        <span class="form-checkmark"></span>
+                                        <span class="toolTip">?<span class="tipTxt">電話中廠商清楚告知加收費用。例如：偏遠地區/樓層搬運/組裝/區域運費</span>
+                                    </label>
+                                </th>
+                                <th width="70">
+                                    <label class="form-check-label">
+                                        <div class="form-check-text">
+                                            <p class="title-text">廠商更改<br>配送日期</span></p>
+                                        </div>
+                                        <input class="form-check-input" type="checkbox" checked>
+                                        <span class="form-checkmark"></span>
+                                        <span class="toolTip">?<span class="tipTxt">約定配送日期後，廠商提出更改日期。</span>
+                                    </label>
+                                </th>
+                                <th width="70">
+                                    <label class="form-check-label">
+                                        <div class="form-check-text">
+                                            <p class="title-text">配送前<br>未電聯</span></p>
+                                        </div>
+                                        <input class="form-check-input" type="checkbox" checked>
+                                        <span class="form-checkmark"></span>
+                                        <span class="toolTip">?<span class="tipTxt">送貨人員於配送前有與您聯繫。</span>
+                                    </label>
+                                </th>
+                                <th width="70">
+                                    <label class="form-check-label">
+                                        <div class="form-check-text">
+                                            <p class="title-text">臨時<br>加收費用</span></p>
+                                        </div>
+                                        <input class="form-check-input" type="checkbox" checked>
+                                        <span class="form-checkmark"></span>
+                                        <span class="toolTip">?<span class="tipTxt">送貨人員臨時加收未告知之費用。</span>
+                                    </label>
+                                </th>
+                                <th width="70">
+                                    <label class="form-check-label">
+                                        <div class="form-check-text">
+                                            <p class="title-text">不推薦<br>購買</span></p>
+                                        </div>
+                                        <input class="form-check-input" type="checkbox" checked>
+                                        <span class="form-checkmark"></span>
+                                        <span class="toolTip">?<span class="tipTxt">您會向親友推薦在momo購買傢俱。</span>
+                                    </label>
+                                </th>
+                                <th width="80">
+                                    <label class="form-check-label">
+                                        <div class="form-check-text">
+                                            <p class="title-text">配送/安裝<br>速度不良</span></p>
+                                        </div>
+                                        <input class="form-check-input" type="checkbox" checked>
+                                        <span class="form-checkmark"></span>
+                                        <span class="toolTip">?<span class="tipTxt">送貨人員配送 / 安裝 品質優良。</span>
+                                    </label>
+                                </th>
+                                <th>意見回饋</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td><p class="order-number">22020620114102</p></td>
+                                <td><p class="product-number">5531581</p></td>
+                                <td>
+                                    <div class="text-box">
+                                        <p class="product-name">【YKSHOUSE】彎彎創意造型小椅/腳椅/板凳</p>
+                                        <div class="full-text">【【YKSHOUSE】彎彎創意造型小椅/腳椅/板凳</div>
+                                    </div>
+                                </td>
+                                <td><p class="order-date">2026/03/18</p></td>
+                                <td><p class="order-date">2026/02/07</p></td>
+                                <td><p class="order-date">2026/03/18</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text text-danger">是</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text text-danger">是</p></td>
+                                <td><p class="option-text text-danger">是</p></td>
+                                <td><p class="option-text">沒意見</p></td>
+                                <td><p class="option-text">沒意見</p></td>
+                                <td>
+                                    <div class="text-box">
+                                        <p class="feedback-content">一張小板凳且自行組裝，交貨時間建議不需費時這麼久</p>
+                                        <div class="full-text">一張小板凳且自行組裝，交貨時間建議不需費時這麼久</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td><p class="order-number">22022819107364</p></td>
+                                <td><p class="product-number">6786765</p></td>
+                                <td>
+                                    <div class="text-box">
+                                        <p class="product-name">【YKSHOUSE】葛瑞絲L型布沙發-獨立筒版(三色可選)</p>
+                                        <div class="full-text">【YKSHOUSE】葛瑞絲L型布沙發-獨立筒版(三色可選)</div>
+                                    </div>
+                                </td>
+                                <td><p class="order-date">2026/03/05</p></td>
+                                <td><p class="order-date">2026/03/01</p></td>
+                                <td><p class="order-date">2026/03/05</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text text-danger">是</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td>
+                                    <div class="text-box">
+                                        <p class="feedback-content">沒有</p>
+                                        <div class="full-text">沒有</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td><p class="order-number">22030622974937</p></td>
+                                <td><p class="product-number">5639779</p></td>
+                                <td>
+                                    <div class="text-box">
+                                        <p class="product-name" title="">【YKSHOUSE】采軒L型獨立筒布沙發(四色可選)</p>
+                                        <div class="full-text">【YKSHOUSE】采軒L型獨立筒布沙發(四色可選)</div>
+                                    </div>
+                                </td>
+                                <td><p class="order-date">2026/03/15</p></td>
+                                <td><p class="order-date">2026/03/07</p></td>
+                                <td><p class="order-date">2026/03/15</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text text-danger">是</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td>
+                                    <div class="text-box">
+                                        <p class="feedback-content">無</p>
+                                        <div class="full-text">無</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td><p class="order-number">22022423011784</p></td>
+                                <td><p class="product-number">6897655</p></td>
+                                <td>
+                                    <div class="text-box">
+                                        <p class="product-name" title="">【良木作】賽亞工業風茶几/北歐簡約/4尺-wd085(兩色可選)</p>
+                                        <div class="full-text">【良木作】賽亞工業風茶几/北歐簡約/4尺-wd085(兩色可選)</div>
+                                    </div>
+                                </td>
+                                <td><p class="order-date">2026/03/03</p></td>
+                                <td><p class="order-date">2026/02/25</p></td>
+                                <td><p class="order-date">2026/03/03</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text text-danger">是</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td>
+                                    <div class="text-box">
+                                        <p class="feedback-content">無</p>
+                                        <div class="full-text">無</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td><p class="order-number">22021021168304</p></td>
+                                <td><p class="product-number">5639780</p></td>
+                                <td>
+                                    <div class="text-box">
+                                        <p class="product-name" title="">【YKSHOUSE】康緹L型獨立筒布沙發(四色可選)</p>
+                                        <div class="full-text">【YKSHOUSE】康緹L型獨立筒布沙發(四色可選)</div>
+                                    </div>
+                                </td>
+                                <td><p class="order-date">2026/03/21</p></td>
+                                <td><p class="order-date">2026/02/11</p></td>
+                                <td><p class="order-date">2026/03/21</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">沒意見</p></td>
+                                <td><p class="option-text text-danger">是</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">沒意見</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td>
+                                    <div class="text-box">
+                                        <p class="feedback-content">商品描述產品為獨立筒，但實際感受不出，是否能有更明確的產品顯示以昭公信？</p>
+                                        <div class="full-text">商品描述產品為獨立筒，但實際感受不出，是否能有更明確的產品顯示以昭公信？</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td><p class="order-number">22031420914387</p></td>
+                                <td><p class="product-number">6129479</p></td>
+                                <td>
+                                    <div class="text-box">
+                                        <p class="product-name" title="">【YKSHOUSE】森永雙人床架/床底/5尺(DIY)</p>
+                                        <div class="full-text">【YKSHOUSE】森永雙人床架/床底/5尺(DIY)</div>
+                                    </div>
+                                </td>
+                                <td><p class="order-date">2026/03/18</p></td>
+                                <td><p class="order-date">2026/03/15</p></td>
+                                <td><p class="order-date">2026/03/18</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">沒意見</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text text-danger">是</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">沒意見</p></td>
+                                <td>
+                                    <div class="text-box">
+                                        <p class="feedback-content">無</p>
+                                        <div class="full-text">無</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td><p class="order-number">22021920051878</p></td>
+                                <td><p class="product-number">6786765</p></td>
+                                <td>
+                                    <div class="text-box">
+                                        <p class="product-name" title="">【YKSHOUSE】葛瑞絲L型布沙發-獨立筒版(三色可選)</p>
+                                        <div class="full-text">【YKSHOUSE】葛瑞絲L型布沙發-獨立筒版(三色可選)</div>
+                                    </div>
+                                </td>
+                                <td><p class="order-date">2026/03/01</p></td>
+                                <td><p class="order-date">2026/02/21</p></td>
+                                <td><p class="order-date">2026/03/01</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text text-danger">是</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td>
+                                    <div class="text-box">
+                                        <p class="feedback-content">無</p>
+                                        <div class="full-text">無</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td><p class="order-number">22022219853689</p></td>
+                                <td><p class="product-number">8154106</p></td>
+                                <td>
+                                    <div class="text-box">
+                                        <p class="product-name" title="">【YKSHOUSE】傑尼斯L型布沙發-獨立筒版(四色可選)</p>
+                                        <div class="full-text">【YKSHOUSE】傑尼斯L型布沙發-獨立筒版(四色可選)</div>
+                                    </div>
+                                </td>
+                                <td><p class="order-date">2026/03/02</p></td>
+                                <td><p class="order-date">2026/02/23</p></td>
+                                <td><p class="order-date">2026/03/02</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text text-danger">是</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td>
+                                    <div class="text-box">
+                                        <p class="feedback-content">都還不錯錯！</p>
+                                        <div class="full-text">都還不錯錯！</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td><p class="order-number">22011615841834</p></td>
+                                <td><p class="product-number">5639780</p></td>
+                                <td>
+                                    <div class="text-box">
+                                        <p class="product-name" title="">【YKSHOUSE】康緹L型獨立筒布沙發(四色可選)</p>
+                                        <div class="full-text">【YKSHOUSE】康緹L型獨立筒布沙發(四色可選)</div>
+                                    </div>
+                                </td>
+                                <td><p class="order-date">2026/03/12</p></td>
+                                <td><p class="order-date">2026/01/17</p></td>
+                                <td><p class="order-date">2026/03/12</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text text-danger">是</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td>
+                                    <div class="text-box">
+                                        <p class="feedback-content">滿意</p>
+                                        <div class="full-text">滿意</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td><p class="order-number">22032121530438</p></td>
+                                <td><p class="product-number">6786765</p></td>
+                                <td>
+                                    <div class="text-box">
+                                        <p class="product-name" title="">【YKSHOUSE】葛瑞絲L型布沙發-獨立筒版(三色可選)</p>
+                                        <div class="full-text">【YKSHOUSE】葛瑞絲L型布沙發-獨立筒版(三色可選)</div>
+                                    </div>
+                                </td>
+                                <td><p class="order-date">2026/03/25</p></td>
+                                <td><p class="order-date">2026/03/22</p></td>
+                                <td><p class="order-date">2026/03/25</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text text-danger">是</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td>
+                                    <div class="text-box">
+                                        <p class="feedback-content">無</p>
+                                        <div class="full-text">無</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td><p class="order-number">22031420963388</p></td>
+                                <td><p class="product-number">4725086</p></td>
+                                <td>
+                                    <div class="text-box">
+                                        <p class="product-name" title="">【YKSHOUSE】日清L型獨立筒皮沙發組(兩色可選)</p>
+                                        <div class="full-text">【YKSHOUSE】日清L型獨立筒皮沙發組(兩色可選)</div>
+                                    </div>
+                                </td>
+                                <td><p class="order-date">2026/03/18</p></td>
+                                <td><p class="order-date">2026/03/15</p></td>
+                                <td><p class="order-date">2026/03/18</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text text-danger">是</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td>
+                                    <div class="text-box">
+                                        <p class="feedback-content">服務態度親切，大推～</p>
+                                        <div class="full-text">服務態度親切，大推～</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>12</td>
+                                <td><p class="order-number">22022620432813</p></td>
+                                <td><p class="product-number">5639779</p></td>
+                                <td>
+                                    <div class="text-box">
+                                        <p class="product-name" title="">【YKSHOUSE】采軒L型獨立筒布沙發(四色可選)</p>
+                                        <div class="full-text">【YKSHOUSE】采軒L型獨立筒布沙發(四色可選)</div>
+                                    </div>
+                                </td>
+                                <td><p class="order-date">2026/03/05</p></td>
+                                <td><p class="order-date">2026/03/01</p></td>
+                                <td><p class="order-date">2026/03/05</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text text-danger">是</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td>
+                                    <div class="text-box">
+                                        <p class="feedback-content">暫無</p>
+                                        <div class="full-text">暫無</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>13</td>
+                                <td><p class="order-number">22030821262251</p></td>
+                                <td><p class="product-number">3232310</p></td>
+                                <td>
+                                    <div class="text-box">
+                                        <p class="product-name" title="">【COUCH】諾亞L型獨立筒布沙發組(左右型)</p>
+                                        <div class="full-text">【COUCH】諾亞L型獨立筒布沙發組(左右型)</div>
+                                    </div>
+                                </td>
+                                <td><p class="order-date">2026/03/15</p></td>
+                                <td><p class="order-date">2026/03/09</p></td>
+                                <td><p class="order-date">2026/03/15</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text text-danger">是</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td>
+                                    <div class="text-box">
+                                        <p class="feedback-content">服務不錯。</p>
+                                        <div class="full-text">服務不錯。</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>14</td>
+                                <td><p class="order-number">22021920139895</p></td>
+                                <td><p class="product-number">8167226</p></td>
+                                <td>
+                                    <div class="text-box">
+                                        <p class="product-name" title="">【擇木深耕】哈森三人座布沙發-乳膠墊+獨立筒版</p>
+                                        <div class="full-text">【擇木深耕】哈森三人座布沙發-乳膠墊+獨立筒版</div>
+                                    </div>
+                                </td>
+                                <td><p class="order-date">2026/03/11</p></td>
+                                <td><p class="order-date">2026/02/21</p></td>
+                                <td><p class="order-date">2026/03/11</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text text-danger">是</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text text-danger">是</p></td>
+                                <td><p class="option-text text-danger">是</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td>
+                                    <div class="text-box">
+                                        <p class="feedback-content">照片拍攝太過美好，與實物有些落差。</p>
+                                        <div class="full-text">照片拍攝太過美好，與實物有些落差。</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>15</td>
+                                <td><p class="order-number">22021721898024</p></td>
+                                <td><p class="product-number">8154106</p></td>
+                                <td>
+                                    <div class="text-box">
+                                        <p class="product-name" title="">【YKSHOUSE】傑尼斯L型布沙發-獨立筒版(四色可選)</p>
+                                        <div class="full-text">【YKSHOUSE】傑尼斯L型布沙發-獨立筒版(四色可選)</div>
+                                    </div>
+                                </td>
+                                <td><p class="order-date">2026/03/11</p></td>
+                                <td><p class="order-date">2026/02/18</p></td>
+                                <td><p class="order-date">2026/03/11</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text text-danger">是</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td><p class="option-text">否</p></td>
+                                <td>
+                                    <div class="text-box">
+                                        <p class="feedback-content">無</p>
+                                        <div class="full-text">無</div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="pagination">
+                        <span class="firstBtn"></span>
+                        <span class="preBtn"></span>
+                        <div class="pageBox">
+                            <input type="text" value="1"> / 5
+                        </div>
+                        <span class="nextBtn"></span>
+                        <span class="lastBtn"></span>
+                        <b>第 <i>1</i> - <i>10</i>筆, 共 <i>44</i>筆</b>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
