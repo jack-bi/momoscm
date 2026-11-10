@@ -1,0 +1,18 @@
+<svg id="组_13789" data-name="组 13789" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="矩形_4376" data-name="矩形 4376" width="11.841" height="15.787" fill="#b0b6ba"/>
+    </clipPath>
+  </defs>
+  <g id="组_13713" data-name="组 13713">
+    <rect id="矩形_4377" data-name="矩形 4377" width="20" height="20" fill="rgba(255,255,255,0)"/>
+    <g id="组_13712" data-name="组 13712" transform="translate(0.524 0)">
+      <g id="组_13711" data-name="组 13711" transform="translate(0 0)">
+        <g id="_123" data-name="123" transform="matrix(0.819, 0.574, -0.574, 0.819, 9.055, 0)" clip-path="url(#clip-path)">
+          <path id="路径_2854" data-name="路径 2854" d="M9.19,6.607,8.812,2.96h1.3a.74.74,0,0,0,.74-.74V.74a.74.74,0,0,0-.74-.74H1.727a.74.74,0,0,0-.74.74V2.22a.74.74,0,0,0,.74.74h1.3L2.651,6.607A4.069,4.069,0,0,0,0,10.114a.74.74,0,0,0,.74.74H4.934v3.207a.246.246,0,0,0,.026.11l.74,1.48a.247.247,0,0,0,.441,0l.74-1.48a.247.247,0,0,0,.026-.11V10.854H11.1a.74.74,0,0,0,.74-.74A4.07,4.07,0,0,0,9.19,6.607Z" transform="translate(0 0)" fill="#b0b6ba"/>
+        </g>
+        <line id="直线_83" data-name="直线 83" x2="12.499" y2="16.724" transform="translate(3.128 1.5)" fill="none" stroke="#b0b6ba" stroke-width="1"/>
+      </g>
+    </g>
+  </g>
+</svg>
